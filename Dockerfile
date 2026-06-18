@@ -16,7 +16,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Risorse condivise da kesi-site (submodule o clone in CI/build)
+# Risorse condivise da kesi-site (submodule, clone, o snapshot già in repo)
 ARG KESI_SITE_REF=main
 ARG GITHUB_TOKEN=
 RUN set -e; \
@@ -26,6 +26,8 @@ RUN set -e; \
       git clone --depth 1 --branch "$KESI_SITE_REF" \
         "https://x-access-token:${GITHUB_TOKEN}@github.com/PeterCatania721/kesi-site.git" /tmp/kesi-site; \
       ./scripts/sync-shared.sh /tmp/kesi-site; \
+    elif [ -f core/company.py ] && [ -f static/css/main.css ]; then \
+      echo "Using vendored kesi-site assets from repo"; \
     else \
       git clone --depth 1 --branch "$KESI_SITE_REF" \
         https://github.com/PeterCatania721/kesi-site.git /tmp/kesi-site; \
