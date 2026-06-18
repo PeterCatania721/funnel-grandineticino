@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 184" role="img" aria-hidden="true">
+  <g fill="#ffffff" transform="translate(92 92)">
+    <g transform="rotate(-42)">
+      <path d="M-46 -4h8v8h-8z"/>
+      <path d="M-52 0h6v4h-6z"/>
+      <path d="M-40 -10h20v6h8v8h-8v6h-20v-6h-8v-8h8v-6z"/>
+      <rect x="-12" y="-4.5" width="52" height="9" rx="2"/>
+    </g>
+    <g transform="rotate(42)">
+      <rect x="-12" y="-4.5" width="52" height="9" rx="2"/>
+      <path d="M-46 -13h18v5l-8 8h-10v-13z"/>
+      <path d="M-52 -7h8v5h-8z"/>
+    </g>
+  </g>
+</svg>

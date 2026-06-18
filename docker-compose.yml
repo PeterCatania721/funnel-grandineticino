@@ -1,0 +1,15 @@
+services:
+  funnel:
+    build: .
+    image: funnel-grandineticino:latest
+    container_name: funnel-grandineticino
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "8001:8000"
+    volumes:
+      - funnel_data:/app/data
+
+volumes:
+  funnel_data:

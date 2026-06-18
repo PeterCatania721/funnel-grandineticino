@@ -1,0 +1,12 @@
+{% load static i18n %}
+{# Modular before/after pair — pass before & after static paths (e.g. "img/before-grandine-1.jpg") #}
+<div class="ba-pair{% if ba_class %} {{ ba_class }}{% endif %}">
+  <div class="ba-item">
+    <img src="{% static before %}" alt="{{ before_alt }}" loading="lazy">
+    <span class="ba-pill ba-pill--before">{% if before_label %}{{ before_label }}{% else %}{% trans "Prima" %}{% endif %}</span>
+  </div>
+  <div class="ba-item">
+    <img src="{% static after %}" alt="{{ after_alt }}" loading="lazy">
+    <span class="ba-pill ba-pill--after">{% if after_label %}{{ after_label }}{% else %}{% trans "Dopo" %}{% endif %}</span>
+  </div>
+</div>

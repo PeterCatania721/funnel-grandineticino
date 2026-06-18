@@ -1,0 +1,18 @@
+{% load i18n %}
+<div class="funnel-faq-list" x-data="{ open: null }">
+  {% for faq in faq_items|default:funnel_faq %}
+  <div class="funnel-faq-item">
+    <button type="button" class="funnel-faq-q"
+            @click="open = open === {{ forloop.counter }} ? null : {{ forloop.counter }}"
+            :aria-expanded="(open === {{ forloop.counter }}).toString()">
+      {{ faq.question }}
+      <svg viewBox="0 0 16 16" aria-hidden="true"><polyline points="4,6 8,10 12,6"/></svg>
+    </button>
+    <div class="funnel-faq-a" x-show="open === {{ forloop.counter }}" x-cloak>
+      {% for paragraph in faq.answer %}
+      <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>

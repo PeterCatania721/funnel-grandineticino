@@ -1,0 +1,47 @@
+{% load static i18n %}
+{% get_current_language as CURRENT %}
+{% get_available_languages as LANGS %}
+<header class="funnel-header" x-data="{ menuOpen: false, langOpen: false, setLang(code) { const p = window.location.pathname; const np = p.replace(/^\/(it|de|fr|en)\//, '/' + code + '/'); window.location.href = (np !== p) ? np : '/' + code + '/'; } }" @keydown.escape.window="menuOpen = false; langOpen = false">
+  <div class="container funnel-header-inner" @click.outside="menuOpen = false">
+    <a href="{% url 'funnel_home' %}" class="brand" aria-label="Grandineticino.ch — {{ company.legal_name }}">
+      <img src="{% static 'img/logo-grandineticino.svg' %}" alt="Grandineticino.ch" class="brand-logo brand-logo--grandineticino" width="279" height="50">
+      <span class="brand-divider brand-divider--kesi" aria-hidden="true"></span>
+      <img src="{% static 'img/logo-kesi-nero.svg' %}" alt="{{ company.legal_name }}" class="brand-logo brand-logo--kesi">
+    </a>
+
+    <button type="button" class="funnel-nav-toggle" @click="menuOpen = !menuOpen" :aria-expanded="menuOpen.toString()" aria-controls="funnel-header-nav" aria-label="{% trans 'Menu' %}">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div id="funnel-header-nav" class="funnel-header-nav" :class="{ 'is-open': menuOpen }">
+      <a href="tel:{{ company.phone_href }}" class="funnel-header-phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 5.5C3 14.06 9.94 21 18.5 21l1.5-3.5-3.5-1.5-1 2c-2.78-.78-5.22-3.22-6-6l2-1L10 7.5 6.5 4 3 5.5z"/></svg>
+        <span>{{ company.phone }}</span>
+      </a>
+
+      <div class="lang-switcher funnel-header-lang" @click.outside="langOpen = false">
+        <button type="button" class="lang-btn" @click="langOpen = !langOpen"
+                :aria-expanded="langOpen.toString()" aria-haspopup="true" aria-label="{% trans 'Lingua' %}">
+          <img class="lang-flag" src="{% static 'img/flags/'|add:CURRENT|add:'.svg' %}" alt="">
+          <span class="lang-code">{{ CURRENT|upper }}</span>
+        </button>
+        <div class="lang-menu" x-show="langOpen" x-transition.opacity x-cloak>
+          {% for code, name in LANGS %}
+          <button type="button" class="lang-item{% if code == CURRENT %} is-active{% endif %}"
+                  @click="setLang('{{ code }}')">
+            <img class="lang-flag" src="{% static 'img/flags/'|add:code|add:'.svg' %}" alt="">
+            <span>{% if code == 'it' %}IT{% elif code == 'de' %}DE{% elif code == 'fr' %}FR{% else %}EN{% endif %}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <a href="#funnel-form" class="btn btn-primary nav-cta funnel-header-cta" @click="menuOpen = false">{% trans "Preventivo gratuito" %}</a>
+    </div>
+  </div>
+</header>
+
+<div class="funnel-sticky-cta" aria-hidden="false">
+  <a href="tel:{{ company.phone_href }}" class="funnel-sticky-btn funnel-sticky-btn--phone">{% trans "Chiama" %}</a>
+  <a href="#funnel-form" class="funnel-sticky-btn funnel-sticky-btn--cta">{% trans "Preventivo gratuito" %}</a>
+</div>

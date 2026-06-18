@@ -1,0 +1,26 @@
+{% load static i18n %}
+<section class="section section-alt section-floating{% if mission_extra_class %} {{ mission_extra_class }}{% endif %} funnel-mission">
+  <div class="container">
+    <div class="funnel-mission-grid">
+      <div class="section-head funnel-mission-copy">
+        <p class="eyebrow">{% trans "La nostra missione" %}</p>
+        <h2>{% trans "Ripariamo. Preserviamo. Innoviamo." %}</h2>
+        <p{% if mission_lead %} class="lead measure"{% endif %}>{% trans "KESI SA è carrozzeria alternativa: ripariamo il danno nel punto esatto, senza cambiare il pezzo e senza verniciatura. Meno costi, meno sprechi, stesso risultato." %}</p>
+      </div>
+      <div class="funnel-mission-badges" aria-label="{% trans 'Certificazioni e valori' %}">
+        <img src="{% static 'img/badge-swiss.svg' %}"
+             alt="{% trans 'Servizio in Svizzera' %}"
+             class="funnel-mission-badge"
+             width="184"
+             height="184"
+             loading="lazy">
+        <img src="{% static 'img/setting.png' %}"
+             alt="{% trans 'Riparazioni ecologiche' %}"
+             class="funnel-mission-badge funnel-mission-badge--eco"
+             width="184"
+             height="184"
+             loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,3 @@
+{% for proof in funnel_proofs %}
+  {% include "partials/ba-pair.html" with before=proof.before after=proof.after before_alt=proof.before_alt after_alt=proof.after_alt %}
+{% endfor %}

@@ -1,0 +1,30 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block title %}{{ company.legal_name }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{% trans "Riparazione danni da grandine in Ticino senza verniciatura. Preventivo gratuito in 24 ore con KESI SA." %}{% endblock %}">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" href="{% static 'img/favicon.png' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/funnel.css' %}">
+
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="funnel-body funnel-page">
+  {% include "partials/funnel-header.html" %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/funnel-footer.html" %}
+
+  <script src="{% static 'js/main.js' %}"></script>
+  <script src="{% static 'js/funnel.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

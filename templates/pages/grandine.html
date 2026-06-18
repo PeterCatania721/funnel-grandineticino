@@ -1,0 +1,137 @@
+{% extends "base-funnel.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Riparazione Grandine Ticino" %} — {{ company.legal_name }}{% endblock %}
+
+{% block content %}
+
+{# ① HERO #}
+<section class="funnel-hero page-hero"
+         style="background-image: linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.78)), url('{{ funnel_hero_image }}'); background-size: cover; background-position: center;">
+  <div class="hero-wave" aria-hidden="true"></div>
+  <div class="container funnel-hero-grid">
+    <div class="funnel-hero-copy">
+      <p class="eyebrow hero-eyebrow">{% trans "Ticino · Risposta in 24h" %}</p>
+      <h1 class="hero-title">{% trans "Risparmia fino al 70% sulla grandine — senza verniciare." %}</h1>
+      <p class="hero-lead">{% trans "Invia le foto ora. Valutazione gratuita con KESI SA: 97 tecnici PDR, 30 anni di esperienza, sede a Riazzino." %}</p>
+      <ul class="funnel-hero-bullets">
+        <li>{% trans "Zero vernice: la tua auto resta originale" %}</li>
+        <li>{% trans "Riparazione in giorni, non settimane" %}</li>
+        <li>{% trans "Servizio mobile in tutto il Ticino e Svizzera" %}</li>
+      </ul>
+    </div>
+    <div class="funnel-hero-form-wrap funnel-hero-form-wrap--prominent" id="funnel-form">
+      {% include "partials/funnel-form.html" %}
+    </div>
+  </div>
+</section>
+
+{# ② URGENZA #}
+{% include "partials/funnel/urgency-strip.html" %}
+
+{# ③ CONFRONTO #}
+<section class="section section-alt section-floating funnel-section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Confronto diretto" %}</p>
+      <h2>{% trans "PDR vs carrozzeria tradizionale" %}</h2>
+    </div>
+    {% include "partials/funnel/comparison-table.html" %}
+  </div>
+</section>
+
+{# ④ MISSIONE #}
+{% include "partials/funnel/mission-section.html" with mission_extra_class="funnel-section" %}
+
+{# ⑤ ERRORI #}
+{% include "partials/funnel/mistakes-section.html" with mistakes_extra_class="funnel-section" %}
+
+{# ⑥ COME FUNZIONA #}
+<section class="section section-alt section-floating funnel-section funnel-video">
+  <div class="container funnel-video-grid">
+    <div>
+      <div class="section-head">
+        <p class="eyebrow">{% trans "Come funziona" %}</p>
+        <h2>{% trans "Il processo in 4 passi" %}</h2>
+      </div>
+      <ol class="funnel-numbered-list">
+        <li><strong>{% trans "Foto del danno" %}</strong> — {% trans "superfici pulite, luce naturale" %}</li>
+        <li><strong>{% trans "Valutazione KESI" %}</strong> — {% trans "entro 24 ore lavorative" %}</li>
+        <li><strong>{% trans "Appuntamento" %}</strong> — {% trans "Riazzino o servizio mobile" %}</li>
+        <li><strong>{% trans "Riparazione PDR" %}</strong> — {% trans "vernice originale intatta" %}</li>
+      </ol>
+    </div>
+    <div class="funnel-process-img-wrap">
+      <img src="{{ funnel_workshop_image }}" alt="{% trans 'Officina KESI' %}" class="funnel-workshop-img" loading="lazy">
+    </div>
+  </div>
+</section>
+
+{# ⑦ PRIMA / DOPO #}
+<section class="section funnel-section funnel-proof">
+  <div class="container">
+    {% include "partials/ba-pairs.html" %}
+  </div>
+</section>
+
+{# ⑧ STATS — animazione onde + counter come sito KESI #}
+<section class="stats-wave-section">
+  <canvas class="stats-wave-canvas" aria-hidden="true"></canvas>
+  <div class="container">
+    {% include "partials/stats.html" %}
+  </div>
+</section>
+
+{# ⑨ FONDATORE #}
+<section class="section section-alt section-floating funnel-section funnel-founder">
+  <div class="container founder-grid">
+    <div>
+      <img src="{% static 'img/kesi-founder.jpg' %}"
+           alt="{% trans 'Salvatore Catania — fondatore KESI SA' %}"
+           class="contatti-founder-img"
+           loading="lazy">
+    </div>
+    <div class="contatti-info">
+      <p class="eyebrow">{% trans "Fondatore" %}</p>
+      <h2>{% trans "Salvatore Catania" %}</h2>
+      <blockquote class="founder-quote">
+        {% trans "Ogni ammaccatura è una sfida tecnica. Il nostro obiettivo è ripristinare il veicolo come se il danno non fosse mai esistito." %}
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+{# ⑩ FORM #}
+<section class="section funnel-form-section funnel-section" id="funnel-form-bottom">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Pronto?" %}</p>
+      <h2>{% trans "Richiedi il preventivo gratuito" %}</h2>
+      <p>{% trans "Compila il form e carica le foto: ti rispondiamo entro 24 ore." %}</p>
+    </div>
+    <div class="funnel-hero-form-wrap funnel-hero-form-wrap--solo">
+      {% include "partials/funnel-form-bottom.html" %}
+    </div>
+  </div>
+</section>
+
+{# ⑪ FAQ #}
+<section class="section funnel-section funnel-faq">
+  <div class="container">
+    {% include "partials/funnel/faq-list.html" %}
+  </div>
+</section>
+
+{# ⑫ CTA FINALE #}
+<section class="cta section-floating funnel-final-cta">
+  <div class="container text-center">
+    <h2>{% blocktrans %}Non aspettare! Il preventivo è <b>GRATUITO</b>{% endblocktrans %}</h2>
+    <div class="funnel-final-actions">
+      <a href="#funnel-form" class="btn btn-primary btn-lg">{% trans "Invia foto ora" %}</a>
+      <a href="tel:{{ company.phone_href }}" class="btn btn-outline-light btn-lg">{% trans "Chiama" %}</a>
+      <a href="https://wa.me/{{ company.phone_href|cut:'+' }}?text={{ whatsapp_text }}" class="btn btn-outline-light btn-lg" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

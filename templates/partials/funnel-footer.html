@@ -1,0 +1,18 @@
+{% load i18n %}
+<footer class="funnel-footer">
+  <div class="container funnel-footer-inner">
+    <div>
+      <p class="funnel-footer-brand">{{ company.legal_name }}</p>
+      <p class="funnel-footer-meta">{{ company.address_line }}</p>
+      <p class="funnel-footer-meta">
+        <a href="tel:{{ company.phone_href }}">{{ company.phone }}</a>
+        ·
+        <a href="mailto:{{ company.email }}">{{ company.email }}</a>
+      </p>
+    </div>
+    <div class="funnel-footer-links">
+      <a href="https://kesi-automotive.ch/{{ LANGUAGE_CODE }}/codice-etico/" target="_blank" rel="noopener noreferrer">{% trans "Codice etico" %}</a>
+      <a href="https://kesi-automotive.ch/{{ LANGUAGE_CODE }}/" target="_blank" rel="noopener noreferrer">kesi-automotive.ch</a>
+    </div>
+  </div>
+</footer>

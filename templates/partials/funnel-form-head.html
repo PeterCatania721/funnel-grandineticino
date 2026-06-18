@@ -1,0 +1,15 @@
+{% load static i18n %}
+<div class="funnel-form-head">
+  <img src="{% static 'img/logo-kesi-nero.svg' %}"
+       alt="{{ company.legal_name }}"
+       class="funnel-form-logo"
+       width="160"
+       height="63"
+       loading="eager">
+  {% if heading_level == "h3" %}
+  <h3 class="type-card-title">{% trans "Preventivo gratuito" %}</h3>
+  {% else %}
+  <h2 class="type-card-title">{% trans "Preventivo gratuito" %}</h2>
+  {% endif %}
+  <p class="type-subtitle">{% trans "Risposta entro 24 ore · Gratuito · Senza impegno" %}</p>
+</div>

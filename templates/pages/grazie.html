@@ -1,0 +1,31 @@
+{% extends "base-funnel.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Grazie" %} — {{ company.legal_name }}{% endblock %}
+
+{% block content %}
+<section class="section funnel-grazie">
+  <div class="container prev-container">
+    <div class="prev-success funnel-grazie-card">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9,12 11,14 15,10"/></svg>
+      <h1>{% trans "Richiesta inviata!" %}</h1>
+      <p>{% trans "Grazie per aver contattato KESI SA tramite grandineticino.ch. Ti risponderemo entro 24 ore lavorative con una valutazione gratuita del danno." %}</p>
+
+      <div class="funnel-grazie-steps">
+        <h2>{% trans "Cosa succede ora" %}</h2>
+        <ol class="funnel-numbered-list">
+          <li>{% trans "Il nostro team analizza le foto che hai inviato" %}</li>
+          <li>{% trans "Ti contattiamo via telefono o email con la stima" %}</li>
+          <li>{% trans "Fissiamo l'appuntamento per la riparazione PDR" %}</li>
+        </ol>
+      </div>
+
+      <div class="funnel-grazie-actions">
+        <a href="https://wa.me/{{ company.phone_href|cut:'+' }}?text=Grandine%20Ticino" class="btn btn-primary" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="tel:{{ company.phone_href }}" class="btn btn-outline-dark">{% trans "Chiama" %} {{ company.phone }}</a>
+        <a href="{% url 'funnel_home' %}" class="btn btn-outline-dark">{% trans "Torna alla pagina" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

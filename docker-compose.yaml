@@ -1,0 +1,19 @@
+services:
+  funnel:
+    build: .
+    image: funnel-grandineticino:latest
+    container_name: funnel-grandineticino
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - funnel_data:/app/data
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.grandineticino.rule=Host(`grandineticino.ch`) || Host(`www.grandineticino.ch`)"
+      - traefik.http.routers.grandineticino.entrypoints=websecure
+      - traefik.http.routers.grandineticino.tls.certresolver=letsencrypt
+      - traefik.http.services.grandineticino.loadbalancer.server.port=8000
+
+volumes:
+  funnel_data:

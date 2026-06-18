@@ -1,0 +1,1117 @@
+# KESI SA — English translation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kesi-site\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-29 00:14+0200\n"
+"PO-Revision-Date: 2026-05-28 19:00+0200\n"
+"Last-Translator: KESI\n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "PDR – Levabolli senza verniciatura"
+msgstr "PDR – Paintless Dent Removal"
+
+msgid ""
+"Rimozione di bolli e ammaccature dalla lamiera senza vernice, ripristinando "
+"la forma originale e preservando la verniciatura di fabbrica."
+msgstr ""
+"Removal of dents and dings from the bodywork without paint, restoring the "
+"original shape and preserving the factory finish."
+
+msgid "Carrozzeria alternativa"
+msgstr "Alternative bodywork"
+
+msgid ""
+"Ripariamo il danno direttamente nel punto colpito, senza rifare il pezzo e "
+"senza verniciatura: meno costi, meno sprechi, stesso risultato."
+msgstr ""
+"We repair the damage directly at the affected spot, without redoing the "
+"panel or repainting: lower costs, less waste, the same result."
+
+msgid "Smart Repair"
+msgstr "Smart Repair"
+
+msgid ""
+"Riparazione localizzata di graffi, piccoli danni e interni, combinabile con "
+"il PDR per interventi mirati ed economici."
+msgstr ""
+"Localized repair of scratches, minor damage and interiors, combinable with "
+"PDR for targeted, cost-effective work."
+
+msgid "Scanner AI e perizia danni"
+msgstr "AI scanner and damage assessment"
+
+msgid ""
+"Scannerizzazione professionale con intelligenza artificiale che individua "
+"anche i danni meno visibili, ideale per drive-in e perizie."
+msgstr ""
+"Professional AI-powered scanning that detects even the least visible damage,"
+" ideal for drive-in events and assessments."
+
+msgid "Servizio mobile in loco"
+msgstr "On-site mobile service"
+
+msgid ""
+"Strumenti portatili per intervenire direttamente presso carrozzerie, "
+"concessionari e flotte, in tutta la Svizzera."
+msgstr ""
+"Portable tools to work directly at bodyshops, dealerships and fleets, "
+"throughout Switzerland."
+
+msgid "Gestione grandi volumi e flotte"
+msgstr "High-volume and fleet management"
+
+msgid ""
+"Rete di oltre 90 tecnici e sistema digitale dedicato per gestire picchi "
+"stagionali, eventi di grandine e parchi auto numerosi."
+msgstr ""
+"A network of over 90 technicians and a dedicated digital system to handle "
+"seasonal peaks, hail events and large vehicle fleets."
+
+msgid "Supporto a team PDR esistenti"
+msgstr "Support for existing PDR teams"
+
+msgid ""
+"Integriamo e potenziamo i tecnici già attivi nei momenti di maggior carico, "
+"garantendo continuità operativa e tempi ridotti."
+msgstr ""
+"We integrate and reinforce technicians already in place during peak times, "
+"ensuring operational continuity and shorter turnaround."
+
+msgid "Vernice originale preservata"
+msgstr "Original paint preserved"
+
+msgid ""
+"Manteniamo la verniciatura di fabbrica: estetica intatta e valore del "
+"veicolo protetto, fondamentale su auto d'epoca o di alto valore."
+msgstr ""
+"We keep the factory finish: intact looks and protected vehicle value, "
+"crucial for classic or high-value cars."
+
+msgid "Costi e tempi ridotti"
+msgstr "Reduced costs and time"
+
+msgid ""
+"Meno passaggi rispetto alla carrozzeria tradizionale: niente stuccatura, "
+"carteggiatura o asciugatura. Danni lievi risolti in tempi brevi."
+msgstr ""
+"Fewer steps than traditional bodywork: no filling, sanding or drying. Minor "
+"damage fixed quickly."
+
+msgid "Soluzione sostenibile"
+msgstr "Sustainable solution"
+
+msgid ""
+"Senza vernici, solventi o sostanze chimiche: meno sprechi, meno impatto "
+"ambientale e nessuna cabina di verniciatura necessaria."
+msgstr ""
+"No paints, solvents or chemicals: less waste, lower environmental impact and"
+" no spray booth required."
+
+msgid "Rete di tecnici esperti"
+msgstr "Network of expert technicians"
+
+msgid ""
+"Oltre 30 anni di esperienza e una rete di professionisti tra i migliori in "
+"Svizzera, Italia, Europa e Stati Uniti."
+msgstr ""
+"Over 30 years of experience and a network of professionals among the best in"
+" Switzerland, Italy, Europe and the United States."
+
+msgid "Copertura in tutta la Svizzera"
+msgstr "Coverage across Switzerland"
+
+msgid ""
+"Interveniamo direttamente in loco con strumenti compatti, riducendo tempi "
+"morti, costi logistici e spostamenti dei veicoli."
+msgstr ""
+"We work directly on site with compact tools, cutting downtime, logistics "
+"costs and vehicle transfers."
+
+msgid "Etica e trasparenza"
+msgstr "Ethics and transparency"
+
+msgid ""
+"Lavoriamo con trasparenza verso clienti e assicurazioni, con gestione "
+"tracciabile del danno lungo tutto il processo."
+msgstr ""
+"We work transparently with customers and insurers, with traceable damage "
+"management throughout the process."
+
+msgid "Carrozzerie"
+msgstr "Bodyshops"
+
+msgid "Capacità aggiuntiva nei picchi di lavoro e per i danni più complessi."
+msgstr "Extra capacity during peak workloads and for more complex damage."
+
+msgid "Concessionari e garage"
+msgstr "Dealerships and garages"
+
+msgid "Riparazioni in loco su veicoli nuovi, usati e d'esposizione."
+msgstr "On-site repairs on new, used and showroom vehicles."
+
+msgid "Aziende con flotte"
+msgstr "Companies with fleets"
+
+msgid "Gestione efficiente di grandi numeri di veicoli, con perizie incluse."
+msgstr ""
+"Efficient handling of large numbers of vehicles, assessments included."
+
+msgid "Assicurazioni"
+msgstr "Insurers"
+
+msgid "Costi di riparazione contenuti e maggiore competitività delle polizze."
+msgstr "Contained repair costs and more competitive policies."
+
+msgid "Anni di esperienza"
+msgstr "Years of experience"
+
+msgid "Tecnici specializzati"
+msgstr "Specialized technicians"
+
+msgid "Vernice originale mantenuta"
+msgstr "Original paint kept"
+
+msgid "Home"
+msgstr "Home"
+
+msgid "Servizi"
+msgstr "Services"
+
+msgid "Perché KESI"
+msgstr "Why KESI"
+
+msgid "Contatti"
+msgstr "Contact"
+
+msgid ""
+"Contatta KESI SA a Riazzino (Ticino). Servizio mobile in tutta la Svizzera "
+"per carrozzerie, concessionari, flotte e assicurazioni."
+msgstr ""
+"Contact KESI SA in Riazzino (Ticino). Mobile service throughout Switzerland "
+"for bodyshops, dealerships, fleets and insurers."
+
+msgid "Parliamone"
+msgstr "Let's talk"
+
+msgid ""
+"Hai un veicolo, una flotta o una carrozzeria da supportare? Siamo a "
+"disposizione in tutta la Svizzera."
+msgstr ""
+"Have a vehicle, a fleet or a bodyshop that needs support? We're available "
+"throughout Switzerland."
+
+msgid "Sede"
+msgstr "Address"
+
+msgid "Recapiti"
+msgstr "Contact details"
+
+msgid "Tel"
+msgstr "Phone"
+
+msgid "Area di servizio"
+msgstr "Service area"
+
+msgid "Interveniamo direttamente in loco con strumenti mobili."
+msgstr "We come directly to you with mobile equipment."
+
+msgid "Nessun form in questa versione: scrivici o chiamaci direttamente."
+msgstr "No form in this version: write to us or call us directly."
+
+msgid "Carrozzeria alternativa, PDR e Smart Repair"
+msgstr "Alternative bodywork, PDR and Smart Repair"
+
+msgid ""
+"KESI SA: riparazione di bolli e ammaccature senza verniciatura (PDR), Smart "
+"Repair e perizie con scanner AI. Servizio mobile in tutta la Svizzera."
+msgstr ""
+"KESI SA: paintless dent repair (PDR), Smart Repair and AI-scanner "
+"assessments. Mobile service throughout Switzerland."
+
+msgid "Ripariamo bolli e ammaccature senza verniciatura."
+msgstr "We repair dents and dings without repainting."
+
+msgid ""
+"Carrozzeria alternativa, PDR e Smart Repair: ripristiniamo la forma "
+"originale del veicolo preservando la vernice di fabbrica. Più veloce, più "
+"sostenibile, più conveniente."
+msgstr ""
+"Alternative bodywork, PDR and Smart Repair: we restore the vehicle's "
+"original shape while preserving the factory paint. Faster, greener, more "
+"affordable."
+
+msgid "Scopri i servizi"
+msgstr "Discover our services"
+
+msgid "Contattaci"
+msgstr "Contact us"
+
+msgid "Il nostro approccio"
+msgstr "Our approach"
+
+#| msgid "Parliamone"
+msgid "Ripariamo."
+msgstr "We repair."
+
+msgid "Preserviamo."
+msgstr "We preserve."
+
+msgid "Innoviamo."
+msgstr "We innovate."
+
+msgid ""
+"Tecnologia, metodo e cura del dettaglio: la carrozzeria alternativa portata "
+"a un nuovo livello."
+msgstr ""
+"Technology, method and attention to detail: alternative bodywork taken to a "
+"new level."
+
+msgid "Cosa facciamo"
+msgstr "What we do"
+
+msgid "I nostri servizi"
+msgstr "Our services"
+
+msgid ""
+"Soluzioni di carrozzeria alternativa per carrozzerie, concessionari, flotte "
+"e assicurazioni."
+msgstr ""
+"Alternative bodywork solutions for bodyshops, dealerships, fleets and "
+"insurers."
+
+msgid "I vantaggi"
+msgstr "The benefits"
+
+msgid "Perché scegliere KESI?"
+msgstr "Why choose KESI?"
+
+msgid "Per chi lavoriamo"
+msgstr "Who we work for"
+
+msgid "Un partner per tutto il settore automotive"
+msgstr "A partner for the entire automotive sector"
+
+msgid "Pronto a ridurre tempi e costi di riparazione?"
+msgstr "Ready to cut repair time and costs?"
+
+msgid "Interveniamo direttamente in loco, in tutta la Svizzera."
+msgstr "We come directly to you, anywhere in Switzerland."
+
+msgid "Perché KESI?"
+msgstr "Why KESI?"
+
+msgid ""
+"Perché scegliere KESI: vernice originale preservata, costi e tempi ridotti, "
+"sostenibilità, rete di tecnici esperti e copertura in tutta la Svizzera."
+msgstr ""
+"Why choose KESI: original paint preserved, reduced costs and time, "
+"sustainability, a network of expert technicians and coverage across "
+"Switzerland."
+
+msgid ""
+"Oltre 30 anni di esperienza nella carrozzeria alternativa, una rete di "
+"tecnici tra i migliori al mondo e un metodo che fa risparmiare tempo, denaro"
+" e risorse."
+msgstr ""
+"Over 30 years of experience in alternative bodywork, a network of "
+"technicians among the best in the world and a method that saves time, money "
+"and resources."
+
+msgid "Lavoriamo insieme"
+msgstr "Let's work together"
+
+msgid ""
+"Integriamo e potenziamo la tua struttura, senza aumentarne in modo "
+"permanente i costi fissi."
+msgstr ""
+"We integrate and strengthen your operation without permanently raising its "
+"fixed costs."
+
+msgid ""
+"I servizi KESI: PDR senza verniciatura, carrozzeria alternativa, Smart "
+"Repair, scanner AI, servizio mobile e gestione grandi volumi."
+msgstr ""
+"KESI services: paintless PDR, alternative bodywork, Smart Repair, AI "
+"scanner, mobile service and high-volume management."
+
+msgid ""
+"Carrozzeria alternativa per ogni esigenza: dai piccoli danni ai grandi "
+"volumi, sempre con la massima cura del veicolo."
+msgstr ""
+"Alternative bodywork for every need: from minor damage to large volumes, "
+"always with the utmost care for the vehicle."
+
+msgid "Il metodo"
+msgstr "The method"
+
+msgid "PDR – Paintless Dent Repair"
+msgstr "PDR – Paintless Dent Repair"
+
+msgid ""
+"Il PDR rimuove bolli e ammaccature lavorando direttamente sulla lamiera, "
+"senza stuccatura, carteggiatura o verniciatura. Eliminando i passaggi "
+"superflui riduciamo tempi, materiali e costi, mantenendo intatta la vernice "
+"originale del veicolo."
+msgstr ""
+"PDR removes dents and dings by working directly on the metal, without "
+"filling, sanding or painting. By eliminating unnecessary steps we cut time, "
+"materials and costs while keeping the vehicle's original paint intact."
+
+msgid ""
+"È la soluzione ideale per danni da grandine, urti da parcheggio e colpi "
+"accidentali, purché la vernice non sia gravemente compromessa. Può essere "
+"combinato con lo Smart Repair per interventi mirati."
+msgstr ""
+"It's the ideal solution for hail damage, parking knocks and accidental "
+"impacts, provided the paint isn't seriously compromised. It can be combined "
+"with Smart Repair for targeted work."
+
+msgid "Hai un veicolo o una flotta da riparare?"
+msgstr "Have a vehicle or a fleet to repair?"
+
+msgid ""
+"Raccontaci la tua esigenza: troviamo la soluzione più rapida ed efficiente."
+msgstr ""
+"Tell us what you need: we'll find the fastest, most efficient solution."
+
+msgid "Navigazione footer"
+msgstr "Footer navigation"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgctxt "nav"
+msgid "Home"
+msgstr "Home"
+
+msgid "Tutti i diritti riservati."
+msgstr "All rights reserved."
+
+msgid "Lingua"
+msgstr "Language"
+
+msgid "Tecnologie"
+msgstr "Technologies"
+
+msgid "Tecnologie KESI"
+msgstr "KESI Technologies"
+
+msgid "Tecnologie footer"
+msgstr "Technologies footer"
+
+msgid "Le tecnologie KESI: PDR, Scanner AI portabile, Scanner 360° 4-in-1 e Smart Repair. Strumenti e metodi all'avanguardia per la carrozzeria alternativa."
+msgstr "KESI technologies: PDR, portable AI Scanner, 360° 4-in-1 Scanner and Smart Repair. State-of-the-art tools and methods for alternative bodywork."
+
+msgid "Scanner"
+msgstr "Scanner"
+
+msgid "Scanner AI"
+msgstr "AI Scanner"
+
+msgid "Scanner 360°"
+msgstr "360° Scanner"
+
+msgid "Scanner 360° 4-in-1"
+msgstr "360° 4-in-1 Scanner"
+
+msgid "PDR"
+msgstr "PDR"
+
+msgid "Codice Etico"
+msgstr "Code of Ethics"
+
+msgid "Scopri"
+msgstr "Discover"
+
+msgid "Scopri di più"
+msgstr "Learn more"
+
+msgid "Scopri il PDR"
+msgstr "Discover PDR"
+
+msgid "Scopri lo Scanner 360°"
+msgstr "Discover the 360° Scanner"
+
+msgid "Torna alla home"
+msgstr "Back to home"
+
+msgid "Tutte le tecnologie"
+msgstr "All technologies"
+
+msgid "Apri in nuova scheda"
+msgstr "Open in new tab"
+
+msgid "Scarica il documento"
+msgstr "Download the document"
+
+msgid "Scarica PDF"
+msgstr "Download PDF"
+
+msgid "Demo"
+msgstr "Demo"
+
+msgid "In azione"
+msgstr "In action"
+
+msgid "Vantaggi"
+msgstr "Benefits"
+
+msgid "Vantaggi chiave"
+msgstr "Key benefits"
+
+msgid "Vantaggi principali"
+msgstr "Main benefits"
+
+msgid "Come funziona"
+msgstr "How it works"
+
+msgid "Quando si usa"
+msgstr "When to use it"
+
+msgid "Quando NON si applica"
+msgstr "When NOT to use it"
+
+msgid "Ideale per"
+msgstr "Ideal for"
+
+msgid "Tipologie di intervento"
+msgstr "Types of work"
+
+msgid "Cos'è"
+msgstr "What it is"
+
+msgid "Strumenti e metodi"
+msgstr "Tools and methods"
+
+msgid "Tecnica"
+msgstr "Technique"
+
+msgid "Riparazione"
+msgstr "Repair"
+
+msgid "Visto da vicino"
+msgstr "Up close"
+
+msgid "Tecnologie correlate"
+msgstr "Related technologies"
+
+msgid "Esplora le altre tecnologie"
+msgstr "Explore other technologies"
+
+msgid "Applicazioni principali"
+msgstr "Main applications"
+
+msgid "Per chi è ideale"
+msgstr "Who it's ideal for"
+
+msgid "Prenota una perizia con lo Scanner AI"
+msgstr "Book an inspection with the AI Scanner"
+
+msgid "Veniamo da te con lo scanner. Stima precisa, nessun impegno."
+msgstr "We come to you with the scanner. Precise estimate, no commitment."
+
+msgid "Il processo passo per passo"
+msgstr "The step-by-step process"
+
+msgid "Report digitale condivisibile istantaneamente"
+msgstr "Instantly shareable digital report"
+
+msgid "Contattaci per saperne di più"
+msgstr "Contact us to learn more"
+
+msgid "Contattaci per una consulenza gratuita: valutiamo il danno e ti consigliamo il metodo più efficiente."
+msgstr "Contact us for a free consultation: we assess the damage and recommend the most efficient method."
+
+msgid "Vuoi sapere quale tecnologia fa per te?"
+msgstr "Want to know which technology is right for you?"
+
+msgid "Codice Etico Aziendale"
+msgstr "Corporate Code of Ethics"
+
+msgid "Codice Etico Aziendale KESI SA"
+msgstr "KESI SA Corporate Code of Ethics"
+
+msgid "Il Codice Etico Aziendale di KESI SA: i valori, i principi e le regole di condotta che guidano ogni nostra attività."
+msgstr "The KESI SA Corporate Code of Ethics: the values, principles and rules of conduct that guide everything we do."
+
+msgid "I principi etici e le regole di condotta che guidano ogni nostra attività."
+msgstr "The ethical principles and rules of conduct that guide everything we do."
+
+msgid "Documento: Codice Etico Aziendale KESI SA"
+msgstr "Document: KESI SA Corporate Code of Ethics"
+
+msgid "Il tuo browser non supporta la visualizzazione inline dei PDF."
+msgstr "Your browser does not support inline PDF viewing."
+
+msgid "Trasparenza &amp; Valori"
+msgstr "Transparency &amp; Values"
+
+msgid "Preventivo gratuito"
+msgstr "Free quote"
+
+msgid "Preventivo Gratuito"
+msgstr "Free Quote"
+
+msgid "Richiedi un preventivo gratuito per la riparazione del tuo veicolo. Invia foto del danno e ricevi una valutazione KESI SA."
+msgstr "Request a free quote for your vehicle repair. Send photos of the damage and receive a KESI SA assessment."
+
+msgid "Il tuo veicolo ha subito un danno?"
+msgstr "Has your vehicle been damaged?"
+
+msgid "Valutiamo gratuitamente il danno e ti diciamo in pochi minuti qual è il metodo più rapido ed economico."
+msgstr "We assess the damage for free and tell you in minutes which is the fastest and most cost-effective method."
+
+msgid "Nome e cognome"
+msgstr "Full name"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Telefono"
+msgstr "Phone"
+
+msgid "Città"
+msgstr "City"
+
+msgid "Tipo di danno"
+msgstr "Type of damage"
+
+msgid "Grandine"
+msgstr "Hail"
+
+msgid "Descrizione del danno"
+msgstr "Description of damage"
+
+msgid "Dati del veicolo"
+msgstr "Vehicle details"
+
+msgid "Marca? Modello? Anno? Km? Assicurazione? Già riparato in precedenza?"
+msgstr "Make? Model? Year? Mileage? Insurance? Previously repaired?"
+
+msgid "Vernice danneggiata? Graffi? Gravità? Parti danneggiate? Entità del danno?"
+msgstr "Paint damaged? Scratches? Severity? Damaged parts? Extent of damage?"
+
+msgid "Carica foto del danno"
+msgstr "Upload damage photos"
+
+msgid "Fornire foto chiare del danno su superfici pulite e asciutte."
+msgstr "Please provide clear photos of the damage on clean, dry surfaces."
+
+msgid "max 15 file"
+msgstr "max 15 files"
+
+msgid "INVIA RICHIESTA"
+msgstr "SEND REQUEST"
+
+msgid "Grazie per aver contattato KESI SA. Ti risponderemo al più presto con una valutazione del danno."
+msgstr "Thank you for contacting KESI SA. We will get back to you as soon as possible with a damage assessment."
+
+msgid "Richiesta inviata!"
+msgstr "Request sent!"
+
+msgid "dell'azienda. Fornendo il numero di telefono, acconsento a ricevere messaggi dall'azienda."
+msgstr "of the company. By providing my phone number, I consent to receiving messages from the company."
+
+msgid "La tecnica K90"
+msgstr "The K90 Technique"
+
+msgid "La tecnica K90 di KESI: rimozione professionale di bolli e danni da grandine senza verniciatura. Come funziona, quando si usa e i suoi vantaggi."
+msgstr "The KESI K90 technique: professional removal of dents and hail damage without repainting. How it works, when to use it and its benefits."
+
+msgid "La tecnica K90 sviluppata da Salvatore Catania nel 1995: lavoriamo direttamente sulla lamiera dall'interno, ripristinando la forma originale senza toccare la vernice di fabbrica."
+msgstr "The K90 technique developed by Salvatore Catania in 1995: we work directly on the metal from inside, restoring the original shape without touching the factory paint."
+
+msgid "La tecnica K90 sviluppata da Salvatore Catania nel 1995: rimozione di bolli e ammaccature lavorando direttamente sulla lamiera, senza stuccatura, carteggiatura o verniciatura."
+msgstr "The K90 technique developed by Salvatore Catania in 1995: removal of dents and dings by working directly on the metal, without filling, sanding or painting."
+
+msgid "La nostra tecnica"
+msgstr "Our technique"
+
+msgid "La K90 combina strumenti professionali di precisione, lettura avanzata del riflettore e una metodologia collaudata in 30 anni di lavoro su oltre 15'000 veicoli in tutta Europa."
+msgstr "K90 combines professional precision tools, advanced reflector reading and a methodology tested over 30 years of work on more than 15,000 vehicles across Europe."
+
+msgid "Dall'intuizione della tecnica K90 nel 1995 ai sistemi AI di ultima generazione: ogni tecnologia che usiamo è scelta per restituire il veicolo come se il danno non fosse mai esistito."
+msgstr "From the intuition behind the K90 technique in 1995 to the latest AI systems: every technology we use is chosen to return the vehicle as if the damage never existed."
+
+msgid "fondatore di KESI SA"
+msgstr "founder of KESI SA"
+
+msgid "Il PDR (Paintless Dent Repair) è un metodo avanzato che permette di rimuovere bolli e ammaccature dalla carrozzeria lavorando sulla lamiera dall'interno o dall'esterno, senza mai dover riverniciare."
+msgstr "PDR (Paintless Dent Repair) is an advanced method that removes dents and dings from the bodywork by working on the metal from inside or outside, without ever needing to repaint."
+
+msgid "A differenza della carrozzeria tradizionale, il PDR non richiede stuccatura, carteggiatura né cabina di verniciatura. Il tecnico usa strumenti di precisione — aste, sollevatori e riflettori LED — per percepire e correggere progressivamente la deformazione fino a ripristinare la forma originale del pannello."
+msgstr "Unlike traditional bodywork, PDR requires no filling, sanding or spray booth. The technician uses precision tools — rods, lifters and LED reflectors — to gradually feel and correct the deformation until the panel's original shape is restored."
+
+msgid "Accesso alla lamiera"
+msgstr "Access to the panel"
+
+msgid "Dove possibile si accede dall'interno del pannello; in alternativa si utilizzano sistemi a tiraggio con colle a freddo applicati sull'esterno senza danneggiare la vernice."
+msgstr "Where possible, access is from inside the panel; alternatively, cold-glue pull systems applied from the outside are used without damaging the paint."
+
+msgid "Ispezione con riflettore LED"
+msgstr "Inspection with LED reflector"
+
+msgid "Il tecnico posiziona il riflettore LED strutturato sulla zona da analizzare. Le linee luminose proiettate sulla superficie rivelano le deformazioni con grande chiarezza."
+msgstr "The technician positions the structured LED reflector over the area to be analysed. The light lines projected on the surface reveal deformations with great clarity."
+
+msgid "Lavorazione di precisione"
+msgstr "Precision work"
+
+msgid "Con aste specializzate il tecnico applica microspinte controllate sulla lamiera, correggendo progressivamente la deformazione zona per zona, con costante verifica al riflettore."
+msgstr "Using specialised rods, the technician applies controlled micro-pushes to the metal, progressively correcting the deformation zone by zone, with constant verification against the reflector."
+
+msgid "Controllo qualità finale"
+msgstr "Final quality check"
+
+msgid "Verifica finale con riflettore e luce radente. Il pannello deve risultare indistinguibile dall'originale sia visivamente che al tatto."
+msgstr "Final check with reflector and raking light. The panel must be indistinguishable from the original both visually and to the touch."
+
+msgid "Il risultato è invisibile: la vernice di fabbrica rimane intatta, il valore del veicolo è preservato e i tempi di lavorazione si riducono drasticamente rispetto ai metodi tradizionali."
+msgstr "The result is invisible: the factory paint remains intact, the vehicle's value is preserved and processing times are drastically reduced compared to traditional methods."
+
+msgid "Riparare senza toccare la vernice"
+msgstr "Repair without touching the paint"
+
+msgid "Rimozione di bolli e ammaccature senza verniciatura"
+msgstr "Removal of dents and dings without repainting"
+
+msgid "Danni da grandine (singoli o diffusi)"
+msgstr "Hail damage (single or widespread)"
+
+msgid "Danni da parcheggio"
+msgstr "Parking damage"
+
+msgid "Danni su cofano, tetto e portabagagli"
+msgstr "Damage to bonnet, roof and boot"
+
+msgid "Vernice originale intatta al 100%"
+msgstr "100% original paint intact"
+
+msgid "Tempi di intervento 60–80% inferiori"
+msgstr "60–80% shorter turnaround times"
+
+msgid "Costi ridotti rispetto alla carrozzeria tradizionale"
+msgstr "Lower costs compared to traditional bodywork"
+
+msgid "Nessun smontaggio del pannello"
+msgstr "No panel removal"
+
+msgid "Nessun solvente né cabina di verniciatura"
+msgstr "No solvents or spray booth"
+
+msgid "Risultato invisibile e duraturo"
+msgstr "Invisible and lasting result"
+
+msgid "Valore del veicolo completamente preservato"
+msgstr "Vehicle value fully preserved"
+
+msgid "Ammaccature serie"
+msgstr "Serious dents"
+
+msgid "Vernice gravemente compromessa o crepata"
+msgstr "Severely damaged or cracked paint"
+
+msgid "Ammaccature su alluminio ultraleggero o carbonio"
+msgstr "Dents in ultra-light aluminium or carbon fibre"
+
+msgid "Danni strutturali o colpi ai bordi dei pannelli"
+msgstr "Structural damage or hits to panel edges"
+
+msgid "Colpi laterali e ammaccature profonde"
+msgstr "Side impacts and deep dents"
+
+msgid "Valutiamo gratuitamente il danno e ti diciamo in pochi minuti se il PDR è la soluzione giusta."
+msgstr "We assess the damage for free and tell you in minutes whether PDR is the right solution."
+
+msgid "Intervento mirato su graffi superficiali, piccoli urti e danni agli interni, senza rifare l'intero pannello. Combinabile con il PDR per un risultato completo e rapido."
+msgstr "Targeted treatment of surface scratches, minor impacts and interior damage, without redoing the entire panel. Combinable with PDR for a complete and quick result."
+
+msgid "Riparazione intelligente, non tradizionale"
+msgstr "Smart repair, not traditional"
+
+msgid "Riparazione localizzata di graffi e piccoli danni"
+msgstr "Localised repair of scratches and minor damage"
+
+msgid "Riparazione localizzata di graffi superficiali, piccoli urti e danni agli interni: interveniamo solo sulla zona colpita, senza smontare o riverniciare l'intero pannello."
+msgstr "Localised repair of surface scratches, minor impacts and interior damage: we work only on the affected area, without removing or repainting the entire panel."
+
+msgid "Graffi superficiali"
+msgstr "Surface scratches"
+
+msgid "Graffi che non arrivano alla lamiera: lucidatura abrasiva e polish localizzato per eliminare il segno senza verniciatura."
+msgstr "Scratches that don't reach the metal: abrasive polishing and localised polish to eliminate the mark without repainting."
+
+msgid "Graffi da chiave o rami su carrozzeria"
+msgstr "Key or branch scratches on bodywork"
+
+msgid "Graffi che hanno scalfito la vernice: ritocco con tinting a freddo abbinato al colore originale, senza verniciare l'intero pannello."
+msgstr "Scratches that have grazed the paint: touch-up with cold tinting matched to the original colour, without painting the entire panel."
+
+msgid "Ritocchi vernice"
+msgstr "Paint touch-ups"
+
+msgid "Danni agli interni"
+msgstr "Interior damage"
+
+msgid "Sedili, cruscotti e rivestimenti in pelle o tessuto: riparazione localizzata senza sostituzione del componente."
+msgstr "Seats, dashboards and leather or fabric trim: localised repair without component replacement."
+
+msgid "Danni ai rivestimenti interni"
+msgstr "Interior trim damage"
+
+msgid "Piccoli urti e plastiche"
+msgstr "Minor impacts and plastics"
+
+msgid "Urti su paraurti, minigonne e rivestimenti plastici: riparazione, saldatura e verniciatura localizzata della plastica senza sostituzione del pezzo."
+msgstr "Impacts on bumpers, side skirts and plastic trim: localised plastic repair, welding and painting without part replacement."
+
+msgid "Urti leggeri su paraurti e plastiche"
+msgstr "Light impacts on bumpers and plastics"
+
+msgid "Urti da parcheggio su porte e parafanghi"
+msgstr "Parking impacts on doors and wings"
+
+msgid "Piccoli difetti su veicoli nuovi o demo"
+msgstr "Minor defects on new or demo vehicles"
+
+msgid "Combinabile con il PDR per trattare in un unico intervento bolli e graffi superficiali."
+msgstr "Combinable with PDR to treat dents and surface scratches in a single intervention."
+
+msgid "Combinato con PDR"
+msgstr "Combined with PDR"
+
+msgid "Intervento rapido: ore, non giorni"
+msgstr "Quick turnaround: hours, not days"
+
+msgid "Costi ridotti: si paga solo la zona trattata"
+msgstr "Reduced costs: you only pay for the treated area"
+
+msgid "Un graffio, un urto, un danno interno?"
+msgstr "A scratch, an impact, interior damage?"
+
+msgid "Valutiamo il danno gratuitamente e ti diciamo in pochi minuti qual è il metodo più rapido ed economico."
+msgstr "We assess the damage for free and tell you in minutes which is the fastest and most cost-effective method."
+
+msgid "Il Dent Scanner KESI"
+msgstr "The KESI Dent Scanner"
+
+msgid "KESI Movable AI Scanner in azione"
+msgstr "KESI Movable AI Scanner in action"
+
+msgid "Il Movable AI Scanner"
+msgstr "The Movable AI Scanner"
+
+msgid "Il nostro scanner AI portatile individua con precisione tutti i danni sulla carrozzeria, anche quelli invisibili a occhio nudo. Perizie rapide, stima realistica, zero trasporto."
+msgstr "Our portable AI scanner accurately identifies all bodywork damage, including damage invisible to the naked eye. Fast assessments, realistic estimates, zero transport."
+
+msgid "Il nostro scanner AI portatile rileva con precisione millimetrica danni da grandine e ammaccature anche invisibili a occhio nudo. Ideale per drive-in, concessionari e flotte."
+msgstr "Our portable AI scanner detects hail damage and dents with millimetre precision, even those invisible to the naked eye. Ideal for drive-ins, dealerships and fleets."
+
+msgid "Lo scanner AI portabile KESI per perizie rapide e precise in loco: rileva danni da grandine e ammaccature invisibili a occhio nudo. Ideale per drive-in, flotte e concessionari."
+msgstr "The KESI portable AI scanner for quick and precise on-site assessments: detects hail damage and dents invisible to the naked eye. Ideal for drive-ins, fleets and dealerships."
+
+msgid "Lo Scanner AI portabile è uno strumento compatto che il nostro tecnico porta direttamente dal cliente. Grazie a un sistema di illuminazione LED strutturata e analisi AI, rileva e mappa con precisione millimetrica ogni bollo e ammaccatura sulla carrozzeria."
+msgstr "The portable AI Scanner is a compact tool that our technician brings directly to the client. Thanks to a structured LED lighting system and AI analysis, it detects and maps every dent and ding on the bodywork with millimetre precision."
+
+msgid "Scanner AI portabile"
+msgstr "Portable AI Scanner"
+
+msgid "Perizie rapide e precise direttamente in loco"
+msgstr "Fast and precise assessments directly on site"
+
+msgid "Intelligenza artificiale direttamente in loco"
+msgstr "Artificial intelligence directly on site"
+
+msgid "Il tecnico posiziona un riflettore a linee parallele sulla superficie danneggiata. Le deformazioni appaiono come distorsioni nelle linee riflesse, rendendo visibili anche i danni più sottili."
+msgstr "The technician positions a parallel-line reflector on the damaged surface. Deformations appear as distortions in the reflected lines, making even the subtlest damage visible."
+
+msgid "Posizionamento del riflettore"
+msgstr "Reflector positioning"
+
+msgid "Acquisizione AI"
+msgstr "AI acquisition"
+
+msgid "Il sistema cattura le immagini e l'algoritmo AI analizza le distorsioni nelle linee riflesse, identificando automaticamente ogni danno, la sua posizione e dimensione."
+msgstr "The system captures images and the AI algorithm analyses the distortions in the reflected lines, automatically identifying each damage point, its location and size."
+
+msgid "Condivisione e pianificazione"
+msgstr "Sharing and planning"
+
+msgid "Il report viene condiviso digitalmente con il cliente, l'assicurazione o il team KESI per pianificare l'intervento PDR nel minor tempo possibile."
+msgstr "The report is shared digitally with the client, the insurer or the KESI team to plan the PDR intervention as quickly as possible."
+
+msgid "Rileva danni invisibili a occhio nudo"
+msgstr "Detects damage invisible to the naked eye"
+
+msgid "Stima precisa e oggettiva, zero interpretazione soggettiva"
+msgstr "Precise and objective estimate, zero subjective interpretation"
+
+msgid "Completamente portatile: funziona ovunque"
+msgstr "Fully portable: works anywhere"
+
+msgid "È progettato per la velocità: in pochi minuti produce una stima completa del danno, pronta per essere condivisa con assicurazioni o usata per pianificare l'intervento PDR. Non richiede infrastruttura fissa e si porta ovunque, dall'officina al piazzale aperto."
+msgstr "It's designed for speed: in a few minutes it produces a complete damage estimate, ready to be shared with insurers or used to plan the PDR intervention. It requires no fixed infrastructure and can be taken anywhere, from the workshop to the open yard."
+
+msgid "Utilizzato direttamente in loco, il Movable Scanner elimina i tempi di trasporto e riduce i costi di perizia per assicurazioni, concessionari e flotte. Un tecnico KESI porta lo strumento da te e in pochi minuti hai la stima completa."
+msgstr "Used directly on site, the Movable Scanner eliminates transport times and reduces assessment costs for insurers, dealerships and fleets. A KESI technician brings the tool to you and in a few minutes you have the complete estimate."
+
+msgid "Negli ultimi anni lo abbiamo impiegato su migliaia di veicoli in tutta la Svizzera, diventando il nostro strumento principale per la gestione dei grandi eventi di grandine."
+msgstr "In recent years we have used it on thousands of vehicles throughout Switzerland, making it our main tool for managing large hail events."
+
+msgid "Pre-ispezione prima di ogni intervento PDR"
+msgstr "Pre-inspection before every PDR intervention"
+
+msgid "Rileviamo con precisione tutti i danni prima di ogni intervento PDR: nessuna sorpresa, stima precisa."
+msgstr "We precisely identify all damage before every PDR intervention: no surprises, precise estimate."
+
+msgid "Drive-in dopo eventi di grandine"
+msgstr "Drive-in after hail events"
+
+msgid "Riduce i costi di perizia e i tempi di liquidazione"
+msgstr "Reduces assessment costs and settlement times"
+
+msgid "Perizie rapide per assicurazioni"
+msgstr "Fast assessments for insurers"
+
+msgid "Report oggettivo e verificabile in 15 secondi: elimina le dispute sul danno preesistente e accelera la liquidazione dei sinistri."
+msgstr "Objective and verifiable report in 15 seconds: eliminates disputes over pre-existing damage and speeds up claims settlement."
+
+msgid "Concessionari: usato e veicoli nuovi"
+msgstr "Dealerships: used and new vehicles"
+
+msgid "Valutazione precisa del veicolo in ingresso: stima del costo di rimessa in pristino e documentazione completa per l'acquirente."
+msgstr "Precise incoming vehicle assessment: cost estimate for restoration and full documentation for the buyer."
+
+msgid "Valutazione flotte aziendali"
+msgstr "Corporate fleet assessment"
+
+msgid "Ispezione sistematica di ogni veicolo in entrata e uscita: tracciabilità completa dei danni, responsabilità chiara, costi contenuti."
+msgstr "Systematic inspection of every incoming and outgoing vehicle: full damage traceability, clear accountability, contained costs."
+
+msgid "Dalla luce alla stima"
+msgstr "From light to estimate"
+
+msgid "Dent Scanner — rilevamento bolli grandine con luci LED"
+msgstr "Dent Scanner — hail dent detection with LED lights"
+
+msgid "Dent Scanner — scannerizzazione carrozzeria in tempo reale"
+msgstr "Dent Scanner — real-time bodywork scanning"
+
+msgid "Dent Scanner KESI — installazione in officina"
+msgstr "KESI Dent Scanner — workshop installation"
+
+msgid "Dent Scanner KESI — veicolo in scansione"
+msgstr "KESI Dent Scanner — vehicle being scanned"
+
+msgid "Il nostro Dent Scanner portabile all'opera nel centro KESI: tecnologia compatta, pronta a spostarsi dove serve."
+msgstr "Our portable Dent Scanner at work in the KESI centre: compact technology, ready to move wherever needed."
+
+msgid "Lo scanner in funzione"
+msgstr "The scanner in operation"
+
+msgid "Guarda come il Dent Scanner analizza la carrozzeria in tempo reale e identifica i bolli con precisione millimetrica."
+msgstr "Watch how the Dent Scanner analyses bodywork in real time and identifies dents with millimetre precision."
+
+msgid "Rilevamento bolli grandine — analisi AI in tempo reale"
+msgstr "Hail dent detection — real-time AI analysis"
+
+msgid "Lo scanner AI portabile è la soluzione mobile per perizie in loco rapide. Lo Scanner 360° 4-in-1 è la postazione fissa per l'ispezione totale del veicolo inclusi sottoscocca e gomme."
+msgstr "The portable AI scanner is the mobile solution for quick on-site assessments. The 360° 4-in-1 Scanner is the fixed station for total vehicle inspection including underbody and tyres."
+
+msgid "Differenza rispetto allo Scanner 360°"
+msgstr "Difference from the 360° Scanner"
+
+msgid "Postazione fissa con 16 telecamere che scannerizza l'intera superficie esterna, il sottoscocca in 4K, il profilo gomma e i cerchioni in 7K. Report AI con precisione millimetrica."
+msgstr "Fixed station with 16 cameras that scans the entire exterior surface, the underbody in 4K, tyre profile and rims in 7K. AI report with millimetre precision."
+
+msgid "Scanner 360° 4-in-1 di KESI: 16 telecamere, ispezione completa in 15 secondi. Superficie, sottoscocca 4K, profilo gomma e cerchioni 7K. Report AI dettagliato."
+msgstr "KESI 360° 4-in-1 Scanner: 16 cameras, complete inspection in 15 seconds. Surface, 4K underbody, tyre profile and 7K rims. Detailed AI report."
+
+msgid "Postazione di ispezione computerizzata con 16 telecamere ad alta risoluzione: scannerizza l'intero veicolo in 15 secondi e produce un report AI dettagliato su superficie, sottoscocca, gomme e cerchioni."
+msgstr "Computerised inspection station with 16 high-resolution cameras: scans the entire vehicle in 15 seconds and produces a detailed AI report on the surface, underbody, tyres and rims."
+
+msgid "I 4 moduli"
+msgstr "The 4 modules"
+
+msgid "Un sistema, quattro occhi"
+msgstr "One system, four eyes"
+
+msgid "Ogni modulo è ottimizzato per un'area specifica del veicolo. Il risultato è un report completo che nessun occhio umano potrebbe produrre in tempi così rapidi."
+msgstr "Each module is optimised for a specific area of the vehicle. The result is a complete report that no human eye could produce in such a short time."
+
+msgid "Scanner 360° superficie"
+msgstr "360° surface scanner"
+
+msgid "Ispezione AI dell'intera superficie esterna del veicolo. Rileva graffi da 1mm, bolli piccoli e grandi con visualizzazione 3D della posizione e dimensione del danno."
+msgstr "AI inspection of the entire exterior surface of the vehicle. Detects scratches from 1mm, small and large dents with 3D visualisation of the damage location and size."
+
+msgid "Scanner sottoscocca 4K"
+msgstr "4K underbody scanner"
+
+msgid "Immagini in 4K dell'intera parte inferiore del veicolo. Ultimo avanzamento nell'ottica computazionale: rileva corrosione, danni strutturali e anomalie invisibili dall'esterno."
+msgstr "4K images of the entire underside of the vehicle. Latest advance in computational optics: detects corrosion, structural damage and anomalies invisible from the outside."
+
+msgid "Scanner profilo gomma"
+msgstr "Tyre profile scanner"
+
+msgid "Misurazione automatica della profondità del battistrada su tutte le scanalature di ogni pneumatico in un'unica passata. Disponibile anche per mezzi commerciali."
+msgstr "Automatic measurement of tread depth across all grooves of every tyre in a single pass. Also available for commercial vehicles."
+
+msgid "Scanner laterale ruote 7K"
+msgstr "7K lateral wheel scanner"
+
+msgid "Immagini in 7K per la lettura del marchio del pneumatico, specifiche tecniche e riconoscimento AI di danni, rigonfiamenti e difetti dei cerchioni."
+msgstr "7K images for reading tyre brand, technical specifications and AI recognition of rim damage, bulges and defects."
+
+msgid "Il sistema"
+msgstr "The system"
+
+msgid "Lo Scanner 360° in loco"
+msgstr "The 360° Scanner on site"
+
+msgid "Tre installazioni reali: dall'arco con auto d'epoca, all'impianto commerciale ad alto traffico, fino alla postazione completa con workstation dedicata."
+msgstr "Three real installations: from an arch with a classic car, to a high-traffic commercial facility, through to the complete station with a dedicated workstation."
+
+msgid "Report completo"
+msgstr "Complete report"
+
+msgid "Cosa vede lo Scanner 360°"
+msgstr "What the 360° Scanner sees"
+
+msgid "Il sistema produce automaticamente un report strutturato con la posizione esatta e le dimensioni di ogni danno rilevato, pronto per essere condiviso con il cliente o l'assicurazione."
+msgstr "The system automatically produces a structured report with the exact position and dimensions of every detected damage, ready to be shared with the client or insurer."
+
+msgid "Graffi e bolli"
+msgstr "Scratches and dents"
+
+msgid "Identificazione, visualizzazione luogo e dimensione. Bolli grandi in 3D, bolli piccoli con dettaglio maggiore per stima precisa."
+msgstr "Identification, location visualisation and size. Large dents in 3D, small dents with greater detail for precise estimation."
+
+msgid "Profilo gomma"
+msgstr "Tyre profile"
+
+msgid "Rapporto completo della profondità battistrada su tutti e quattro gli pneumatici."
+msgstr "Complete tread depth report across all four tyres."
+
+msgid "Cerchioni"
+msgstr "Rims"
+
+msgid "Rapporto preciso dei danni ai cerchioni: graffi, ammaccature, deformazioni."
+msgstr "Precise report of rim damage: scratches, dents, deformations."
+
+msgid "Sottoscocca"
+msgstr "Underbody"
+
+msgid "Stato preciso del sottoscocca: corrosione, danni strutturali, anomalie."
+msgstr "Precise underbody condition: corrosion, structural damage, anomalies."
+
+msgid "Approfondimento"
+msgstr "More detail"
+
+msgid "Vuoi i dettagli completi?"
+msgstr "Want the full details?"
+
+msgid "Configurazioni hardware, dimensioni di installazione, integrazione gestionale e requisiti tecnici li condividiamo direttamente con te in base alle esigenze della tua struttura."
+msgstr "Hardware configurations, installation dimensions, management integration and technical requirements — we share these directly with you based on your facility's needs."
+
+msgid "Dati reali"
+msgstr "Real data"
+
+msgid "Risultati AI della scansione"
+msgstr "AI scan results"
+
+msgid "Ogni punto rosso è un danno da grandine rilevato dall'algoritmo AI. Le immagini sono in bianco e nero per massimizzare la visibilità delle deformazioni sulla superficie."
+msgstr "Each red dot is a hail dent detected by the AI algorithm. Images are in black and white to maximise the visibility of deformations on the surface."
+
+msgid "Il veicolo percorre l'arco a passo d'uomo: 16 telecamere catturano migliaia di immagini in 15 secondi, l'AI elabora e genera il report istantaneamente."
+msgstr "The vehicle passes through the arch at walking pace: 16 cameras capture thousands of images in 15 seconds, the AI processes and generates the report instantly."
+
+msgid "Ispezione completa del veicolo in 15 secondi"
+msgstr "Complete vehicle inspection in 15 seconds"
+
+msgid "Drive-in grandine"
+msgstr "Hail drive-in"
+
+msgid "Dopo un evento di grandine: scansione rapida di tutti i veicoli colpiti, stima automatica e prioritizzazione degli interventi per i tecnici PDR."
+msgstr "After a hail event: fast scanning of all affected vehicles, automatic estimate and prioritisation of work for PDR technicians."
+
+msgid "Gestione flotte"
+msgstr "Fleet management"
+
+msgid "Assicurazioni e perizie"
+msgstr "Insurance and assessments"
+
+msgid "Offriamo il servizio di scansione direttamente in loco. Contattaci per valutare insieme la soluzione più adatta alla tua realtà."
+msgstr "We offer the scanning service directly on site. Contact us to evaluate together the solution best suited to your facility."
+
+msgid "Vuoi lo Scanner 360° presso la tua struttura?"
+msgstr "Want the 360° Scanner at your facility?"
+
+msgid "Scanner 360° superficie — mappa danni veicolo"
+msgstr "360° surface scanner — vehicle damage map"
+
+msgid "Scanner sottoscocca 4K — pannello a pavimento"
+msgstr "4K underbody scanner — floor panel"
+
+msgid "Scanner profilo gomma — modulo di misurazione"
+msgstr "Tyre profile scanner — measurement module"
+
+msgid "Scanner laterale ruote 7K — modulo telecamera"
+msgstr "7K lateral wheel scanner — camera module"
+
+msgid "Scanner 360° — auto d epoca nell arco"
+msgstr "360° Scanner — classic car in the arch"
+
+msgid "Scanner 360° — installazione commerciale"
+msgstr "360° Scanner — commercial installation"
+
+msgid "Scanner 360° — sistema completo con workstation"
+msgstr "360° Scanner — complete system with workstation"
+
+msgid "Lo Scanner 360° durante la scansione"
+msgstr "The 360° Scanner during scanning"
+
+msgid "Scansione completa del veicolo — vista frontale"
+msgstr "Complete vehicle scan — front view"
+
+msgid "Risultato scansione AI — bolli rilevati sul tetto"
+msgstr "AI scan result — dents detected on the roof"
+
+msgid "Risultato scansione AI — bolli sul cofano"
+msgstr "AI scan result — dents on the bonnet"
+
+msgid "Risultato scansione AI — danni laterali"
+msgstr "AI scan result — lateral damage"
+
+msgid "Risultato scansione AI — portellone posteriore"
+msgstr "AI scan result — rear hatch"
+
+msgid "Tutta la Svizzera"
+msgstr "All of Switzerland"
+
+#~ msgid "Automotive"
+#~ msgstr "Automotive"
+
+#~ msgid "Soluzioni automotive di qualità."
+#~ msgstr "Quality automotive solutions."
+
+#, python-format
+#~ msgid ""
+#~ "Servizi e prodotti per il tuo veicolo, con la cura e la professionalità di "
+#~ "%(name)s."
+#~ msgstr ""
+#~ "Products and services for your vehicle, with the care and professionalism of"
+#~ " %(name)s."
+
+#~ msgid "Contenuto in arrivo."
+#~ msgstr "Content coming soon."
+
+msgid "Richiesta contatto — sito KESI"
+msgstr "Contact request — KESI website"

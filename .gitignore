@@ -1,0 +1,19 @@
+# Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+data/
+staticfiles/
+locale/**/*.mo
+
+# Env
+.env
+.env.local
+.venv/
+venv/
+
+# Submodule checkout (optional in dev)
+shared/kesi-site/
+
+# OS
+.DS_Store

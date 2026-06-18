@@ -1,0 +1,73 @@
+{% load static i18n %}
+
+{% if error %}
+<div class="prev-error funnel-form-error">{{ error }}</div>
+{% endif %}
+
+<form class="prev-form funnel-form" method="post" enctype="multipart/form-data" novalidate>
+  {% csrf_token %}
+  <input type="hidden" name="dent_count" id="funnel-dent-count" value="">
+
+  {% include "partials/funnel-form-head.html" %}
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-full_name">{% trans "Nome e cognome" %}</label>
+    <input class="prev-input" type="text" id="funnel-full_name" name="full_name" placeholder="{% trans 'Nome e cognome' %}">
+  </div>
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-email">{% trans "Email" %} <span class="prev-required">*</span></label>
+    <input class="prev-input" type="email" id="funnel-email" name="email" placeholder="E-mail" required>
+  </div>
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-telephone">{% trans "Telefono" %} <span class="prev-required">*</span></label>
+    {% include "partials/prev-tel-field.html" with id="funnel-telephone" required=True %}
+  </div>
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-city">{% trans "Città" %} <span class="prev-required">*</span></label>
+    <input class="prev-input" type="text" id="funnel-city" name="city" placeholder="{% trans 'Es. Locarno, Lugano, Bellinzona' %}" required>
+  </div>
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-delivery_preference">{% trans "Preferenza di appuntamento" %} <span class="prev-required">*</span></label>
+    <select class="prev-input prev-select" id="funnel-delivery_preference" name="delivery_preference" required>
+      <option value="" disabled selected>{% trans "Seleziona…" %}</option>
+      <option value="mobile">{% trans "Servizio Mobile" %}</option>
+      <option value="workshop">{% trans "Servizio in Sede (Riazzino)" %}</option>
+    </select>
+  </div>
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-images">{% trans "Carica foto del danno" %} <span class="prev-required">*</span></label>
+    <label class="prev-upload" for="funnel-images">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="16,16 12,12 8,16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39,18.39A5,5,0,0,0,18,9h-1.26A8,8,0,1,0,3,16.3"/></svg>
+      <span class="prev-upload-text">JPG, PNG <em>({% trans "max 15 file" %})</em></span>
+      <input type="file" id="funnel-images" name="images" multiple
+             accept=".jpg,.jpeg,.png,.gif"
+             class="prev-upload-input funnel-upload-input" required>
+    </label>
+    <div class="prev-preview-grid funnel-preview-grid" aria-live="polite"></div>
+    <p class="prev-hint">{% trans "Foto chiare dei bolli su superfici pulite e asciutte." %}</p>
+  </div>
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-damage_details">{% trans "Descrizione del danno" %}</label>
+    <textarea class="prev-textarea" id="funnel-damage_details" name="damage_details" rows="3" placeholder="{% trans 'Quando è successo? Quanti bolli circa?' %}"></textarea>
+  </div>
+
+  <div class="prev-field">
+    <label class="prev-label" for="funnel-vehicle_details">{% trans "Dati del veicolo" %}</label>
+    <textarea class="prev-textarea" id="funnel-vehicle_details" name="vehicle_details" rows="2" placeholder="{% trans 'Marca, modello, anno' %}"></textarea>
+  </div>
+
+  <div class="prev-field prev-field--check">
+    <label class="prev-check-label">
+      <input type="checkbox" name="terms" required>
+      <span>{% trans "Accetto i termini e acconsento a essere ricontattato per la valutazione del danno." %}</span>
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">{% trans "INVIA RICHIESTA GRATUITA" %}</button>
+</form>
