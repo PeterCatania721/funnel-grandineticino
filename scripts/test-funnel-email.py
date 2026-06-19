@@ -34,14 +34,22 @@ def main() -> int:
     print(f".env presente:        {(ROOT / '.env').is_file()}")
     print(f".env.funnel presente: {(ROOT / '.env.funnel').is_file()}")
 
-    if not os.environ.get("EMAIL_HOST_PASSWORD"):
-        print("\n❌ EMAIL_HOST_PASSWORD NON impostata.")
-        print("   Le email partiranno solo se la riga è ATTIVA (senza '#'):")
-        print("       EMAIL_HOST_PASSWORD=la-tua-password-infomaniak")
-        print("   In .env OR .env.funnel. Poi riavvia ./scripts/funnel-dev.")
+    password = os.environ.get("EMAIL_HOST_PASSWORD", "")
+    placeholders = {
+        "",
+        "REPLACE_WITH_YOUR_INFOMANIAK_APP_PASSWORD",
+        "INSERISCI-PASSWORD-CASELLA",
+        "your-app-password",
+        "la-tua-password-infomaniak",
+    }
+    if password in placeholders:
+        print("\n❌ EMAIL_HOST_PASSWORD NON impostata (o è ancora un placeholder).")
+        print("   Imposta la password reale Infomaniak per info@kesi.biz in .env o .env.funnel:")
+        print("       EMAIL_HOST_PASSWORD=<password-casella>")
+        print("   Poi riavvia il container / ./scripts/funnel-dev.")
         return 1
 
-    print(f"EMAIL_HOST_PASSWORD: SET (lunghezza {len(os.environ['EMAIL_HOST_PASSWORD'])})")
+    print(f"EMAIL_HOST_PASSWORD: SET (lunghezza {len(password)})")
     print()
 
     os.environ["EMAIL_BACKEND"] = "django.core.mail.backends.smtp.EmailBackend"

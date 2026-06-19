@@ -73,8 +73,21 @@ if ! grep -q '^EMAIL_HOST_PASSWORD=.\+' "$ENV_FILE" 2>/dev/null; then
   fi
 fi
 
-if grep -q 'GENERA-CON-python' "$ENV_FILE" || grep -q 'INSERISCI-PASSWORD' "$ENV_FILE"; then
-  die "Compila SECRET_KEY e EMAIL_HOST_PASSWORD in $DEPLOY_DIR/$ENV_FILE"
+PLACEHOLDER_PASSWORDS=(
+  'GENERA-CON-python'
+  'INSERISCI-PASSWORD'
+  'REPLACE_WITH_YOUR_INFOMANIAK_APP_PASSWORD'
+  'your-app-password'
+  'la-tua-password-infomaniak'
+)
+for placeholder in "${PLACEHOLDER_PASSWORDS[@]}"; do
+  if grep -q "$placeholder" "$ENV_FILE"; then
+    die "EMAIL_HOST_PASSWORD è ancora un placeholder ($placeholder). Imposta la password reale della casella Infomaniak info@kesi.biz in $DEPLOY_DIR/$ENV_FILE"
+  fi
+done
+
+if grep -q 'GENERA-CON-python' "$ENV_FILE"; then
+  die "Compila SECRET_KEY in $DEPLOY_DIR/$ENV_FILE"
 fi
 
 log "Build e avvio funnel-grandineticino…"
