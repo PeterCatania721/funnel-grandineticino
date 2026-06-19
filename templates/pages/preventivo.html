@@ -1,0 +1,240 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Preventivo Gratuito" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Richiedi un preventivo gratuito per la riparazione del tuo veicolo. Invia foto del danno e ricevi una valutazione KESI SA." %}{% endblock %}
+
+{% block content %}
+
+<section class="prev-hero">
+  <div class="prev-hero-grid">
+    <img src="{% static 'img/kesi-workshop.jpg' %}"    alt="" class="prev-hero-img">
+    <img src="{% static 'img/dent-scanner-1.jpg' %}"   alt="" class="prev-hero-img">
+    <img src="{% static 'img/kesi-photo-3.jpeg' %}"    alt="" class="prev-hero-img">
+    <img src="{% static 'img/kesi-photo-5.jpeg' %}"    alt="" class="prev-hero-img">
+  </div>
+  <div class="prev-hero-badge">
+    <img src="{% static 'img/logo-kesi-bianco.svg' %}" alt="KESI" class="prev-hero-logo">
+  </div>
+</section>
+
+<section class="section prev-section">
+  <div class="container prev-container">
+
+    {% if success %}
+    <div class="prev-success">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9,12 11,14 15,10"/></svg>
+      <h2>{% trans "Richiesta inviata!" %}</h2>
+      <p>{% trans "Grazie per aver contattato KESI SA. Ti risponderemo al più presto con una valutazione del danno." %}</p>
+      <a href="{% url 'home' %}" class="btn btn-primary">{% trans "Torna alla home" %}</a>
+    </div>
+    {% else %}
+
+    <div class="prev-header">
+      <h1 class="prev-title">{% trans "Preventivo Gratuito" %}</h1>
+      <p class="prev-contact">
+        <a href="tel:+41789674337">+41 078 967 43 37</a>
+        <span>|</span>
+        <a href="mailto:info@kesi.biz">info@kesi.biz</a>
+      </p>
+    </div>
+
+    {% if error %}
+    <div class="prev-error">{{ error }}</div>
+    {% endif %}
+
+    <form class="prev-form" method="post" enctype="multipart/form-data" novalidate>
+      {% csrf_token %}
+
+      <!-- Tipo di danno -->
+      <fieldset class="prev-fieldset">
+        <legend class="prev-label">{% trans "Tipo di danno" %}</legend>
+        <label class="prev-radio"><input type="radio" name="damage_type" value="grandine"> {% trans "Grandine" %}</label>
+        <label class="prev-radio"><input type="radio" name="damage_type" value="parcheggio"> {% trans "Danni da parcheggio" %}</label>
+        <label class="prev-radio"><input type="radio" name="damage_type" value="ammaccature"> {% trans "Ammaccature serie" %}</label>
+      </fieldset>
+
+      <div class="prev-field">
+        <label class="prev-label" for="full_name">{% trans "Nome e cognome" %}</label>
+        <input class="prev-input" type="text" id="full_name" name="full_name" placeholder="{% trans 'Nome e cognome' %}">
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="email">{% trans "Email" %} <span class="prev-required">*</span></label>
+        <input class="prev-input" type="email" id="email" name="email" placeholder="E-mail" required>
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="telephone">{% trans "Telefono" %} <span class="prev-required">*</span></label>
+        {% include "partials/prev-tel-field.html" with id="telephone" required=True %}
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="city">{% trans "Città" %} <span class="prev-required">*</span></label>
+        <input class="prev-input" type="text" id="city" name="city" placeholder="{% trans 'Città' %}" required>
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="images">{% trans "Carica foto del danno" %} <span class="prev-required">*</span></label>
+        <label class="prev-upload" for="images" id="prev-upload-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16,16 12,12 8,16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39,18.39A5,5,0,0,0,18,9h-1.26A8,8,0,1,0,3,16.3"/></svg>
+          <span class="prev-upload-text">PDF, DOC/DOCX, XLS/CSV, JPG/JPEG, PNG, GIF <em>({% trans "max 15 file" %})</em></span>
+          <input type="file" id="images" name="images" multiple
+                 accept=".pdf,.doc,.docx,.xls,.csv,.jpg,.jpeg,.png,.gif"
+                 class="prev-upload-input" required>
+        </label>
+        <div id="prev-preview-grid" class="prev-preview-grid" aria-live="polite"></div>
+        <p class="prev-hint">{% trans "Fornire foto chiare del danno su superfici pulite e asciutte." %}</p>
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="damage_details">{% trans "Descrizione del danno" %}</label>
+        <textarea class="prev-textarea" id="damage_details" name="damage_details" rows="4"></textarea>
+        <p class="prev-hint">{% trans "Vernice danneggiata? Graffi? Gravità? Parti danneggiate? Entità del danno?" %}</p>
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="vehicle_details">{% trans "Dati del veicolo" %}</label>
+        <textarea class="prev-textarea" id="vehicle_details" name="vehicle_details" rows="3"></textarea>
+        <p class="prev-hint">{% trans "Marca? Modello? Anno? Km? Assicurazione? Già riparato in precedenza?" %}</p>
+      </div>
+
+      <div class="prev-field prev-field--check">
+        <label class="prev-check-label">
+          <input type="checkbox" name="terms" required>
+          <span>{% trans "Accetto i" %} <a href="{% url 'contatti' %}">{% trans "termini e condizioni" %}</a> {% trans "dell'azienda. Fornendo il numero di telefono, acconsento a ricevere messaggi dall'azienda." %}</span>
+        </label>
+      </div>
+
+      <button type="submit" class="prev-submit">{% trans "INVIA RICHIESTA" %}</button>
+    </form>
+
+    {% endif %}
+  </div>
+</section>
+
+<script>
+(function () {
+  var MAX_BYTES = 20 * 1024 * 1024; // 20 MB — safe limit for email attachments
+
+  var input  = document.getElementById('images');
+  var grid   = document.getElementById('prev-preview-grid');
+  var form   = document.querySelector('.prev-form');
+  var submit = document.querySelector('.prev-submit');
+  if (!input || !grid || !form || !submit) return;
+
+  var files = [];
+
+  input.addEventListener('change', function () {
+    var incoming = Array.from(this.files);
+    incoming.forEach(function (f) {
+      if (files.length < 15) files.push(f);
+    });
+    syncInput();
+    render();
+  });
+
+  form.addEventListener('submit', function (e) {
+    if (totalBytes() > MAX_BYTES) {
+      e.preventDefault();
+    }
+  });
+
+  function totalBytes() {
+    return files.reduce(function (sum, f) { return sum + f.size; }, 0);
+  }
+
+  function fmtSize(bytes) {
+    if (bytes >= 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    return Math.round(bytes / 1024) + ' KB';
+  }
+
+  function syncInput() {
+    var dt = new DataTransfer();
+    files.forEach(function (f) { dt.items.add(f); });
+    input.files = dt.files;
+    input.required = files.length === 0;
+  }
+
+  function render() {
+    grid.innerHTML = '';
+
+    var total = totalBytes();
+    var overLimit = total > MAX_BYTES;
+
+    // Size bar
+    if (files.length > 0) {
+      var bar = document.createElement('div');
+      bar.className = 'prev-size-bar' + (overLimit ? ' prev-size-bar--over' : '');
+
+      var pct = Math.min(total / MAX_BYTES * 100, 100);
+      bar.innerHTML =
+        '<div class="prev-size-track"><div class="prev-size-fill" style="width:' + pct + '%"></div></div>' +
+        '<span class="prev-size-label">' + fmtSize(total) + ' / 20 MB</span>';
+
+      if (overLimit) {
+        var warn = document.createElement('p');
+        warn.className = 'prev-size-warning';
+        warn.textContent = 'Totale allegati troppo grande per l\'invio via email. Rimuovi alcuni file fino a tornare sotto i 20 MB.';
+        bar.appendChild(warn);
+      }
+
+      grid.appendChild(bar);
+      submit.disabled = overLimit;
+      submit.style.opacity = overLimit ? '0.45' : '';
+      submit.style.cursor  = overLimit ? 'not-allowed' : '';
+    } else {
+      submit.disabled = false;
+      submit.style.opacity = '';
+      submit.style.cursor  = '';
+    }
+
+    // Thumbnails
+    files.forEach(function (f, idx) {
+      var item = document.createElement('div');
+      item.className = 'prev-preview-item';
+
+      var isImage = f.type.startsWith('image/');
+      if (isImage) {
+        var img = document.createElement('img');
+        img.className = 'prev-preview-thumb';
+        img.alt = f.name;
+        var reader = new FileReader();
+        reader.onload = function (e) { img.src = e.target.result; };
+        reader.readAsDataURL(f);
+        item.appendChild(img);
+      } else {
+        var icon = document.createElement('div');
+        icon.className = 'prev-preview-icon';
+        icon.textContent = f.name.split('.').pop().toUpperCase();
+        item.appendChild(icon);
+      }
+
+      var name = document.createElement('span');
+      name.className = 'prev-preview-name';
+      name.textContent = f.name;
+      item.appendChild(name);
+
+      var size = document.createElement('span');
+      size.className = 'prev-preview-size';
+      size.textContent = fmtSize(f.size);
+      item.appendChild(size);
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'prev-preview-del';
+      btn.setAttribute('aria-label', 'Rimuovi ' + f.name);
+      btn.innerHTML = '&times;';
+      btn.addEventListener('click', function () {
+        files.splice(idx, 1);
+        syncInput();
+        render();
+      });
+      item.appendChild(btn);
+
+      grid.appendChild(item);
+    });
+  }
+})();
+</script>
+{% endblock %}

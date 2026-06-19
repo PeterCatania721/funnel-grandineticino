@@ -9,10 +9,15 @@
         ·
         <a href="mailto:{{ company.email }}">{{ company.email }}</a>
       </p>
+      <p class="funnel-footer-copyright">&copy; {% now "Y" %} {{ company.legal_name }}. {% trans "Tutti i diritti riservati." %}</p>
     </div>
     <div class="funnel-footer-links">
       <a href="https://kesi-automotive.ch/{{ LANGUAGE_CODE }}/codice-etico/" target="_blank" rel="noopener noreferrer">{% trans "Codice etico" %}</a>
       <a href="https://kesi-automotive.ch/{{ LANGUAGE_CODE }}/" target="_blank" rel="noopener noreferrer">kesi-automotive.ch</a>
     </div>
+    <p class="funnel-footer-attribution">
+      {% trans "Icona ecologia di" %}
+      <a href="https://www.flaticon.com/free-icons/ecology" target="_blank" rel="noopener noreferrer">Magnific — Flaticon</a>
+    </p>
   </div>
 </footer>

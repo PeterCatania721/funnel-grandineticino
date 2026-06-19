@@ -1,0 +1,83 @@
+{% load static i18n %}
+{% get_current_language as CURRENT %}
+{% get_available_languages as LANGS %}
+<header class="site-header" x-data="{ open: false, langOpen: false, setLang(code) { const p = window.location.pathname; const np = p.replace(/^\/(it|de|fr|en)\//, '/' + code + '/'); window.location.href = (np !== p) ? np : '/' + code + '/'; } }">
+  <div class="container header-inner">
+    <a href="{% url 'home' %}" class="brand" aria-label="{{ company.legal_name }}">
+      <img src="{% static 'img/logo-kesi-nero.svg' %}" alt="{{ company.legal_name }}" class="brand-logo">
+    </a>
+
+    <button class="nav-toggle" @click="open = !open" :aria-expanded="open.toString()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" :class="{ 'is-open': open }">
+      <a class="nav-link" href="{% url 'home' %}">{% translate "Home" context "nav" %}</a>
+      <a class="nav-link" href="{% url 'servizi' %}">{% trans "Servizi" %}</a>
+
+      <div class="nav-dropdown" x-data="{ techOpen: false }">
+        <button type="button" class="nav-link nav-dropdown-btn"
+                @click="techOpen = !techOpen"
+                :aria-expanded="techOpen.toString()">
+          {% trans "Tecnologie" %}
+          <svg class="nav-chevron" :class="{ 'is-open': techOpen }"
+               viewBox="0 0 16 16" fill="none" stroke="currentColor"
+               stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <polyline points="4,6 8,10 12,6"></polyline>
+          </svg>
+        </button>
+        <div class="nav-dropdown-menu"
+             x-show="techOpen"
+             x-transition:enter="nav-dd-enter"
+             x-transition:enter-start="nav-dd-enter-start"
+             x-transition:enter-end="nav-dd-enter-end"
+             x-transition:leave="nav-dd-leave"
+             x-transition:leave-start="nav-dd-leave-start"
+             x-transition:leave-end="nav-dd-leave-end"
+             x-cloak
+             @click.outside="techOpen = false">
+          <a href="{% url 'tecnologie' %}" class="nav-dropdown-item nav-dropdown-all">{% trans "Tutte le tecnologie" %}</a>
+          <a href="{% url 'tecnologia_pdr' %}" class="nav-dropdown-item">PDR</a>
+          <a href="{% url 'tecnologia_scanner_ai' %}" class="nav-dropdown-item">{% trans "Scanner AI" %}</a>
+          <a href="{% url 'tecnologia_scanner_360' %}" class="nav-dropdown-item">{% trans "Scanner 360°" %}</a>
+          <a href="{% url 'tecnologia_smart_repair' %}" class="nav-dropdown-item">Smart Repair</a>
+        </div>
+      </div>
+
+      <a class="nav-link" href="{% url 'perche_kesi' %}">{% trans "Perché KESI?" %}</a>
+      <a class="nav-link" href="{% url 'contatti' %}">{% trans "Contatti" %}</a>
+
+      <div class="lang-switcher" @click.outside="langOpen = false">
+        <button type="button" class="lang-btn" @click="langOpen = !langOpen"
+                :aria-expanded="langOpen.toString()" aria-haspopup="true" aria-label="{% trans 'Lingua' %}">
+          <img class="lang-flag" src="{% static 'img/flags/'|add:CURRENT|add:'.svg' %}" alt="">
+          <span class="lang-code">{{ CURRENT|upper }}</span>
+          <svg class="lang-chevron" :class="{ 'is-open': langOpen }" viewBox="0 0 12 8" aria-hidden="true">
+            <path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="lang-menu" x-show="langOpen" x-transition.opacity x-cloak>
+          {% for code, name in LANGS %}
+          <button type="button" class="lang-item{% if code == CURRENT %} is-active{% endif %}"
+                  @click="setLang('{{ code }}')">
+            <img class="lang-flag" src="{% static 'img/flags/'|add:code|add:'.svg' %}" alt="">
+            <span>{% if code == 'it' %}Italiano{% elif code == 'de' %}Deutsch{% elif code == 'fr' %}Français{% else %}English{% endif %}</span>
+          </button>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="nav-external-links">
+        <a href="https://kesi19.jcloud.ik-server.com/odoo" target="_blank" rel="noopener" class="nav-icon-link" aria-label="Gestionale KESI">
+          <img src="{% static 'img/icon-gestionale.png' %}" alt="Gestionale" class="nav-icon-img">
+        </a>
+        <a href="https://www.instagram.com/kesi.dent.repair" target="_blank" rel="noopener" class="nav-icon-link" aria-label="Instagram KESI">
+          <img src="{% static 'img/icon-instagram.png' %}" alt="Instagram" class="nav-icon-img">
+        </a>
+      </div>
+
+      <a href="{% url 'preventivo' %}" class="nav-cta">{% trans "Preventivo gratuito" %}</a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Riparazioni ecologiche">
+  <rect width="100" height="100" rx="10" fill="#30B05D"/>
+  <g fill="#ffffff">
+    <!-- Leaf body -->
+    <path d="M70 22
+             C 44 22, 26 40, 26 64
+             C 26 70, 28 75, 30 78
+             C 50 78, 76 60, 76 30
+             C 76 27, 74 24, 70 22 Z"/>
+    <!-- Stem -->
+    <path d="M28 78 L60 46"
+          stroke="#30B05D" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

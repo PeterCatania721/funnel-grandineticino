@@ -1,0 +1,5 @@
+{% load static i18n %}
+<div class="funnel-hero-form-wrap funnel-hero-form-wrap--prominent{% if wrap_class %} {{ wrap_class }}{% endif %}"
+     {% if wrap_id %}id="{{ wrap_id }}"{% endif %}>
+  {% include "partials/funnel-form-wizard.html" with form=form dent_count_id=dent_count_id action=action heading_level=heading_level|default:"h2" %}
+</div>

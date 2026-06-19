@@ -1,0 +1,144 @@
+{% load static i18n %}
+
+{% if form.non_field_errors %}
+<div class="prev-error funnel-form-error" role="alert">{{ form.non_field_errors }}</div>
+{% elif form.errors %}
+<div class="prev-error funnel-form-error" role="alert">{% trans "Correggi i campi evidenziati e riprova." %}</div>
+{% endif %}
+
+<form class="prev-form funnel-form{% if form_class %} {{ form_class }}{% endif %}"
+      method="post"
+      enctype="multipart/form-data"
+      novalidate
+      {% if action %}action="{{ action }}"{% endif %}
+      {% if form_error_state_json %}data-funnel-server-state="{{ form_error_state_json|escape }}"{% endif %}
+      x-data="funnelFormWizard()"
+      x-init="init()"
+      @submit="onSubmit($event)">
+  {% csrf_token %}
+  {{ form.dent_count }}
+
+  {% include "partials/funnel-form-head.html" with heading_level=heading_level %}
+
+  <div class="funnel-form-steps" role="list" aria-label="{% trans 'Passaggi del modulo' %}">
+    <template x-for="n in totalSteps" :key="n">
+      <div class="funnel-form-step"
+           role="listitem"
+           :class="{ 'is-active': step === n, 'is-done': step > n, 'has-error': stepHasError(n) }"
+           :aria-current="step === n ? 'step' : false"
+           :aria-label="stepLabel(n)">
+        <span class="funnel-form-step-dot" aria-hidden="true"></span>
+        <span class="funnel-form-step-label" x-text="stepLabel(n)"></span>
+      </div>
+    </template>
+  </div>
+
+  <p class="funnel-form-step-error"
+     :class="{ 'is-visible': stepError }"
+     x-text="stepError || '\u00a0'"
+     role="alert"
+     aria-live="assertive"></p>
+
+  <div class="funnel-form-panels" x-ref="panels">
+    <div class="funnel-form-panel"
+         data-funnel-step="1"
+         x-show="step === 1"
+         :aria-hidden="step !== 1">
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.full_name.id_for_label }}">{{ form.full_name.label }}</label>
+        {{ form.full_name }}
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.email.id_for_label }}">{{ form.email.label }} <span class="prev-required">*</span></label>
+        {{ form.email }}
+        {% include "partials/funnel-inline-error.html" with field_name="email" field_id=form.email.id_for_label %}
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.telephone.id_for_label }}">{{ form.telephone.label }} <span class="prev-required">*</span></label>
+        {% include "partials/prev-tel-field.html" with field=form.telephone %}
+        {% include "partials/funnel-inline-error.html" with field_name="telephone" field_id=form.telephone.id_for_label %}
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.city.id_for_label }}">{{ form.city.label }} <span class="prev-required">*</span></label>
+        {{ form.city }}
+        {% include "partials/funnel-inline-error.html" with field_name="city" field_id=form.city.id_for_label %}
+      </div>
+    </div>
+
+    <div class="funnel-form-panel"
+         data-funnel-step="2"
+         x-show="step === 2"
+         x-cloak
+         :aria-hidden="step !== 2">
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.delivery_preference.id_for_label }}">{{ form.delivery_preference.label }} <span class="prev-required">*</span></label>
+        {{ form.delivery_preference }}
+        {% include "partials/funnel-inline-error.html" with field_name="delivery_preference" field_id=form.delivery_preference.id_for_label %}
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.images.id_for_label }}">{{ form.images.label }} <span class="prev-required">*</span></label>
+        <label class="prev-upload" for="{{ form.images.id_for_label }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="16,16 12,12 8,16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39,18.39A5,5,0,0,0,18,9h-1.26A8,8,0,1,0,3,16.3"/></svg>
+          <span class="prev-upload-text">JPG, PNG <em>({% trans "max 15 file" %})</em></span>
+          {{ form.images }}
+        </label>
+        <div class="prev-preview-grid funnel-preview-grid" aria-live="polite" hidden></div>
+        {% include "partials/funnel-inline-error.html" with field_name="images" field_id=form.images.id_for_label %}
+        <p class="prev-hint">{% trans "Foto chiare dei bolli su superfici pulite e asciutte." %}</p>
+      </div>
+    </div>
+
+    <div class="funnel-form-panel"
+         data-funnel-step="3"
+         x-show="step === 3"
+         x-cloak
+         :aria-hidden="step !== 3">
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.damage_details.id_for_label }}">{{ form.damage_details.label }} <span class="prev-required">*</span></label>
+        {{ form.damage_details }}
+        {% include "partials/funnel-inline-error.html" with field_name="damage_details" field_id=form.damage_details.id_for_label %}
+      </div>
+
+      <div class="prev-field">
+        <label class="prev-label" for="{{ form.vehicle_details.id_for_label }}">{{ form.vehicle_details.label }}</label>
+        {{ form.vehicle_details }}
+      </div>
+
+      <div class="prev-field prev-field--check">
+        <label class="prev-check-label">
+          {{ form.terms }}
+          <span>{{ form.terms.label }}</span>
+        </label>
+        {% include "partials/funnel-inline-error.html" with field_name="terms" field_id=form.terms.id_for_label %}
+      </div>
+    </div>
+  </div>
+
+  <div class="funnel-form-nav">
+    <button type="button"
+            class="funnel-form-nav-back"
+            x-show="step > 1"
+            x-cloak
+            @click.prevent="goBack()">
+      {% trans "Indietro" %}
+    </button>
+
+    <button type="button"
+            class="btn btn-primary funnel-form-nav-next"
+            x-show="step < totalSteps"
+            @click.prevent="goNext()">
+      {% trans "Continua" %}
+    </button>
+
+    <button type="submit"
+            class="btn btn-primary btn-block funnel-form-nav-submit"
+            x-show="step === totalSteps"
+            x-cloak>
+      {% trans "INVIA RICHIESTA GRATUITA" %}
+    </button>
+  </div>
+</form>

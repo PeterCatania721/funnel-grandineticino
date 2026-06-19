@@ -1,15 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 184" role="img" aria-hidden="true">
-  <g fill="#ffffff" transform="translate(92 92)">
+  <circle cx="92" cy="92" r="92" fill="#30B05D"/>
+  <g fill="#ffffff" transform="translate(92 92) scale(0.9)">
     <g transform="rotate(-42)">
-      <path d="M-46 -4h8v8h-8z"/>
-      <path d="M-52 0h6v4h-6z"/>
-      <path d="M-40 -10h20v6h8v8h-8v6h-20v-6h-8v-8h8v-6z"/>
-      <rect x="-12" y="-4.5" width="52" height="9" rx="2"/>
+      <rect x="-20" y="-46" width="40" height="14" rx="3"/>
+      <rect x="-5" y="-32" width="10" height="54" rx="3"/>
     </g>
     <g transform="rotate(42)">
-      <rect x="-12" y="-4.5" width="52" height="9" rx="2"/>
-      <path d="M-46 -13h18v5l-8 8h-10v-13z"/>
-      <path d="M-52 -7h8v5h-8z"/>
+      <rect x="-4.5" y="-2" width="9" height="48" rx="2.5"/>
+      <path d="M-16 -40h32l-4 12H11v14H-11v-14h-5z"/>
     </g>
   </g>
 </svg>

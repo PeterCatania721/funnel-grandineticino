@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Smart Repair" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Smart Repair KESI: riparazione localizzata di graffi superficiali, piccoli urti e danni agli interni. Senza rifare l'intero pannello, combinabile con PDR." %}{% endblock %}
+
+{% block content %}
+{% url 'tecnologie' as tx_pu %}
+{% trans "Tecnologie" as tx_pl %}
+{% trans "Riparazione" as tx_ey %}
+{% trans "Smart Repair" as tx_h1 %}
+{% trans "Riparazione localizzata di graffi superficiali, piccoli urti e danni agli interni: interveniamo solo sulla zona colpita, senza smontare o riverniciare l'intero pannello." as tx_lead %}
+{% with hero_parent_url=tx_pu hero_parent_label=tx_pl hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/6a1d94e82ca3957e92b1d5dd.jpg" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section">
+  <div class="container">
+    <div class="tech-detail-grid">
+      <div class="tech-detail-main">
+        <p class="eyebrow">{% trans "Cos'è" %}</p>
+        <h2>{% trans "Riparazione intelligente, non tradizionale" %}</h2>
+        <p class="lead">{% trans "Lo Smart Repair è una famiglia di tecniche che permette di riparare danni localizzati — graffi, piccoli urti, ammaccature superficiali, danni agli interni — intervenendo solo nella zona colpita, senza toccare il resto del pannello." %}</p>
+        <p>{% trans "A differenza della carrozzeria tradizionale, che richiede la verniciatura completa del pannello o addirittura la sua sostituzione, lo Smart Repair usa ritocchi a freddo, lucidatura localizzata, riparazione plastica e sistemi di tinting per riportare ogni area al suo aspetto originale in tempi minimi." %}</p>
+
+        <p class="eyebrow u-mt-xl">{% trans "Tipologie di intervento" %}</p>
+        <h2>{% trans "Cosa ripariamo con Smart Repair" %}</h2>
+        <div class="feature-grid u-mt-md">
+          <div class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M9.88 9.88a3 3 0 104.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0112 5c7 0 10 7 10 7a13.16 13.16 0 01-1.67 2.68"/></svg>
+            </div>
+            <h3>{% trans "Graffi superficiali" %}</h3>
+            <p>{% trans "Graffi che non arrivano alla lamiera: lucidatura abrasiva e polish localizzato per eliminare il segno senza verniciatura." %}</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <h3>{% trans "Ritocchi vernice" %}</h3>
+            <p>{% trans "Graffi che hanno scalfito la vernice: ritocco con tinting a freddo abbinato al colore originale, senza verniciare l'intero pannello." %}</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3>{% trans "Piccoli urti e plastiche" %}</h3>
+            <p>{% trans "Urti su paraurti, minigonne e rivestimenti plastici: riparazione, saldatura e verniciatura localizzata della plastica senza sostituzione del pezzo." %}</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            </div>
+            <h3>{% trans "Danni agli interni" %}</h3>
+            <p>{% trans "Sedili, cruscotti e rivestimenti in pelle o tessuto: riparazione localizzata senza sostituzione del componente." %}</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tech-detail-side">
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Quando si usa" %}</p>
+          <ul class="tech-checklist">
+            <li>{% trans "Graffi da chiave o rami su carrozzeria" %}</li>
+            <li>{% trans "Urti leggeri su paraurti e plastiche" %}</li>
+            <li>{% trans "Danni ai rivestimenti interni" %}</li>
+            <li>{% trans "Preparazione veicoli usati per la vendita" %}</li>
+            <li>{% trans "Piccoli difetti su veicoli nuovi o demo" %}</li>
+          </ul>
+        </div>
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Combinato con PDR" %}</p>
+          <p class="text-sm muted">{% trans "Lo Smart Repair è spesso usato insieme al PDR: i bolli vengono rimossi con la tecnica PDR, mentre i graffi associati vengono trattati con Smart Repair. Un unico intervento, risultato completo." %}</p>
+          <a href="{% url 'tecnologia_pdr' %}" class="btn btn-outline btn-sm u-mt-sm">{% trans "Scopri il PDR" %}</a>
+        </div>
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Vantaggi" %}</p>
+          <ul class="tech-checklist">
+            <li>{% trans "Intervento rapido: ore, non giorni" %}</li>
+            <li>{% trans "Costi ridotti: si paga solo la zona trattata" %}</li>
+            <li>{% trans "Nessun smontaggio del pannello" %}</li>
+            <li>{% trans "Risultato invisibile e duraturo" %}</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{% trans "Un graffio, un urto, un danno interno?" as cta_h %}
+{% trans "Valutiamo il danno gratuitamente e ti diciamo in pochi minuti qual è il metodo più rapido ed economico." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

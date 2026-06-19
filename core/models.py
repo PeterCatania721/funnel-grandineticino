@@ -18,10 +18,9 @@ class FunnelLead(models.Model):
         _("Preferenza di appuntamento"),
         max_length=20,
         choices=DeliveryPreference.choices,
-        blank=True,
     )
     dent_count = models.PositiveSmallIntegerField(_("Numero bolli stimato"), null=True, blank=True)
-    damage_details = models.TextField(_("Descrizione del danno"), blank=True)
+    damage_details = models.TextField(_("Descrizione del danno"))
     vehicle_details = models.TextField(_("Dati del veicolo"), blank=True)
     source_domain = models.CharField(max_length=100, default="grandineticino.ch")
     utm_source = models.CharField(max_length=200, blank=True)

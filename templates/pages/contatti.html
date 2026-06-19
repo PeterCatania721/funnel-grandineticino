@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% load static i18n %}
+
+{% block title %}{% trans "Contatti" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Contatta KESI SA a Riazzino (Ticino). Servizio mobile in tutta la Svizzera per carrozzerie, concessionari, flotte e assicurazioni." %}{% endblock %}
+
+{% block content %}
+{% trans "Parliamone" as tx_ey %}
+{% trans "Contatti" as tx_h1 %}
+{% trans "Hai un veicolo, una flotta o una carrozzeria da supportare? Siamo a disposizione in tutta la Svizzera." as tx_lead %}
+{% trans "Richiesta contatto — sito KESI" as email_subject %}
+{% with hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/69ca2b8ec2ac973826060c03.jpg" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section section--no-pb">
+  <div class="container text-center">
+    <a href="{% url 'preventivo' %}" class="btn btn-primary btn-lg">{% trans "Preventivo gratuito" %}</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contatti-split">
+
+      <!-- Immagine fondatore -->
+      <div>
+        <img
+          src="{% static 'img/kesi-founder.jpg' %}"
+          alt="{% trans 'Fondatore KESI SA' %}"
+          class="contatti-founder-img"
+        >
+      </div>
+
+      <!-- Info contatti -->
+      <div class="contatti-info">
+        <p class="eyebrow">{% trans "Il nostro fondatore" %}</p>
+        <h2>{% trans "Salvatore Catania" %}</h2>
+
+        <hr class="contatti-divider">
+
+        <p class="contatti-company-name">KESI SA</p>
+
+        <ul class="contatti-contact-list">
+
+          {% if company.address_line %}
+          <li>
+            <span class="contatti-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/>
+              </svg>
+            </span>
+            <div>
+              <span class="ci-label">{% trans "Sede" %}</span>
+              <span>{{ company.address_line }}</span>
+            </div>
+          </li>
+          {% endif %}
+
+          {% if company.phone %}
+          <li>
+            <span class="contatti-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5.5C3 14.06 9.94 21 18.5 21l1.5-3.5-3.5-1.5-1 2c-2.78-.78-5.22-3.22-6-6l2-1L10 7.5 6.5 4 3 5.5z"/>
+              </svg>
+            </span>
+            <div>
+              <span class="ci-label">{% trans "Telefono" %}</span>
+              <a href="tel:{{ company.phone_href }}" class="ci-link-bold">{{ company.phone }}</a>
+            </div>
+          </li>
+          <li>
+            <span class="contatti-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+              </svg>
+            </span>
+            <div>
+              <span class="ci-label">WhatsApp</span>
+              <a href="https://wa.me/{{ company.phone_href|cut:'+' }}" class="ci-link-bold" target="_blank" rel="noopener noreferrer">{{ company.phone }}</a>
+            </div>
+          </li>
+          {% endif %}
+
+          {% if company.email %}
+          <li>
+            <span class="contatti-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2 7 10 7 10-7"/>
+              </svg>
+            </span>
+            <div>
+              <span class="ci-label">Email</span>
+              <a href="mailto:{{ company.email }}?subject={{ email_subject|urlencode }}" class="ci-link-bold">{{ company.email }}</a>
+            </div>
+          </li>
+          {% endif %}
+
+          <li>
+            <span class="contatti-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"/>
+              </svg>
+            </span>
+            <div>
+              <span class="ci-label">{% trans "Area di servizio" %}</span>
+              <span>{{ company.service_area }} — {% trans "Interveniamo direttamente in loco con strumenti mobili." %}</span>
+            </div>
+          </li>
+
+          <li>
+            <span class="contatti-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M12 2c-2.5 2.8-4 6.2-4 10s1.5 7.2 4 10M12 2c2.5 2.8 4 6.2 4 10s-1.5 7.2-4 10"/>
+              </svg>
+            </span>
+            <div>
+              <span class="ci-label">{% trans "Internazionale" %}</span>
+              <span>{% trans "Per lavori in Europa, USA o altre parti del mondo contattate subito Salvatore:" %} <a href="tel:{{ company.phone_href }}" class="ci-link-bold">{{ company.phone }}</a></span>
+            </div>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta section-floating">
+  <div class="container">
+    <h2>{% trans "Pronto per un preventivo?" %}</h2>
+    <p>{% trans "Compila il form, ti rispondiamo entro 24 ore." %}</p>
+    <a href="{% url 'preventivo' %}" class="btn btn-primary btn-lg">{% trans "Preventivo gratuito" %}</a>
+  </div>
+</section>
+{% endblock %}

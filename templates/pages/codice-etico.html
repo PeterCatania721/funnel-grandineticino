@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Codice Etico Aziendale" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Il Codice Etico Aziendale di KESI SA: i valori, i principi e le regole di condotta che guidano ogni nostra attività." %}{% endblock %}
+
+{% block content %}
+
+<section class="page-hero page-hero--short">
+  <div class="container">
+    <p class="eyebrow">{% trans "Trasparenza &amp; Valori" %}</p>
+    <h1>{% trans "Codice Etico Aziendale" %}</h1>
+    <p class="lead">{% trans "I principi etici e le regole di condotta che guidano ogni nostra attività." %}</p>
+  </div>
+  <div class="hero-wave" aria-hidden="true"></div>
+</section>
+
+<section class="section codice-etico-section">
+  <div class="container">
+
+    <div class="btn-group u-mb-lg">
+      <a href="{% static 'docs/codice-etico-kesi.pdf' %}" download class="btn btn-primary btn-lg">
+        {% trans "Scarica PDF" %}
+      </a>
+      <a href="{% static 'docs/codice-etico-kesi.pdf' %}" target="_blank" rel="noopener" class="btn btn-outline-dark">
+        {% trans "Apri in nuova scheda" %}
+      </a>
+    </div>
+
+    <div class="codice-etico-viewer">
+      <iframe
+        src="{% static 'docs/codice-etico-kesi.pdf' %}#view=FitH&toolbar=1"
+        title="{% trans 'Codice Etico Aziendale KESI SA' %}"
+        aria-label="{% trans 'Documento: Codice Etico Aziendale KESI SA' %}"
+      >
+        <p>{% trans "Il tuo browser non supporta la visualizzazione inline dei PDF." %}
+          <a href="{% static 'docs/codice-etico-kesi.pdf' %}" download>{% trans "Scarica il documento" %}</a>.
+        </p>
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

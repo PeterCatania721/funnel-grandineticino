@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Perché KESI?" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Perché scegliere KESI: vernice originale preservata, costi e tempi ridotti, sostenibilità, rete di tecnici esperti e copertura in tutta la Svizzera." %}{% endblock %}
+
+{% block content %}
+{% trans "I vantaggi" as tx_ey %}
+{% trans "Perché scegliere KESI?" as tx_h1 %}
+{% trans "Oltre 30 anni di esperienza nella carrozzeria alternativa, una rete di tecnici tra i migliori al mondo e un metodo che fa risparmiare tempo, denaro e risorse." as tx_lead %}
+{% with hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_class="page-hero--tall" hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/67ebba0913c4b653f81b5bf3.jpeg" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section">
+  <div class="container">
+    {% include "partials/advantages.html" %}
+  </div>
+</section>
+
+<section class="stats-wave-section">
+  <canvas class="stats-wave-canvas" aria-hidden="true"></canvas>
+  <div class="container">
+    {% include "partials/stats.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Per chi lavoriamo" %}</p>
+      <h2>{% trans "Un partner per tutto il settore automotive" %}</h2>
+    </div>
+    <div class="cards">
+      {% for target in targets %}
+      <article class="card">
+        {% if target.image %}<img src="{{ target.image }}" alt="{{ target.title }}" class="card-img">{% endif %}
+        <h3>{{ target.title }}</h3>
+        <p>{{ target.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section founder-section">
+  <div class="container">
+    <div class="founder-grid">
+      <div class="founder-img">
+        <img src="{% static 'img/kesi-founder.jpg' %}" alt="{% trans 'Il fondatore di KESI SA' %}" loading="lazy">
+      </div>
+      <div class="founder-text">
+        <p class="eyebrow">{% trans "Chi guida KESI" %}</p>
+        <blockquote class="founder-quote">
+          {% blocktrans %}"Ogni ammaccatura è una sfida tecnica. Il nostro obiettivo è sempre lo stesso: ripristinare il veicolo come se il danno non fosse mai esistito."{% endblocktrans %}
+        </blockquote>
+        <p class="lead">{% trans "Dopo anni di esperienza come lattoniere in carrozzerie bergamasche, nel 1991 Salvatore Catania fonda la Carrozzeria P&C. Nel 1995 avvia Car Services SRL e sviluppa la tecnica K90: un metodo rivoluzionario per rimuovere bolli e danni da grandine senza smontaggio né verniciatura. Da quella intuizione nasce KESI, oggi presente in tutta la Svizzera e in Europa con 97 tecnici PDR specializzati." %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Dal 1978 ad oggi" %}</p>
+      <h2>{% trans "Una storia di innovazione" %}</h2>
+      <p>{% trans "Dall'Italia all'Europa, dagli stabilimenti automobilistici ai grandi mandati svizzeri: ogni tappa ha affinato il nostro metodo." %}</p>
+    </div>
+    <div class="timeline">
+      {% for entry in timeline %}
+      <div class="tl-item">
+        <div class="tl-year">{{ entry.year }}</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>{{ entry.location }}</strong>
+          <p>{{ entry.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Chi si fida di noi" %}</p>
+      <h2>{% trans "Le nostre referenze" %}</h2>
+      <p>{% trans "Negli ultimi 8 anni abbiamo ricevuto numerosi riconoscimenti. Tra i nostri partner di lunga data, carrozzerie e grandi marchi automobilistici in tutta Europa." %}</p>
+    </div>
+    <div class="ref-grid">
+      {% for ref in references %}
+      <article class="card">
+        {% if ref.image %}<img src="{{ ref.image }}" alt="{{ ref.name }}" class="card-img">{% endif %}
+        <strong class="ref-name">{{ ref.name }}</strong>
+        <p class="ref-role">{{ ref.role }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% trans "Lavoriamo insieme" as cta_h %}
+{% trans "Integriamo e potenziamo la tua struttura, senza aumentarne in modo permanente i costi fissi." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

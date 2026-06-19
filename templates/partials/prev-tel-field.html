@@ -1,15 +1,31 @@
 {% load i18n %}
-<div class="prev-tel-wrap">
-  <span class="prev-tel-prefix" aria-hidden="true">+</span>
-  <input
-    class="prev-input prev-input--tel"
-    type="tel"
-    id="{{ id }}"
-    name="telephone"
-    inputmode="tel"
-    autocomplete="tel"
-    placeholder="{% trans '+41 79 123 45 67 o +39 333 123 4567' %}"
-    title="{% trans 'Numero con prefisso internazionale, es. +41 o +39' %}"
-    {% if required %}required{% endif %}
-  >
+<div class="prev-tel-wrap" data-tel-prefix>
+  <div class="prev-tel-country">
+    <select class="prev-tel-country-select" aria-label="{% trans 'Prefisso internazionale' %}">
+      <option value="+41" selected>🇨🇭 +41</option>
+      <option value="+39">🇮🇹 +39</option>
+      <option value="+49">🇩🇪 +49</option>
+      <option value="+33">🇫🇷 +33</option>
+      <option value="+43">🇦🇹 +43</option>
+      <option value="+423">🇱🇮 +423</option>
+      <option value="+44">🇬🇧 +44</option>
+      <option value="+1">🇺🇸 +1</option>
+    </select>
+  </div>
+  {% if field %}
+    {{ field }}
+  {% else %}
+    <input
+      class="prev-input prev-input--tel"
+      type="tel"
+      id="{{ id }}"
+      name="{{ name|default:'telephone' }}"
+      inputmode="tel"
+      autocomplete="tel-national"
+      placeholder="{% trans '79 123 45 67' %}"
+      title="{% trans 'Numero senza prefisso internazionale' %}"
+      {% if required %}required{% endif %}
+      {% if value %}value="{{ value }}"{% endif %}
+    >
+  {% endif %}
 </div>

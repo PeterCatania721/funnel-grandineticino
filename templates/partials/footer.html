@@ -1,0 +1,70 @@
+{% load static i18n %}
+<footer class="site-footer">
+  <div class="container footer-inner">
+
+    <!-- Colonna 1: Logo + Social + Copyright -->
+    <div class="footer-brand-col">
+      <div class="footer-brand-top">
+        <img src="{% static 'img/logo-kesi-bianco.svg' %}" alt="{{ company.legal_name }}" class="footer-logo">
+        <p class="footer-tagline">
+          {{ company.legal_name }}{% if company.city %} · {{ company.city }} ({{ company.canton }}){% endif %}
+        </p>
+        <div class="footer-social-icons">
+          <a href="https://wa.me/41789674337" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <img src="{% static 'img/icon-whatsapp.png' %}" alt="WhatsApp">
+          </a>
+          <a href="https://www.instagram.com/kesi.dent.repair" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="{% static 'img/icon-instagram-official.png' %}" alt="Instagram">
+          </a>
+          <a href="https://www.facebook.com/kesiswiss" target="_blank" rel="noopener" aria-label="Facebook">
+            <img src="{% static 'img/icon-facebook.png' %}" alt="Facebook">
+          </a>
+          <a href="https://m.me/kesiswiss" target="_blank" rel="noopener" aria-label="Messenger">
+            <img src="{% static 'img/icon-messenger.png' %}" alt="Messenger">
+          </a>
+          <a href="https://www.tiktok.com/@kesi_dentrepairgarage" target="_blank" rel="noopener" aria-label="TikTok">
+            <img src="{% static 'img/icon-tiktok.png' %}" alt="TikTok">
+          </a>
+          <a href="https://www.youtube.com/@KESISA1995" target="_blank" rel="noopener" aria-label="YouTube">
+            <img src="{% static 'img/icon-youtube.png' %}" alt="YouTube">
+          </a>
+          <a href="https://www.linkedin.com/in/salvatore-catania-kesi/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <img src="{% static 'img/icon-linkedin.png' %}" alt="LinkedIn">
+          </a>
+          <a href="https://x.com/KesiSchweiz" target="_blank" rel="noopener" aria-label="X">
+            <img src="{% static 'img/icon-x.png' %}" alt="X">
+          </a>
+        </div>
+      </div>
+      <p class="footer-copyright">&copy; {% now "Y" %} {{ company.legal_name }}. {% trans "Tutti i diritti riservati." %}</p>
+    </div>
+
+    <!-- Colonna 2: Menu -->
+    <nav class="footer-col" aria-label="{% trans 'Navigazione footer' %}">
+      <h3 class="footer-heading">{% trans "Menu" %}</h3>
+      <a href="{% url 'home' %}">{% translate "Home" context "nav" %}</a>
+      <a href="{% url 'servizi' %}">{% trans "Servizi" %}</a>
+      <a href="{% url 'perche_kesi' %}">{% trans "Perché KESI?" %}</a>
+      <a href="{% url 'contatti' %}">{% trans "Contatti" %}</a>
+      <a href="{% url 'codice_etico' %}">{% trans "Codice Etico" %}</a>
+    </nav>
+
+    <!-- Colonna 3: Tecnologie -->
+    <nav class="footer-col" aria-label="{% trans 'Tecnologie footer' %}">
+      <h3 class="footer-heading">{% trans "Tecnologie" %}</h3>
+      <a href="{% url 'tecnologia_pdr' %}">{% trans "PDR" %}</a>
+      <a href="{% url 'tecnologia_scanner_ai' %}">{% trans "Scanner AI" %}</a>
+      <a href="{% url 'tecnologia_scanner_360' %}">{% trans "Scanner 360°" %}</a>
+      <a href="{% url 'tecnologia_smart_repair' %}">{% trans "Smart Repair" %}</a>
+    </nav>
+
+    <!-- Colonna 4: Contatti -->
+    <div class="footer-col">
+      <h3 class="footer-heading">{% trans "Contatti" %}</h3>
+      {% if company.address_line %}<p>{{ company.address_line }}</p>{% endif %}
+      {% if company.phone %}<p><a href="tel:{{ company.phone_href }}">{{ company.phone }}</a></p>{% endif %}
+      {% if company.email %}<p><a href="mailto:{{ company.email }}">{{ company.email }}</a></p>{% endif %}
+    </div>
+
+  </div>
+</footer>

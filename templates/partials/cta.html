@@ -1,0 +1,9 @@
+{% load i18n %}
+{% url 'contatti' as cta_url %}
+<section class="cta section-floating">
+  <div class="container">
+    <h2>{{ cta_heading }}</h2>
+    <p>{{ cta_lead }}</p>
+    <a href="{{ cta_url }}" class="btn btn-primary">{% trans "Contattaci" %}</a>
+  </div>
+</section>

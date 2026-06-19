@@ -1,18 +1,10 @@
-{% load static i18n %}
+{% load i18n %}
 <section class="section{% if mistakes_extra_class %} {{ mistakes_extra_class }}{% endif %} funnel-mistakes">
   <div class="container">
-    <div class="funnel-mistakes-grid">
+    <div class="funnel-mistakes-layout">
       <div class="section-head funnel-mistakes-head">
         <p class="eyebrow">{% trans "Evita questi errori" %}</p>
         <h2>{% trans "5 errori da non fare dopo la grandine" %}</h2>
-      </div>
-      <div class="funnel-mistakes-media">
-        <img src="{% static funnel_mistakes_image %}"
-             alt="{% trans 'Auto grandinata: bolli sulla carrozzeria con marcature PDR' %}"
-             class="funnel-mistakes-img"
-             loading="lazy"
-             width="1200"
-             height="819">
       </div>
       <ol class="funnel-numbered-list funnel-mistakes-list">
         {% for mistake in funnel_mistakes %}

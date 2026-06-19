@@ -1,4 +1,4 @@
-Django==5.1.4
+Django==5.2.15
 gunicorn==23.0.0
 whitenoise==6.8.2
 django-environ==0.11.2

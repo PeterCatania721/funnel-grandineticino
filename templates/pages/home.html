@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{{ company.legal_name }} — {% trans "Carrozzeria alternativa, PDR e Smart Repair" %}{% endblock %}
+{% block description %}{% trans "KESI SA: riparazione di bolli e ammaccature senza verniciatura (PDR), Smart Repair e perizie con scanner AI. Servizio mobile in tutta la Svizzera." %}{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-paint hero-paint--1" aria-hidden="true"></div>
+  <div class="hero-paint hero-paint--2" aria-hidden="true"></div>
+  <div class="hero-paint hero-paint--3" aria-hidden="true"></div>
+  <div class="container">
+    <p class="eyebrow">{% trans "Tutta la Svizzera" %}</p>
+    <h1 class="hero-title">{% trans "Ripariamo bolli e ammaccature senza verniciatura." %}</h1>
+    <p class="hero-lead">
+      {% blocktrans %}Carrozzeria alternativa, PDR e Smart Repair: ripristiniamo la forma originale del veicolo preservando la vernice di fabbrica. Più veloce, più sostenibile, più conveniente.{% endblocktrans %}
+    </p>
+    <div class="hero-actions">
+      <a href="{% url 'servizi' %}" class="btn btn-primary">{% trans "Scopri i servizi" %}</a>
+      <a href="{% url 'contatti' %}" class="btn btn-outline">{% trans "Contattaci" %}</a>
+    </div>
+  </div>
+  <div class="hero-wave" aria-hidden="true"></div>
+</section>
+
+<section class="stats-wave-section">
+  <canvas class="stats-wave-canvas" aria-hidden="true"></canvas>
+  <div class="container">
+    {% include "partials/stats.html" %}
+  </div>
+</section>
+
+<section class="manifesto tech-grid section-floating">
+  <div class="container">
+    <p class="eyebrow">{% trans "Il nostro approccio" %}</p>
+    <p class="manifesto-text">{% trans "Ripariamo." %} <span class="hl">{% trans "Preserviamo." %}</span> {% trans "Innoviamo." %}</p>
+    <p class="manifesto-sub">{% trans "Tecnologia, metodo e cura del dettaglio: la carrozzeria alternativa portata a un nuovo livello." %}</p>
+  </div>
+</section>
+
+<section class="section photo-gallery-section section-floating">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Il nostro lavoro" %}</p>
+      <h2>{% trans "I nostri lavori" %}</h2>
+      <p>{% trans "Ogni auto, ogni danno: ripristiniamo la forma originale con precisione chirurgica." %}</p>
+    </div>
+    <div class="photo-gallery">
+      <div class="pg-main">
+        <img src="{% static 'img/kesi-workshop.jpg' %}" alt="{% trans 'Tecnico KESI al lavoro su una Porsche GT3 RS nel laboratorio' %}">
+      </div>
+      <div class="pg-right">
+        <div class="pg-item">
+          <img src="{% static 'img/kesi-photo-2.jpeg' %}" alt="{% trans 'Tecnico KESI che esegue PDR su una Ferrari' %}">
+        </div>
+        <div class="pg-item">
+          <img src="{% static 'img/kesi-photo-3.jpeg' %}" alt="{% trans 'Furgone KESI brandizzato parcheggiato da un cliente' %}">
+        </div>
+        <div class="pg-item">
+          <img src="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/6a1d94f11f28836ddfc365a2.jpg" alt="{% trans 'Tecnico KESI che esamina bolli su un furgone con riflettore LED' %}">
+        </div>
+        <div class="pg-item">
+          <img src="{% static 'img/kesi-photo-5.jpeg' %}" alt="{% trans 'Officina KESI a Riazzino: capannone con van KESI e pareti arancioni' %}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Cosa facciamo" %}</p>
+      <h2>{% trans "I nostri servizi" %}</h2>
+      <p>{% trans "Soluzioni di carrozzeria alternativa per carrozzerie, concessionari, flotte e assicurazioni." %}</p>
+    </div>
+    <div class="cards">
+      {% for service in services %}
+      <article class="card">
+        {% if service.image %}<img src="{{ service.image }}" alt="{{ service.name }}" class="card-img">{% endif %}
+        <span class="card-num">{{ forloop.counter|stringformat:"02d" }}</span>
+        <h3>{{ service.name }}</h3>
+        <p>{{ service.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "I vantaggi" %}</p>
+      <h2>{% trans "Perché scegliere KESI?" %}</h2>
+    </div>
+    {% include "partials/advantages.html" %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Per chi lavoriamo" %}</p>
+      <h2>{% trans "Un partner per tutto il settore automotive" %}</h2>
+    </div>
+    <div class="cards">
+      {% for target in targets %}
+      <article class="card">
+        {% if target.image %}<img src="{{ target.image }}" alt="{{ target.title }}" class="card-img">{% endif %}
+        <h3>{{ target.title }}</h3>
+        <p>{{ target.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% trans "Pronto a ridurre tempi e costi di riparazione?" as cta_h %}
+{% trans "Interveniamo direttamente in loco, in tutta la Svizzera." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

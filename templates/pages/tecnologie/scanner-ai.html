@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Scanner AI portabile" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Lo scanner AI portabile KESI per perizie rapide e precise in loco: rileva danni da grandine e ammaccature invisibili a occhio nudo. Ideale per drive-in, flotte e concessionari." %}{% endblock %}
+
+{% block content %}
+{% url 'tecnologie' as tx_pu %}
+{% trans "Tecnologie" as tx_pl %}
+{% trans "Scanner" as tx_ey %}
+{% trans "Scanner AI portabile" as tx_h1 %}
+{% trans "Il nostro scanner AI portatile individua con precisione tutti i danni sulla carrozzeria, anche quelli invisibili a occhio nudo. Perizie rapide, stima realistica, zero trasporto." as tx_lead %}
+{% with hero_parent_url=tx_pu hero_parent_label=tx_pl hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/6a1d85e6bb0618436a45ddfc.heic" hero_bg_overlay="rgba(0,0,0,0.82)" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section">
+  <div class="container">
+    <div class="tech-detail-grid">
+      <div class="tech-detail-main">
+        <p class="eyebrow">{% trans "Cos'è" %}</p>
+        <h2>{% trans "Intelligenza artificiale direttamente in loco" %}</h2>
+        <p class="lead">{% trans "Lo Scanner AI portabile è uno strumento compatto che il nostro tecnico porta direttamente dal cliente. Grazie a un sistema di illuminazione LED strutturata e analisi AI, rileva e mappa con precisione millimetrica ogni bollo e ammaccatura sulla carrozzeria." %}</p>
+        <p>{% trans "È progettato per la velocità: in pochi minuti produce una stima completa del danno, pronta per essere condivisa con assicurazioni o usata per pianificare l'intervento PDR. Non richiede infrastruttura fissa e si porta ovunque, dall'officina al piazzale aperto." %}</p>
+
+        <p class="eyebrow u-mt-xl">{% trans "Come funziona" %}</p>
+        <h2>{% trans "Dalla luce alla stima" %}</h2>
+        <ol class="tech-steps">
+          <li>
+            <strong>{% trans "Posizionamento del riflettore" %}</strong>
+            <p>{% trans "Il tecnico posiziona il riflettore LED strutturato sulla zona da analizzare. Le linee luminose proiettate sulla superficie rivelano le deformazioni con grande chiarezza." %}</p>
+          </li>
+          <li>
+            <strong>{% trans "Acquisizione AI" %}</strong>
+            <p>{% trans "Il sistema cattura le immagini e l'algoritmo AI analizza le distorsioni nelle linee riflesse, identificando automaticamente ogni danno, la sua posizione e dimensione." %}</p>
+          </li>
+          <li>
+            <strong>{% trans "Report istantaneo" %}</strong>
+            <p>{% trans "In pochi secondi il sistema genera un report dettagliato: mappa dei danni, stima del numero di bolli e valutazione della complessità dell'intervento." %}</p>
+          </li>
+          <li>
+            <strong>{% trans "Condivisione e pianificazione" %}</strong>
+            <p>{% trans "Il report viene condiviso digitalmente con il cliente, l'assicurazione o il team KESI per pianificare l'intervento PDR nel minor tempo possibile." %}</p>
+          </li>
+        </ol>
+      </div>
+
+      <aside class="tech-detail-side">
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Ideale per" %}</p>
+          <ul class="tech-checklist">
+            <li>{% trans "Drive-in dopo eventi di grandine" %}</li>
+            <li>{% trans "Perizie rapide per assicurazioni" %}</li>
+            <li>{% trans "Valutazione flotte aziendali" %}</li>
+            <li>{% trans "Concessionari: usato e veicoli nuovi" %}</li>
+            <li>{% trans "Pre-ispezione prima di ogni intervento PDR" %}</li>
+          </ul>
+        </div>
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Vantaggi principali" %}</p>
+          <ul class="tech-checklist">
+            <li>{% trans "Rileva danni invisibili a occhio nudo" %}</li>
+            <li>{% trans "Stima precisa e oggettiva, zero interpretazione soggettiva" %}</li>
+            <li>{% trans "Completamente portatile: funziona ovunque" %}</li>
+            <li>{% trans "Report digitale condivisibile istantaneamente" %}</li>
+            <li>{% trans "Riduce i costi di perizia e i tempi di liquidazione" %}</li>
+          </ul>
+        </div>
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Differenza rispetto allo Scanner 360°" %}</p>
+          <p class="text-sm muted">{% trans "Lo scanner AI portabile è la soluzione mobile per perizie in loco rapide. Lo Scanner 360° 4-in-1 è la postazione fissa per l'ispezione totale del veicolo inclusi sottoscocca e gomme." %}</p>
+          <a href="{% url 'tecnologia_scanner_360' %}" class="btn btn-outline btn-sm u-mt-sm">{% trans "Scopri lo Scanner 360°" %}</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <div class="scanner-section">
+      <div class="scanner-text">
+        <p class="eyebrow">{% trans "In azione" %}</p>
+        <h2>{% trans "Il Movable AI Scanner" %}</h2>
+        <p class="lead">{% trans "Utilizzato direttamente in loco, il Movable Scanner elimina i tempi di trasporto e riduce i costi di perizia per assicurazioni, concessionari e flotte. Un tecnico KESI porta lo strumento da te e in pochi minuti hai la stima completa." %}</p>
+        <p>{% trans "Negli ultimi anni lo abbiamo impiegato su migliaia di veicoli in tutta la Svizzera, diventando il nostro strumento principale per la gestione dei grandi eventi di grandine." %}</p>
+      </div>
+      <div class="scanner-img">
+        <img src="{% static 'img/kesi-scanner.jpg' %}" alt="{% trans 'KESI Movable AI Scanner in azione' %}" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">{% trans "Il Dent Scanner KESI" %}</p>
+    <h2>{% trans "Visto da vicino" %}</h2>
+    <p class="muted measure">{% trans "Il nostro Dent Scanner portabile all'opera nel centro KESI: tecnologia compatta, pronta a spostarsi dove serve." %}</p>
+    <div class="scanner-hw-grid">
+      <div class="scanner-hw-item">
+        <img src="{% static 'img/dent-scanner-1.jpg' %}" alt="{% trans 'Dent Scanner KESI — veicolo in scansione' %}" loading="lazy">
+      </div>
+      <div class="scanner-hw-item">
+        <img src="{% static 'img/dent-scanner-2.jpg' %}" alt="{% trans 'Dent Scanner KESI — installazione in officina' %}" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <p class="eyebrow">{% trans "Demo" %}</p>
+    <h2>{% trans "Lo scanner in funzione" %}</h2>
+    <p class="muted measure">{% trans "Guarda come il Dent Scanner analizza la carrozzeria in tempo reale e identifica i bolli con precisione millimetrica." %}</p>
+    <div class="video-grid">
+      <div class="video-item">
+        <video width="720" height="1280" controls preload="metadata" playsinline poster="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/67ebd8c9-5b39-4b26-a4e8-631a2ac9cccb.jpg">
+          <source src="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/cd9cc4e6-0261-4239-93d5-4c225b3d1f8f.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">{% trans "Dent Scanner — scannerizzazione carrozzeria in tempo reale" %}</p>
+      </div>
+      <div class="video-item">
+        <video width="1080" height="1920" controls preload="metadata" playsinline poster="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/cd56ce46-3bd8-48da-90a4-5424db4f3f9f.jpg">
+          <source src="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/0be82da8-f69e-4ba9-9aad-7b3bc76f2ff7.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">{% trans "Dent Scanner — rilevamento bolli grandine con luci LED" %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% trans "Prenota una perizia con lo Scanner AI" as cta_h %}
+{% trans "Veniamo da te con lo scanner. Stima precisa, nessun impegno." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

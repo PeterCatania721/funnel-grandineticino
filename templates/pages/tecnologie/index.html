@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Tecnologie" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Le tecnologie KESI: PDR, Scanner AI portabile, Scanner 360° 4-in-1 e Smart Repair. Strumenti e metodi all'avanguardia per la carrozzeria alternativa." %}{% endblock %}
+
+{% block content %}
+{% trans "Strumenti e metodi" as tx_ey %}
+{% trans "Tecnologie KESI" as tx_h1 %}
+{% trans "Dall'intuizione della tecnica K90 nel 1995 ai sistemi AI di ultima generazione: ogni tecnologia che usiamo è scelta per restituire il veicolo come se il danno non fosse mai esistito." as tx_lead %}
+{% with hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/67eab89dead8ba19a186387b.jpeg" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section">
+  <div class="container">
+    <div class="tech-grid">
+
+      <a href="{% url 'tecnologia_pdr' %}" class="tech-card">
+        <img class="tech-card-img" src="{% static 'img/kesi-workshop.jpg' %}" alt="PDR – Paintless Dent Repair">
+        <div class="tech-card-body">
+          <h2>{% trans "PDR – Paintless Dent Repair" %}</h2>
+          <p class="tech-tagline">{% trans "Rimozione di bolli e ammaccature senza verniciatura" %}</p>
+          <p>{% trans "La tecnica K90 sviluppata da Salvatore Catania nel 1995: lavoriamo direttamente sulla lamiera dall'interno, ripristinando la forma originale senza toccare la vernice di fabbrica." %}</p>
+          <span class="tech-link">{% trans "Scopri di più" %} →</span>
+        </div>
+      </a>
+
+      <a href="{% url 'tecnologia_scanner_ai' %}" class="tech-card">
+        <img class="tech-card-img" src="{% static 'img/dent-scanner-1.jpg' %}" alt="Scanner AI portabile">
+        <div class="tech-card-body">
+          <h2>{% trans "Scanner AI portabile" %}</h2>
+          <p class="tech-tagline">{% trans "Perizie rapide e precise direttamente in loco" %}</p>
+          <p>{% trans "Il nostro scanner AI portatile rileva con precisione millimetrica danni da grandine e ammaccature anche invisibili a occhio nudo. Ideale per drive-in, concessionari e flotte." %}</p>
+          <span class="tech-link">{% trans "Scopri di più" %} →</span>
+        </div>
+      </a>
+
+      <a href="{% url 'tecnologia_scanner_360' %}" class="tech-card">
+        <img class="tech-card-img" src="{% static 'img/scanner360-hw-1.jpg' %}" alt="Scanner 360° 4-in-1">
+        <div class="tech-card-body">
+          <h2>{% trans "Scanner 360° 4-in-1" %}</h2>
+          <p class="tech-tagline">{% trans "Ispezione completa del veicolo in 15 secondi" %}</p>
+          <p>{% trans "Postazione fissa con 16 telecamere che scannerizza l'intera superficie esterna, il sottoscocca in 4K, il profilo gomma e i cerchioni in 7K. Report AI con precisione millimetrica." %}</p>
+          <span class="tech-link">{% trans "Scopri di più" %} →</span>
+        </div>
+      </a>
+
+      <a href="{% url 'tecnologia_smart_repair' %}" class="tech-card">
+        <img class="tech-card-img" src="{% static 'img/after-colpo-laterale-1.jpg' %}" alt="Smart Repair">
+        <div class="tech-card-body">
+          <h2>{% trans "Smart Repair" %}</h2>
+          <p class="tech-tagline">{% trans "Riparazione localizzata di graffi e piccoli danni" %}</p>
+          <p>{% trans "Intervento mirato su graffi superficiali, piccoli urti e danni agli interni, senza rifare l'intero pannello. Combinabile con il PDR per un risultato completo e rapido." %}</p>
+          <span class="tech-link">{% trans "Scopri di più" %} →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+{% trans "Vuoi sapere quale tecnologia fa per te?" as cta_h %}
+{% trans "Contattaci per una consulenza gratuita: valutiamo il danno e ti consigliamo il metodo più efficiente." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

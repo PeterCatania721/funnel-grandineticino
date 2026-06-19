@@ -1,5 +1,7 @@
 """Viste del funnel one-page Grandineticino.ch."""
+import json
 import logging
+from urllib.parse import quote
 
 from django.conf import settings
 from django.core.mail import EmailMessage
@@ -13,13 +15,12 @@ from core.funnel_content import (
     FUNNEL_FOUNDER_IMAGE,
     FUNNEL_HERO_IMAGE,
     FUNNEL_MISTAKES,
-    FUNNEL_MISTAKES_IMAGE,
     FUNNEL_WORKSHOP_IMAGE,
     available_grandine_proofs,
 )
+from core.funnel_forms import FunnelLeadForm, funnel_form_error_state
 from core.emailing import send_lead_notification
-from core.models import FunnelLead, FunnelLeadAttachment
-from core.phone import is_valid_phone
+from core.models import FunnelLead
 
 logger = logging.getLogger(__name__)
 
@@ -74,6 +75,12 @@ def _send_lead_emails(lead, attachments):
             attachments=attachments,
         )
         lead.email_sent = True
+        logger.info(
+            "Funnel lead #%s — notifica inviata a %s via backend %s",
+            lead.pk,
+            settings.LEAD_RECIPIENT_EMAIL,
+            settings.EMAIL_BACKEND,
+        )
     except Exception:
         logger.exception("Errore invio email lead funnel #%s", lead.pk)
 
@@ -99,85 +106,78 @@ def _send_lead_emails(lead, attachments):
             )
             autoresponse.send()
             lead.autoresponse_sent = True
+            logger.info(
+                "Funnel lead #%s — autoresponse inviata a %s",
+                lead.pk,
+                lead.email,
+            )
         except Exception:
             logger.exception("Errore autoresponse lead funnel #%s", lead.pk)
 
     lead.save(update_fields=["email_sent", "autoresponse_sent"])
 
 
-def _funnel_context(request, error=None):
+def _whatsapp_text() -> str:
+    return quote(_("Grandine Ticino - vorrei un preventivo"))
+
+
+def _funnel_forms(request):
+    if request.method == "POST":
+        return (
+            FunnelLeadForm(request.POST, request.FILES, id_prefix="funnel-"),
+            FunnelLeadForm(request.POST, request.FILES, id_prefix="funnel-b-"),
+        )
+    return (
+        FunnelLeadForm(id_prefix="funnel-"),
+        FunnelLeadForm(id_prefix="funnel-b-"),
+    )
+
+
+def _error_state_json(form) -> str:
+    state = funnel_form_error_state(form)
+    return json.dumps(state, ensure_ascii=False) if state else ""
+
+
+def _funnel_context(request, hero_form=None, bottom_form=None):
+    if hero_form is None or bottom_form is None:
+        hero_form, bottom_form = _funnel_forms(request)
     return {
         "page_title": _lazy("Riparazione Grandine Ticino"),
-        "error": error,
+        "hero_form": hero_form,
+        "bottom_form": bottom_form,
+        "hero_form_error_state_json": _error_state_json(hero_form),
+        "bottom_form_error_state_json": _error_state_json(bottom_form),
         "funnel_faq": FUNNEL_FAQ,
         "funnel_mistakes": FUNNEL_MISTAKES,
-        "funnel_mistakes_image": FUNNEL_MISTAKES_IMAGE,
         "funnel_hero_image": FUNNEL_HERO_IMAGE,
         "funnel_workshop_image": FUNNEL_WORKSHOP_IMAGE,
         "funnel_founder_image": FUNNEL_FOUNDER_IMAGE,
         "funnel_brand_logo": FUNNEL_BRAND_LOGO,
         "funnel_proofs": available_grandine_proofs(),
-        "whatsapp_text": "Grandine%20Ticino%20-%20vorrei%20un%20preventivo",
+        "whatsapp_text": _whatsapp_text(),
     }
 
 
 def funnel_grandine(request):
     _capture_utm(request)
-    error = None
+    hero_form, bottom_form = _funnel_forms(request)
 
     if request.method == "POST":
-        full_name = request.POST.get("full_name", "").strip()
-        email = request.POST.get("email", "").strip()
-        telephone = request.POST.get("telephone", "").strip()
-        city = request.POST.get("city", "").strip()
-        delivery_preference = request.POST.get("delivery_preference", "").strip()
-        damage_details = request.POST.get("damage_details", "").strip()
-        vehicle_details = request.POST.get("vehicle_details", "").strip()
-        dent_count_raw = request.POST.get("dent_count", "").strip()
-        images = request.FILES.getlist("images")
-        terms = request.POST.get("terms")
-
-        dent_count = int(dent_count_raw) if dent_count_raw.isdigit() else None
-
-        if not email or not telephone or not city:
-            error = _lazy("Compila tutti i campi obbligatori.")
-        elif not is_valid_phone(telephone):
-            error = _lazy("Inserisci un numero di telefono valido (es. +41 79 123 45 67 o +39 333 123 4567).")
-        elif delivery_preference not in FunnelLead.DeliveryPreference.values:
-            error = _lazy("Seleziona le preferenze di consegna.")
-        elif not terms:
-            error = _lazy("Devi accettare i termini per inviare la richiesta.")
-        elif not images:
-            error = _lazy("Carica almeno una foto del danno.")
-        else:
-            utm = _get_utm(request)
-            lead = FunnelLead.objects.create(
-                full_name=full_name,
-                email=email,
-                telephone=telephone,
-                city=city,
-                delivery_preference=delivery_preference,
-                dent_count=dent_count,
-                damage_details=damage_details,
-                vehicle_details=vehicle_details,
+        if hero_form.is_valid():
+            lead, saved_attachments = hero_form.save_lead(
                 source_domain=request.get_host(),
                 language=request.LANGUAGE_CODE or "it",
-                **utm,
+                utm=_get_utm(request),
             )
-            saved_attachments = []
-            for uploaded in images[:15]:
-                att = FunnelLeadAttachment.objects.create(
-                    lead=lead,
-                    file=uploaded,
-                    original_name=uploaded.name,
-                )
-                saved_attachments.append(att)
-
             _send_lead_emails(lead, saved_attachments)
             request.session["funnel_lead_id"] = lead.pk
             return redirect("funnel_grazie")
 
-    return render(request, "pages/funnel/grandine.html", _funnel_context(request, error=error))
+    return render(
+        request,
+        "pages/funnel/grandine.html",
+        _funnel_context(request, hero_form=hero_form, bottom_form=bottom_form),
+    )
 
 
 def funnel_grazie(request):
@@ -186,4 +186,5 @@ def funnel_grazie(request):
     return render(request, "pages/funnel/grazie.html", {
         "page_title": _lazy("Grazie — richiesta ricevuta"),
         "lead": lead,
+        "whatsapp_text": _whatsapp_text(),
     })

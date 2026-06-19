@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "PDR – Paintless Dent Repair" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "La tecnica K90 di KESI: rimozione professionale di bolli e danni da grandine senza verniciatura. Come funziona, quando si usa e i suoi vantaggi." %}{% endblock %}
+
+{% block content %}
+{% url 'tecnologie' as tx_pu %}
+{% trans "Tecnologie" as tx_pl %}
+{% trans "Tecnica" as tx_ey %}
+{% trans "PDR – Paintless Dent Repair" as tx_h1 %}
+{% trans "La tecnica K90 sviluppata da Salvatore Catania nel 1995: rimozione di bolli e ammaccature lavorando direttamente sulla lamiera, senza stuccatura, carteggiatura o verniciatura." as tx_lead %}
+{% with hero_parent_url=tx_pu hero_parent_label=tx_pl hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/67eab89de519eddf532db423.jpeg" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section">
+  <div class="container">
+    <div class="tech-detail-grid">
+      <div class="tech-detail-main">
+        <p class="eyebrow">{% trans "Cos'è" %}</p>
+        <h2>{% trans "Riparare senza toccare la vernice" %}</h2>
+        <p class="lead">{% trans "Il PDR (Paintless Dent Repair) è un metodo avanzato che permette di rimuovere bolli e ammaccature dalla carrozzeria lavorando sulla lamiera dall'interno o dall'esterno, senza mai dover riverniciare." %}</p>
+        <p>{% trans "A differenza della carrozzeria tradizionale, il PDR non richiede stuccatura, carteggiatura né cabina di verniciatura. Il tecnico usa strumenti di precisione — aste, sollevatori e riflettori LED — per percepire e correggere progressivamente la deformazione fino a ripristinare la forma originale del pannello." %}</p>
+        <p>{% trans "Il risultato è invisibile: la vernice di fabbrica rimane intatta, il valore del veicolo è preservato e i tempi di lavorazione si riducono drasticamente rispetto ai metodi tradizionali." %}</p>
+
+        <p class="eyebrow u-mt-xl">{% trans "Come funziona" %}</p>
+        <h2>{% trans "Il processo passo per passo" %}</h2>
+        <ol class="tech-steps">
+          <li>
+            <strong>{% trans "Ispezione con riflettore LED" %}</strong>
+            <p>{% trans "Il tecnico posiziona un riflettore a linee parallele sulla superficie danneggiata. Le deformazioni appaiono come distorsioni nelle linee riflesse, rendendo visibili anche i danni più sottili." %}</p>
+          </li>
+          <li>
+            <strong>{% trans "Accesso alla lamiera" %}</strong>
+            <p>{% trans "Dove possibile si accede dall'interno del pannello; in alternativa si utilizzano sistemi a tiraggio con colle a freddo applicati sull'esterno senza danneggiare la vernice." %}</p>
+          </li>
+          <li>
+            <strong>{% trans "Lavorazione di precisione" %}</strong>
+            <p>{% trans "Con aste specializzate il tecnico applica microspinte controllate sulla lamiera, correggendo progressivamente la deformazione zona per zona, con costante verifica al riflettore." %}</p>
+          </li>
+          <li>
+            <strong>{% trans "Controllo qualità finale" %}</strong>
+            <p>{% trans "Verifica finale con riflettore e luce radente. Il pannello deve risultare indistinguibile dall'originale sia visivamente che al tatto." %}</p>
+          </li>
+        </ol>
+      </div>
+
+      <aside class="tech-detail-side">
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Quando si usa" %}</p>
+          <ul class="tech-checklist">
+            <li>{% trans "Danni da grandine (singoli o diffusi)" %}</li>
+            <li>{% trans "Urti da parcheggio su porte e parafanghi" %}</li>
+            <li>{% trans "Colpi laterali e ammaccature profonde" %}</li>
+            <li>{% trans "Danni su cofano, tetto e portabagagli" %}</li>
+            <li>{% trans "Preparazione veicoli usati e flotte" %}</li>
+          </ul>
+        </div>
+        <div class="tech-info-box tech-info-box--warn">
+          <p class="eyebrow">{% trans "Quando NON si applica" %}</p>
+          <ul class="tech-checklist tech-checklist--no">
+            <li>{% trans "Vernice gravemente compromessa o crepata" %}</li>
+            <li>{% trans "Danni strutturali o colpi ai bordi dei pannelli" %}</li>
+            <li>{% trans "Ammaccature su alluminio ultraleggero o carbonio" %}</li>
+          </ul>
+        </div>
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Vantaggi chiave" %}</p>
+          <ul class="tech-checklist">
+            <li>{% trans "Vernice originale intatta al 100%" %}</li>
+            <li>{% trans "Tempi di intervento 60–80% inferiori" %}</li>
+            <li>{% trans "Costi ridotti rispetto alla carrozzeria tradizionale" %}</li>
+            <li>{% trans "Nessun solvente né cabina di verniciatura" %}</li>
+            <li>{% trans "Valore del veicolo completamente preservato" %}</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "La nostra tecnica" %}</p>
+      <h2>{% trans "La tecnica K90" %}</h2>
+    </div>
+    <div class="tech-highlight">
+      <blockquote class="founder-quote">
+        {% blocktrans %}"Nel 1995 ho sviluppato la tecnica K90 con un obiettivo preciso: riparare ogni danno senza lasciare traccia. Trent'anni dopo, è ancora il principio guida di ogni intervento KESI."{% endblocktrans %}
+      </blockquote>
+      <p class="lead">— Salvatore Catania, {% trans "fondatore di KESI SA" %}</p>
+      <p>{% trans "La K90 combina strumenti professionali di precisione, lettura avanzata del riflettore e una metodologia collaudata in 30 anni di lavoro su oltre 15'000 veicoli in tutta Europa." %}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Esplora le altre tecnologie" %}</p>
+      <h2>{% trans "Tecnologie correlate" %}</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <h3>{% trans "Scanner AI portabile" %}</h3>
+        <p>{% trans "Rileviamo con precisione tutti i danni prima di ogni intervento PDR: nessuna sorpresa, stima precisa." %}</p>
+        <a href="{% url 'tecnologia_scanner_ai' %}" class="btn btn-outline u-mt-sm">{% trans "Scopri" %}</a>
+      </article>
+      <article class="card">
+        <h3>{% trans "Smart Repair" %}</h3>
+        <p>{% trans "Combinabile con il PDR per trattare in un unico intervento bolli e graffi superficiali." %}</p>
+        <a href="{% url 'tecnologia_smart_repair' %}" class="btn btn-outline u-mt-sm">{% trans "Scopri" %}</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% trans "Il tuo veicolo ha subito un danno?" as cta_h %}
+{% trans "Valutiamo gratuitamente il danno e ti diciamo in pochi minuti se il PDR è la soluzione giusta." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

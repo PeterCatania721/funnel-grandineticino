@@ -1,4 +1,8 @@
-"""Configurazione Django per il funnel Grandineticino.ch."""
+"""Configurazione Django per il sito MVP di KESI SA.
+
+Le impostazioni sensibili e dipendenti dall'ambiente sono lette da variabili
+d'ambiente (vedi .env.example). Default sicuri per lo sviluppo locale.
+"""
 from pathlib import Path
 
 import environ
@@ -7,10 +11,19 @@ from core.company import COMPANY
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(DEBUG=(bool, False))
+env = environ.Env(
+    DEBUG=(bool, False),
+)
+# Carica .env (sito principale) e, se presente, .env.funnel (override solo valori mancanti).
 environ.Env.read_env(BASE_DIR / ".env")
+_funnel_env = BASE_DIR / ".env.funnel"
+if _funnel_env.exists():
+    environ.Env.read_env(_funnel_env, overwrite=False)
 
-SECRET_KEY = env("SECRET_KEY", default="django-insecure-dev-only-change-me")
+SECRET_KEY = env(
+    "SECRET_KEY",
+    default="django-insecure-dev-only-change-me",
+)
 DEBUG = env("DEBUG")
 ALLOWED_HOSTS = env.list(
     "ALLOWED_HOSTS",
@@ -18,6 +31,7 @@ ALLOWED_HOSTS = env.list(
 )
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS", default=[])
 
+FUNNEL_MODE = env.bool("FUNNEL_MODE", default=True)
 FUNNEL_SEND_AUTORESPONSE = env.bool("FUNNEL_SEND_AUTORESPONSE", default=True)
 
 INSTALLED_APPS = [
@@ -57,7 +71,7 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
                 "core.context_processors.company",
-                "core.context_processors.funnel_stats",
+                "core.context_processors.site_content",
             ],
         },
     },
@@ -79,6 +93,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
+# --- Internazionalizzazione (IT / DE / FR / EN) ---
 LANGUAGE_CODE = "it"
 TIME_ZONE = "Europe/Zurich"
 USE_I18N = True
@@ -92,6 +107,7 @@ LANGUAGES = [
 ]
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
+# --- File statici (serviti da WhiteNoise) ---
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_DIRS = [BASE_DIR / "static"]
@@ -105,6 +121,7 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# --- Email ---
 EMAIL_HOST = env("EMAIL_HOST", default="mail.infomaniak.com")
 EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
@@ -113,6 +130,7 @@ EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default=COMPANY.email)
 
 LEAD_RECIPIENT_EMAIL = env("LEAD_RECIPIENT_EMAIL", default=COMPANY.email)
+PREVENTIVO_RECIPIENT_EMAIL = env("PREVENTIVO_RECIPIENT_EMAIL", default=LEAD_RECIPIENT_EMAIL)
 FUNNEL_RECIPIENT_EMAIL = env("FUNNEL_RECIPIENT_EMAIL", default=LEAD_RECIPIENT_EMAIL)
 
 _email_backend = env("EMAIL_BACKEND", default="")
@@ -125,9 +143,11 @@ elif DEBUG:
 else:
     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+# --- Media (allegati lead funnel) ---
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "data" / "media"
 
+# --- Sicurezza in produzione (attiva quando DEBUG=False) ---
 if not DEBUG:
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True

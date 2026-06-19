@@ -28,17 +28,21 @@ echo "sync-shared: da $KESI"
 copy core/company.py core/company.py
 copy core/content.py core/content.py
 
-# CSS/JS base KESI
-copy static/css/main.css static/css/main.css
+# CSS/JS: il funnel mantiene main.css unificato (non sovrascrivere da kesi-site)
+# copy static/css/main.css static/css/main.css  ← funnel repo owns merged CSS
 copy static/js/main.js static/js/main.js
+if [ -d "$KESI/static/fonts" ]; then
+  mkdir -p "$ROOT/static/fonts"
+  cp -R "$KESI/static/fonts/." "$ROOT/static/fonts/"
+fi
 
-# Immagini condivise
+# Immagini condivise (merge con asset funnel già in repo)
+if [ -d "$KESI/static/img" ]; then
+  mkdir -p "$ROOT/static/img"
+  cp -R "$KESI/static/img/." "$ROOT/static/img/"
+fi
 copy static/img/favicon.png static/img/favicon.png
 copy static/img/kesi-founder.jpg static/img/kesi-founder.jpg
-if [ -d "$KESI/static/img/flags" ]; then
-  mkdir -p "$ROOT/static/img/flags"
-  cp -R "$KESI/static/img/flags/." "$ROOT/static/img/flags/"
-fi
 
 # Partial condivisi
 copy templates/partials/stats.html templates/partials/stats.html

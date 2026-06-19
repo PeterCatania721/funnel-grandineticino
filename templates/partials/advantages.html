@@ -1,0 +1,9 @@
+<div class="feature-grid">
+  {% for adv in advantages %}
+  <div class="feature">
+    {% include "partials/advantage-icon.html" %}
+    <h3>{{ adv.title }}</h3>
+    <p>{{ adv.description }}</p>
+  </div>
+  {% endfor %}
+</div>

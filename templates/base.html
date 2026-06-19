@@ -1,0 +1,30 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ company.legal_name }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ company.legal_name }} – {{ company.tagline }}{% endblock %}">
+
+  <link rel="icon" href="{% static 'img/favicon.png' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+  <!-- Alpine.js: interattività leggera -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- HTMX: cambi di stato server-driven -->
+  <script defer src="https://unpkg.com/htmx.org@2.0.3"></script>
+</head>
+<body>
+  {% include "partials/header.html" %}
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+
+  <script src="{% static 'js/tel-prefix.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

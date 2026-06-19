@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Scanner 360° 4-in-1" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "Scanner 360° 4-in-1 di KESI: 16 telecamere, ispezione completa in 15 secondi. Superficie, sottoscocca 4K, profilo gomma e cerchioni 7K. Report AI dettagliato." %}{% endblock %}
+
+{% block content %}
+{% url 'tecnologie' as tx_pu %}
+{% trans "Tecnologie" as tx_pl %}
+{% trans "Scanner" as tx_ey %}
+{% trans "Scanner 360° 4-in-1" as tx_h1 %}
+{% trans "Postazione di ispezione computerizzata con 16 telecamere ad alta risoluzione: scannerizza l'intero veicolo in 15 secondi e produce un report AI dettagliato su superficie, sottoscocca, gomme e cerchioni." as tx_lead %}
+{% with hero_parent_url=tx_pu hero_parent_label=tx_pl hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/6a1d8791bb0618436a45f7e6.jpg" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "I 4 moduli" %}</p>
+      <h2>{% trans "Un sistema, quattro occhi" %}</h2>
+      <p>{% trans "Ogni modulo è ottimizzato per un'area specifica del veicolo. Il risultato è un report completo che nessun occhio umano potrebbe produrre in tempi così rapidi." %}</p>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <div class="card-module-img">
+          <img src="{% static 'img/scanner360-module-1.png' %}" alt="{% trans 'Scanner 360° superficie — mappa danni veicolo' %}" loading="lazy">
+        </div>
+        <h3>{% trans "Scanner 360° superficie" %}</h3>
+        <p>{% trans "Ispezione AI dell'intera superficie esterna del veicolo. Rileva graffi da 1mm, bolli piccoli e grandi con visualizzazione 3D della posizione e dimensione del danno." %}</p>
+      </article>
+      <article class="card">
+        <div class="card-module-img">
+          <img src="{% static 'img/scanner360-module-2.png' %}" alt="{% trans 'Scanner sottoscocca 4K — pannello a pavimento' %}" loading="lazy">
+        </div>
+        <h3>{% trans "Scanner sottoscocca 4K" %}</h3>
+        <p>{% trans "Immagini in 4K dell'intera parte inferiore del veicolo. Ultimo avanzamento nell'ottica computazionale: rileva corrosione, danni strutturali e anomalie invisibili dall'esterno." %}</p>
+      </article>
+      <article class="card">
+        <div class="card-module-img">
+          <img src="{% static 'img/scanner360-module-3.png' %}" alt="{% trans 'Scanner profilo gomma — modulo di misurazione' %}" loading="lazy">
+        </div>
+        <h3>{% trans "Scanner profilo gomma" %}</h3>
+        <p>{% trans "Misurazione automatica della profondità del battistrada su tutte le scanalature di ogni pneumatico in un'unica passata. Disponibile anche per mezzi commerciali." %}</p>
+      </article>
+      <article class="card">
+        <div class="card-module-img">
+          <img src="{% static 'img/scanner360-module-4.png' %}" alt="{% trans 'Scanner laterale ruote 7K — modulo telecamera' %}" loading="lazy">
+        </div>
+        <h3>{% trans "Scanner laterale ruote 7K" %}</h3>
+        <p>{% trans "Immagini in 7K per la lettura del marchio del pneumatico, specifiche tecniche e riconoscimento AI di danni, rigonfiamenti e difetti dei cerchioni." %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <p class="eyebrow">{% trans "Il sistema" %}</p>
+    <h2>{% trans "Lo Scanner 360° in loco" %}</h2>
+    <p class="muted measure">{% trans "Tre installazioni reali: dall'arco con auto d'epoca, all'impianto commerciale ad alto traffico, fino alla postazione completa con workstation dedicata." %}</p>
+    <div class="scanner-hw-grid">
+      <div class="scanner-hw-item">
+        <img src="{% static 'img/scanner360-hw-1.jpg' %}" alt="{% trans 'Scanner 360° — auto d epoca nell arco' %}" loading="lazy">
+      </div>
+      <div class="scanner-hw-item">
+        <img src="{% static 'img/scanner360-hw-2.jpg' %}" alt="{% trans 'Scanner 360° — installazione commerciale' %}" loading="lazy">
+      </div>
+      <div class="scanner-hw-item">
+        <img src="{% static 'img/scanner360-hw-3.jpg' %}" alt="{% trans 'Scanner 360° — sistema completo con workstation' %}" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="tech-detail-grid">
+      <div class="tech-detail-main">
+        <p class="eyebrow">{% trans "Report completo" %}</p>
+        <h2>{% trans "Cosa vede lo Scanner 360°" %}</h2>
+        <p class="lead">{% trans "Il sistema produce automaticamente un report strutturato con la posizione esatta e le dimensioni di ogni danno rilevato, pronto per essere condiviso con il cliente o l'assicurazione." %}</p>
+
+        <div class="report-grid">
+          <div class="report-item">
+            <strong>{% trans "Graffi e bolli" %}</strong>
+            <p>{% trans "Identificazione, visualizzazione luogo e dimensione. Bolli grandi in 3D, bolli piccoli con dettaglio maggiore per stima precisa." %}</p>
+          </div>
+          <div class="report-item">
+            <strong>{% trans "Profilo gomma" %}</strong>
+            <p>{% trans "Rapporto completo della profondità battistrada su tutti e quattro gli pneumatici." %}</p>
+          </div>
+          <div class="report-item">
+            <strong>{% trans "Cerchioni" %}</strong>
+            <p>{% trans "Rapporto preciso dei danni ai cerchioni: graffi, ammaccature, deformazioni." %}</p>
+          </div>
+          <div class="report-item">
+            <strong>{% trans "Sottoscocca" %}</strong>
+            <p>{% trans "Stato preciso del sottoscocca: corrosione, danni strutturali, anomalie." %}</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tech-detail-side">
+        <div class="tech-info-box">
+          <p class="eyebrow">{% trans "Approfondimento" %}</p>
+          <h3 class="info-box-title">{% trans "Vuoi i dettagli completi?" %}</h3>
+          <p class="text-sm muted u-mb-md">{% trans "Configurazioni hardware, dimensioni di installazione, integrazione gestionale e requisiti tecnici li condividiamo direttamente con te in base alle esigenze della tua struttura." %}</p>
+          <a href="{% url 'contatti' %}" class="btn btn-primary btn-sm">{% trans "Contattaci per saperne di più" %}</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <p class="eyebrow">{% trans "Dati reali" %}</p>
+    <h2>{% trans "Risultati AI della scansione" %}</h2>
+    <p class="muted measure">{% trans "Ogni punto rosso è un danno da grandine rilevato dall'algoritmo AI. Le immagini sono in bianco e nero per massimizzare la visibilità delle deformazioni sulla superficie." %}</p>
+    <div class="scan-results-grid">
+      <div class="scan-result-item">
+        <img src="{% static 'img/scanner360-scan-1.jpg' %}" alt="{% trans 'Risultato scansione AI — bolli rilevati sul tetto' %}" loading="lazy">
+      </div>
+      <div class="scan-result-item">
+        <img src="{% static 'img/scanner360-scan-2.jpg' %}" alt="{% trans 'Risultato scansione AI — bolli sul cofano' %}" loading="lazy">
+      </div>
+      <div class="scan-result-item">
+        <img src="{% static 'img/scanner360-scan-3.jpg' %}" alt="{% trans 'Risultato scansione AI — danni laterali' %}" loading="lazy">
+      </div>
+      <div class="scan-result-item">
+        <img src="{% static 'img/scanner360-scan-4.jpg' %}" alt="{% trans 'Risultato scansione AI — portellone posteriore' %}" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">{% trans "In azione" %}</p>
+    <h2>{% trans "Lo Scanner 360° durante la scansione" %}</h2>
+    <p class="muted measure">{% trans "Il veicolo percorre l'arco a passo d'uomo: 16 telecamere catturano migliaia di immagini in 15 secondi, l'AI elabora e genera il report istantaneamente." %}</p>
+    <div class="video-grid">
+      <div class="video-item">
+        <video width="2048" height="2448" controls preload="metadata" playsinline poster="{% static 'img/poster-scanner360-1.jpg' %}">
+          <source src="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/08938bc1-db4a-4fdf-8269-c18ad1a3396f.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">{% trans "Scansione completa del veicolo — vista frontale" %}</p>
+      </div>
+      <div class="video-item">
+        <video width="2048" height="2448" controls preload="metadata" playsinline poster="{% static 'img/poster-scanner360-2.jpg' %}">
+          <source src="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/ee769151-38ec-4723-a733-b0ce9b645990.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">{% trans "Rilevamento bolli grandine — analisi AI in tempo reale" %}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Per chi è ideale" %}</p>
+      <h2>{% trans "Applicazioni principali" %}</h2>
+    </div>
+    <div class="cards">
+      <article class="card">
+        <h3>{% trans "Assicurazioni e perizie" %}</h3>
+        <p>{% trans "Report oggettivo e verificabile in 15 secondi: elimina le dispute sul danno preesistente e accelera la liquidazione dei sinistri." %}</p>
+      </article>
+      <article class="card">
+        <h3>{% trans "Concessionari e usato" %}</h3>
+        <p>{% trans "Valutazione precisa del veicolo in ingresso: stima del costo di rimessa in pristino e documentazione completa per l'acquirente." %}</p>
+      </article>
+      <article class="card">
+        <h3>{% trans "Gestione flotte" %}</h3>
+        <p>{% trans "Ispezione sistematica di ogni veicolo in entrata e uscita: tracciabilità completa dei danni, responsabilità chiara, costi contenuti." %}</p>
+      </article>
+      <article class="card">
+        <h3>{% trans "Drive-in grandine" %}</h3>
+        <p>{% trans "Dopo un evento di grandine: scansione rapida di tutti i veicoli colpiti, stima automatica e prioritizzazione degli interventi per i tecnici PDR." %}</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% trans "Vuoi lo Scanner 360° presso la tua struttura?" as cta_h %}
+{% trans "Offriamo il servizio di scansione direttamente in loco. Contattaci per valutare insieme la soluzione più adatta alla tua realtà." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

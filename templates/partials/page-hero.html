@@ -1,0 +1,9 @@
+{% load i18n %}
+<section class="page-hero{% if hero_class %} {{ hero_class }}{% endif %}"{% if hero_bg_image %} style="background-image: linear-gradient({% if hero_bg_overlay %}{{ hero_bg_overlay }}{% else %}rgba(0,0,0,0.62){% endif %}, {% if hero_bg_overlay %}{{ hero_bg_overlay }}{% else %}rgba(0,0,0,0.62){% endif %}), url('{{ hero_bg_image }}'); background-size: cover; background-position: center;"{% endif %}>
+  <div class="container">
+    <p class="eyebrow">{% if hero_parent_url %}<a href="{{ hero_parent_url }}">{{ hero_parent_label }}</a> · {% endif %}{{ hero_eyebrow }}</p>
+    <h1>{{ hero_h1 }}</h1>
+    {% if hero_lead %}<p class="lead">{{ hero_lead }}</p>{% endif %}
+  </div>
+  <div class="hero-wave" aria-hidden="true"></div>
+</section>

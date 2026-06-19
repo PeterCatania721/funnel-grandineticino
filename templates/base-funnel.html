@@ -10,9 +10,8 @@
 
   <link rel="icon" href="{% static 'img/favicon.png' %}">
   <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  <link rel="stylesheet" href="{% static 'css/funnel.css' %}">
 
-  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
 </head>
 <body class="funnel-body funnel-page">
   {% include "partials/funnel-header.html" %}
@@ -23,8 +22,26 @@
 
   {% include "partials/funnel-footer.html" %}
 
-  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+  window.FUNNEL_I18N = {
+    stepLabels: [
+      "{% filter escapejs %}{% trans 'Contatto' %}{% endfilter %}",
+      "{% filter escapejs %}{% trans 'Foto' %}{% endfilter %}",
+      "{% filter escapejs %}{% trans 'Invio' %}{% endfilter %}"
+    ],
+    acceptTerms: "{% filter escapejs %}{% trans 'Accetta i termini per continuare.' %}{% endfilter %}",
+    uploadRequired: "{% filter escapejs %}{% trans 'Carica almeno una foto del danno.' %}{% endfilter %}",
+    uploadTooLarge: "{% filter escapejs %}{% trans 'Totale allegati troppo grande per l\'invio via email. Rimuovi alcuni file fino a tornare sotto i 20 MB.' %}{% endfilter %}",
+    removeFile: "{% filter escapejs %}{% trans 'Rimuovi' %}{% endfilter %}",
+    invalidPhone: "{% filter escapejs %}{% trans 'Inserisci un numero di telefono valido (es. +41 79 123 45 67 o +39 333 123 4567).' %}{% endfilter %}",
+    invalidEmail: "{% filter escapejs %}{% trans 'Inserisci un indirizzo email valido.' %}{% endfilter %}",
+    selectDelivery: "{% filter escapejs %}{% trans 'Seleziona la preferenza di appuntamento.' %}{% endfilter %}",
+    requiredFields: "{% filter escapejs %}{% trans 'Compila tutti i campi obbligatori.' %}{% endfilter %}"
+  };
+  </script>
+  <script src="{% static 'js/tel-prefix.js' %}"></script>
   <script src="{% static 'js/funnel.js' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
   {% block extra_js %}{% endblock %}
 </body>
 </html>

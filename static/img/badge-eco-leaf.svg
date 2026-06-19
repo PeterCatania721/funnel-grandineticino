@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 184" role="img" aria-hidden="true">
+  <circle cx="92" cy="92" r="92" fill="#30B05D"/>
+
+  <!-- Leaf body -->
+  <path d="M92 32
+           C 56 50, 44 82, 92 130
+           C 140 82, 128 50, 92 32 Z"
+        fill="white"/>
+
+  <!-- Stem -->
+  <path d="M92 130 Q89 144 82 152"
+        fill="none" stroke="white" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Central vein (green on white) -->
+  <line x1="92" y1="40" x2="92" y2="124"
+        stroke="#30B05D" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Lateral veins  left -->
+  <line x1="92" y1="64"  x2="68"  y2="82"  stroke="#30B05D" stroke-width="2" stroke-linecap="round"/>
+  <line x1="92" y1="82"  x2="60"  y2="100" stroke="#30B05D" stroke-width="2" stroke-linecap="round"/>
+  <line x1="92" y1="100" x2="66"  y2="116" stroke="#30B05D" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Lateral veins  right -->
+  <line x1="92" y1="64"  x2="116" y2="82"  stroke="#30B05D" stroke-width="2" stroke-linecap="round"/>
+  <line x1="92" y1="82"  x2="124" y2="100" stroke="#30B05D" stroke-width="2" stroke-linecap="round"/>
+  <line x1="92" y1="100" x2="118" y2="116" stroke="#30B05D" stroke-width="2" stroke-linecap="round"/>
+</svg>

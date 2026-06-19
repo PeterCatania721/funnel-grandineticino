@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "Servizi" %} — {{ company.legal_name }}{% endblock %}
+{% block description %}{% trans "I servizi KESI: PDR senza verniciatura, carrozzeria alternativa, Smart Repair, scanner AI, servizio mobile e gestione grandi volumi." %}{% endblock %}
+
+{% block content %}
+{% trans "Cosa facciamo" as tx_ey %}
+{% trans "Servizi" as tx_h1 %}
+{% trans "Carrozzeria alternativa per ogni esigenza: dai piccoli danni ai grandi volumi, sempre con la massima cura del veicolo." as tx_lead %}
+{% with hero_eyebrow=tx_ey hero_h1=tx_h1 hero_lead=tx_lead hero_bg_image="https://assets.cdn.filesafe.space/2WBwyq6vtWDbHIdzNpFi/media/67f5412bb02b5e349545d6ee.png" %}{% include "partials/page-hero.html" %}{% endwith %}
+
+<section class="section">
+  <div class="container">
+    <div class="cards">
+      {% for service in services %}
+      <article class="card">
+        {% if service.image %}<img src="{{ service.image }}" alt="{{ service.name }}" class="card-img">{% endif %}
+        <span class="card-num">{{ forloop.counter|stringformat:"02d" }}</span>
+        <h3>{{ service.name }}</h3>
+        <p>{{ service.description }}</p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt section-floating">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">{% trans "Il metodo" %}</p>
+      <h2>{% trans "PDR – Paintless Dent Repair" %}</h2>
+    </div>
+    <p class="lead">
+      {% blocktrans %}Il PDR rimuove bolli e ammaccature lavorando direttamente sulla lamiera, senza stuccatura, carteggiatura o verniciatura. Eliminando i passaggi superflui riduciamo tempi, materiali e costi, mantenendo intatta la vernice originale del veicolo.{% endblocktrans %}
+    </p>
+    <p class="lead">
+      {% blocktrans %}È la soluzione ideale per danni da grandine, urti da parcheggio e colpi accidentali, purché la vernice non sia gravemente compromessa. Può essere combinato con lo Smart Repair per interventi mirati.{% endblocktrans %}
+    </p>
+    <p class="eyebrow u-mt-md">{% trans "Danni da grandine" %}</p>
+    {% include "partials/ba-pairs.html" with funnel_proofs=grandine_proofs %}
+    <p class="eyebrow u-mt-lg">{% trans "Urti da parcheggio" %}</p>
+    <div class="before-after">
+      <div class="ba-item">
+        <img src="{% static 'img/before-parcheggio-1.jpg' %}" alt="{% trans 'Prima: urto da parcheggio sulla portiera' %}">
+        <span class="ba-label">{% trans "Prima" %}</span>
+      </div>
+      <div class="ba-item">
+        <img src="{% static 'img/after-parcheggio-1.jpg' %}" alt="{% trans 'Dopo: portiera ripristinata con PDR' %}">
+        <span class="ba-label after">{% trans "Dopo" %}</span>
+      </div>
+    </div>
+    <div class="before-after u-mt-md">
+      <div class="ba-item">
+        <img src="{% static 'img/before-parcheggio-2.jpg' %}" alt="{% trans 'Prima: ammaccatura profonda sul parafango anteriore' %}">
+        <span class="ba-label">{% trans "Prima" %}</span>
+      </div>
+      <div class="ba-item">
+        <img src="{% static 'img/after-parcheggio-2.jpg' %}" alt="{% trans 'Dopo: parafango ripristinato senza verniciatura' %}">
+        <span class="ba-label after">{% trans "Dopo" %}</span>
+      </div>
+    </div>
+    <p class="eyebrow u-mt-lg">{% trans "Colpi laterali" %}</p>
+    <div class="before-after">
+      <div class="ba-item">
+        <img src="{% static 'img/after-colpo-laterale-1.jpg' %}" alt="{% trans 'Prima: colpo laterale sulla fiancata, deformazione profonda' %}">
+        <span class="ba-label">{% trans "Prima" %}</span>
+      </div>
+      <div class="ba-item">
+        <img src="{% static 'img/before-colpo-laterale-1.jpg' %}" alt="{% trans 'Dopo: fiancata completamente ripristinata con PDR' %}">
+        <span class="ba-label after">{% trans "Dopo" %}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="scanner-section">
+      <div class="scanner-text">
+        <p class="eyebrow">{% trans "Tecnologia" %}</p>
+        <h2>{% trans "Scanner AI Movable" %}</h2>
+        <p class="lead">{% trans "Il nostro scanner AI portatile individua con precisione tutti i danni sulla carrozzeria, anche quelli invisibili a occhio nudo. Ideale per drive-in, perizie rapide e grandi volumi." %}</p>
+        <p class="lead">{% trans "Utilizzato direttamente in loco, elimina i tempi di trasporto e riduce i costi di perizia per assicurazioni, concessionari e flotte." %}</p>
+      </div>
+      <div class="scanner-img">
+        <img src="{% static 'img/kesi-scanner.jpg' %}" alt="{% trans 'KESI Movable AI Scanner: sistema di scansione danni in azione' %}" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% trans "Hai un veicolo o una flotta da riparare?" as cta_h %}
+{% trans "Raccontaci la tua esigenza: troviamo la soluzione più rapida ed efficiente." as cta_l %}
+{% with cta_heading=cta_h cta_lead=cta_l %}{% include "partials/cta.html" %}{% endwith %}
+{% endblock %}

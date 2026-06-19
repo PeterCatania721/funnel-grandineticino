@@ -21,7 +21,7 @@
       </div>
 
       <div class="funnel-grazie-actions">
-        <a href="https://wa.me/{{ company.phone_href|cut:'+' }}?text=Grandine%20Ticino" class="btn btn-primary" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://wa.me/{{ company.phone_href|cut:'+' }}?text={{ whatsapp_text }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="tel:{{ company.phone_href }}" class="btn btn-outline-dark">{% trans "Chiama" %} {{ company.phone }}</a>
         <a href="{% url 'funnel_home' %}" class="btn btn-outline-dark">{% trans "Torna alla pagina" %}</a>
       </div>
