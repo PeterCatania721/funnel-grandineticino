@@ -2,7 +2,24 @@
    ======================================================================== */
 
 .funnel-page {
-  font-family: var(--font-sans);
+  --font-sans: "Cooper Hewitt", sans-serif;
+  font-family: "Cooper Hewitt", sans-serif;
+}
+
+.funnel-page :where(
+  h1, h2, h3, h4, h5, h6,
+  p, li, a, span, label, small, strong, em, b, i,
+  button, input, textarea, select, option,
+  th, td, caption, dt, dd, blockquote, figcaption,
+  .btn, .eyebrow, .hero-title, .hero-lead,
+  .stat-value, .stat-label, .funnel-form-step-label,
+  .prev-label, .prev-upload-text, .lang-code
+) {
+  font-family: inherit;
+}
+
+.funnel-page ::placeholder {
+  font-family: inherit;
 }
 
 .funnel-page .funnel-section .section-head {

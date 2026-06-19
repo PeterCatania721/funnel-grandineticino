@@ -2522,7 +2522,8 @@ h1, h2, h3 { line-height: var(--leading-tight); font-weight: var(--font-bold); }
    ======================================================================== */
 
 .funnel-page {
-  font-family: var(--font-sans);
+  --font-sans: "Cooper Hewitt", sans-serif;
+  font-family: "Cooper Hewitt", sans-serif;
   /* Tipografia funnel — numeri arancioni e liste */
   --funnel-num-size: 1.5rem;
   --funnel-list-size: var(--text-lg);
@@ -2533,6 +2534,23 @@ h1, h2, h3 { line-height: var(--leading-tight); font-weight: var(--font-bold); }
   --funnel-body-size: var(--text-body);
   --funnel-body-weight: var(--font-medium);
   --funnel-body-line: var(--leading-relaxed);
+}
+
+/* Cooper Hewitt su tutti i testi del funnel (titoli, form, tabelle, CTA, footer). */
+.funnel-page :where(
+  h1, h2, h3, h4, h5, h6,
+  p, li, a, span, label, small, strong, em, b, i,
+  button, input, textarea, select, option,
+  th, td, caption, dt, dd, blockquote, figcaption,
+  .btn, .eyebrow, .hero-title, .hero-lead,
+  .stat-value, .stat-label, .funnel-form-step-label,
+  .prev-label, .prev-upload-text, .lang-code
+) {
+  font-family: inherit;
+}
+
+.funnel-page ::placeholder {
+  font-family: inherit;
 }
 
 @media (min-width: 900px) {
