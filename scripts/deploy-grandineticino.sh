@@ -5,11 +5,11 @@
 # Uso (sul VPS):
 #   ./scripts/deploy-grandineticino.sh
 #
-# Prerequisiti:
-#   - Docker + Traefik già attivi (come per kesi-automotive.ch)
-#   - DNS grandineticino.ch → IP del VPS (Infomaniak)
-#   - EMAIL_HOST_PASSWORD da Infisical: KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD
-#     (mittente/server sempre info@kesi.biz)
+# Email (regola fissa):
+#   - mittente/SMTP user/destinatari = sempre info@kesi.biz
+#   - password = SEMPRE da Infisical KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD
+#     (a ogni deploy; non resta bloccata su un valore vecchio in .env)
+#   - a runtime il container re-inietta da Infisical via infisical-entrypoint.sh
 
 set -euo pipefail
 
@@ -18,10 +18,11 @@ REPO_URL="${REPO_URL:-https://github.com/PeterCatania721/funnel-grandineticino.g
 BRANCH="${BRANCH:-main}"
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.yaml}"
 ENV_FILE="${ENV_FILE:-.env}"
-KESI_DIR="${KESI_DIR:-/opt/sites/kesi-site}"
-# Casella SMTP fissa
+IDENTITY_FILE="${IDENTITY_FILE:-.env.identity}"
 EMAIL_IDENTITY="${EMAIL_IDENTITY:-info@kesi.biz}"
 INFISICAL_EMAIL_KEY="${INFISICAL_EMAIL_KEY:-KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD}"
+# Default: SEMPRE riscrivi password da Infisical (solo se FORCE_EMAIL_PASSWORD=0 si salta)
+FORCE_EMAIL_PASSWORD="${FORCE_EMAIL_PASSWORD:-1}"
 
 log() { echo "==> $*"; }
 die() { echo "ERRORE: $*" >&2; exit 1; }
@@ -38,11 +39,38 @@ done
 
 if [[ ! -d "$DEPLOY_DIR" ]]; then
   log "Creo $DEPLOY_DIR"
-  sudo mkdir -p "$DEPLOY_DIR"
-  sudo chown "$(whoami):$(id -gn)" "$DEPLOY_DIR"
+  mkdir -p "$DEPLOY_DIR"
 fi
 
 cd "$DEPLOY_DIR"
+
+# Preserve secrets across git update
+preserve_secret_files() {
+  local f
+  for f in "$ENV_FILE" "$IDENTITY_FILE" config.env; do
+    if [[ -f "$f" ]]; then
+      cp -a "$f" "/tmp/funnel-preserve-${f//\//_}.$$"
+    fi
+  done
+}
+restore_secret_files() {
+  local f src
+  for f in "$ENV_FILE" "$IDENTITY_FILE" config.env; do
+    src="/tmp/funnel-preserve-${f//\//_}.$$"
+    if [[ -f "$src" ]]; then
+      # config.env: prefer repo version if present (non-secret), but keep identity/.env
+      if [[ "$f" == "config.env" && -f config.env ]]; then
+        rm -f "$src"
+        continue
+      fi
+      cp -a "$src" "$f"
+      rm -f "$src"
+      chmod 600 "$f" 2>/dev/null || true
+    fi
+  done
+}
+
+preserve_secret_files
 
 if [[ ! -d .git ]]; then
   log "Clone repository…"
@@ -50,54 +78,88 @@ if [[ ! -d .git ]]; then
 else
   log "Aggiorno repository (branch $BRANCH)…"
   git fetch origin "$BRANCH"
+  # Discard local tracked drift (compose/Dockerfile) — secrets are outside git
   git checkout "$BRANCH"
-  git pull origin "$BRANCH"
+  git reset --hard "origin/$BRANCH"
 fi
+
+restore_secret_files
 
 if [[ ! -f "$ENV_FILE" ]]; then
   if [[ -f .env.production.example ]]; then
     cp .env.production.example "$ENV_FILE"
-    log "Creato $ENV_FILE da example — COMPILA SECRET_KEY e EMAIL_HOST_PASSWORD."
+    chmod 600 "$ENV_FILE"
+    log "Creato $ENV_FILE da example — SECRET_KEY verrà generato se placeholder."
   else
-    die "Manca $ENV_FILE. Copia .env.production.example e compila i valori."
+    die "Manca $ENV_FILE."
   fi
 fi
 
-# Forza sempre mittente/SMTP user/destinatari su info@kesi.biz
-set_env_kv() {
-  local key="$1" val="$2"
-  if grep -q "^${key}=" "$ENV_FILE" 2>/dev/null; then
-    sed -i "s|^${key}=.*|${key}=${val}|" "$ENV_FILE"
+# SECRET_KEY se ancora placeholder
+if grep -q 'GENERA-CON-python' "$ENV_FILE" 2>/dev/null || ! grep -q '^SECRET_KEY=.\+' "$ENV_FILE" 2>/dev/null; then
+  sk=$(python3 -c 'import secrets; print(secrets.token_urlsafe(50))')
+  if grep -q '^SECRET_KEY=' "$ENV_FILE"; then
+    sed -i "s|^SECRET_KEY=.*|SECRET_KEY=${sk}|" "$ENV_FILE"
   else
-    echo "${key}=${val}" >> "$ENV_FILE"
+    echo "SECRET_KEY=${sk}" >> "$ENV_FILE"
   fi
+  log "SECRET_KEY generata."
+  unset sk
+fi
+
+set_env_kv() {
+  local key="$1" val="$2" file="${3:-$ENV_FILE}"
+  python3 - "$file" "$key" "$val" <<'PY'
+import sys
+from pathlib import Path
+path, key, val = Path(sys.argv[1]), sys.argv[2], sys.argv[3]
+lines = path.read_text().splitlines() if path.exists() else []
+out, found = [], False
+for line in lines:
+    if line.startswith(key + "="):
+        out.append(f"{key}={val}")
+        found = True
+    else:
+        out.append(line)
+if not found:
+    out.append(f"{key}={val}")
+path.write_text("\n".join(out) + "\n")
+PY
 }
-set_env_kv EMAIL_HOST mail.infomaniak.com
-set_env_kv EMAIL_PORT 587
-set_env_kv EMAIL_USE_TLS True
-set_env_kv EMAIL_HOST_USER "$EMAIL_IDENTITY"
-set_env_kv DEFAULT_FROM_EMAIL "$EMAIL_IDENTITY"
-set_env_kv LEAD_RECIPIENT_EMAIL "$EMAIL_IDENTITY"
-set_env_kv FUNNEL_RECIPIENT_EMAIL "$EMAIL_IDENTITY"
+
+# Sempre identity email fissa
+for f in "$ENV_FILE" config.env; do
+  [[ -f "$f" ]] || continue
+  set_env_kv EMAIL_HOST mail.infomaniak.com "$f"
+  set_env_kv EMAIL_PORT 587 "$f"
+  set_env_kv EMAIL_USE_TLS True "$f"
+  set_env_kv EMAIL_HOST_USER "$EMAIL_IDENTITY" "$f"
+  set_env_kv DEFAULT_FROM_EMAIL "$EMAIL_IDENTITY" "$f"
+  set_env_kv LEAD_RECIPIENT_EMAIL "$EMAIL_IDENTITY" "$f"
+  set_env_kv FUNNEL_RECIPIENT_EMAIL "$EMAIL_IDENTITY" "$f"
+done
+# config.env: path Infisical root (dove sta la password)
+if [[ -f config.env ]]; then
+  set_env_kv INFISICAL_SECRET_PATH / config.env
+  set_env_kv INFISICAL_SECRET_ENV prod config.env
+fi
 log "Email SMTP impostata su $EMAIL_IDENTITY"
 
-# Password: 1) Infisical key  2) env già presente  3) kesi-site .env (legacy)
-resolve_email_password() {
-  if [[ -n "${EMAIL_HOST_PASSWORD:-}" ]]; then
-    echo "$EMAIL_HOST_PASSWORD"
-    return 0
-  fi
-  if command -v infisical >/dev/null 2>&1 && [[ -f "${INFISICAL_ENV_FILE:-/root/.infisical-peter-agents.env}" || -n "${INFISICAL_TOKEN:-}" ]]; then
-    :
-  fi
-  # Wrapper locale (Mac/agent) o secret già esportato
+resolve_email_password_from_infisical() {
+  # 1) già in env del processo (deploy da agent con infisical run)
   if [[ -n "${KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD:-}" ]]; then
     echo "$KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD"
     return 0
   fi
+  if [[ -n "${EMAIL_HOST_PASSWORD:-}" && "${FORCE_EMAIL_PASSWORD}" != "1" ]]; then
+    echo "$EMAIL_HOST_PASSWORD"
+    return 0
+  fi
+
+  # 2) host wrapper Mac/agent
   local get_script="${INFISICAL_GET:-}"
-  if [[ -z "$get_script" && -x "$HOME/.grok/skills/infisical-vps/scripts/infisical-get.sh" ]]; then
-    get_script="$HOME/.grok/skills/infisical-vps/scripts/infisical-get.sh"
+  if [[ -z "$get_script" && -x "${HOME}/.grok/skills/infisical-vps/scripts/infisical-get.sh" ]]; then
+    get_script="${HOME}/.grok/skills/infisical-vps/scripts/infisical-get.sh"
   fi
   if [[ -n "$get_script" && -x "$get_script" ]]; then
     local p
@@ -116,7 +178,47 @@ resolve_email_password() {
       return 0
     fi
   fi
-  if grep -q '^EMAIL_HOST_PASSWORD=.\+' "$ENV_FILE" 2>/dev/null; then
+
+  # 3) CLI Infisical sul VPS + identity file
+  if command -v infisical >/dev/null 2>&1 && [[ -f "$IDENTITY_FILE" ]]; then
+    # shellcheck disable=SC1090
+    set -a
+    # shellcheck source=/dev/null
+    source "$IDENTITY_FILE"
+    set +a
+    if [[ -n "${INFISICAL_MACHINE_CLIENT_ID:-}" && -n "${INFISICAL_MACHINE_CLIENT_SECRET:-}" && -n "${INFISICAL_PROJECT_ID:-}" ]]; then
+      local api env_name path token login_out p
+      api="${INFISICAL_API_URL:-https://agents-infisical.srv1663152.hstgr.cloud}"
+      env_name="${INFISICAL_SECRET_ENV:-prod}"
+      path="${INFISICAL_SECRET_PATH:-/}"
+      login_out=$(infisical login \
+        --method=universal-auth \
+        --client-id="$INFISICAL_MACHINE_CLIENT_ID" \
+        --client-secret="$INFISICAL_MACHINE_CLIENT_SECRET" \
+        --domain="$api" \
+        --plain --silent 2>&1 || true)
+      token=$(printf '%s\n' "$login_out" | grep -o 'eyJ[^ ]*' | head -1 || true)
+      if [[ -z "$token" ]]; then
+        token=$(printf '%s\n' "$login_out" | tail -1 | tr -d '\r\n')
+      fi
+      if [[ -n "$token" ]]; then
+        p=$(infisical secrets get "$INFISICAL_EMAIL_KEY" \
+          --token="$token" \
+          --domain="$api" \
+          --env="$env_name" \
+          --path="$path" \
+          --projectId="$INFISICAL_PROJECT_ID" \
+          --plain 2>/dev/null | tr -d '\r' | tail -1 || true)
+        if [[ -n "$p" && "$p" != *"error"* ]]; then
+          echo "$p"
+          return 0
+        fi
+      fi
+    fi
+  fi
+
+  # 4) solo se non forziamo: password già in .env
+  if [[ "${FORCE_EMAIL_PASSWORD}" != "1" ]] && grep -q '^EMAIL_HOST_PASSWORD=.\+' "$ENV_FILE" 2>/dev/null; then
     local existing
     existing=$(grep -E '^EMAIL_HOST_PASSWORD=' "$ENV_FILE" | cut -d= -f2- || true)
     case "$existing" in
@@ -124,24 +226,42 @@ resolve_email_password() {
       *) echo "$existing"; return 0 ;;
     esac
   fi
-  if [[ -f "$KESI_DIR/.env" ]]; then
-    local kesi_pass
-    kesi_pass=$(grep -E '^EMAIL_HOST_PASSWORD=' "$KESI_DIR/.env" | cut -d= -f2- || true)
-    if [[ -n "$kesi_pass" && "$kesi_pass" != "INSERISCI-PASSWORD-CASELLA" ]]; then
-      log "EMAIL_HOST_PASSWORD da $KESI_DIR/.env (fallback legacy)."
-      echo "$kesi_pass"
-      return 0
-    fi
-  fi
   return 1
 }
 
-if email_pass=$(resolve_email_password); then
+if email_pass=$(resolve_email_password_from_infisical); then
   set_env_kv EMAIL_HOST_PASSWORD "$email_pass"
-  log "EMAIL_HOST_PASSWORD impostata (fonte: Infisical $INFISICAL_EMAIL_KEY o fallback)."
+  log "EMAIL_HOST_PASSWORD aggiornata da Infisical ($INFISICAL_EMAIL_KEY, len=${#email_pass})."
   unset email_pass
 else
-  die "Impossibile risolvere EMAIL_HOST_PASSWORD. Esporta $INFISICAL_EMAIL_KEY o imposta EMAIL_HOST_PASSWORD."
+  if [[ -f "$IDENTITY_FILE" ]]; then
+    log "Password non letta a deploy-time — il container la prenderà da Infisical all'avvio."
+  else
+    die "Impossibile risolvere $INFISICAL_EMAIL_KEY. Installa $IDENTITY_FILE o esporta la secret."
+  fi
+fi
+
+if [[ ! -f "$IDENTITY_FILE" ]]; then
+  log "ATTENZIONE: manca $IDENTITY_FILE (machine identity Infisical). Runtime userà solo .env."
+else
+  # sanity: identity non vuota
+  id_ok=$(python3 - <<PY
+from pathlib import Path
+p=Path("$IDENTITY_FILE")
+vals={}
+for line in p.read_text().splitlines():
+    if "=" in line:
+        k,v=line.split("=",1)
+        vals[k]=v.strip()
+need=["INFISICAL_PROJECT_ID","INFISICAL_MACHINE_CLIENT_ID","INFISICAL_MACHINE_CLIENT_SECRET"]
+print("ok" if all(vals.get(k) for k in need) else "empty")
+PY
+)
+  if [[ "$id_ok" != "ok" ]]; then
+    die "$IDENTITY_FILE ha valori vuoti — popola la machine identity Infisical."
+  fi
+  chmod 600 "$IDENTITY_FILE"
+  log "Infisical identity OK ($IDENTITY_FILE)."
 fi
 
 PLACEHOLDER_PASSWORDS=(
@@ -152,26 +272,40 @@ PLACEHOLDER_PASSWORDS=(
   'la-tua-password-infomaniak'
 )
 for placeholder in "${PLACEHOLDER_PASSWORDS[@]}"; do
-  if grep -q "$placeholder" "$ENV_FILE"; then
-    die "EMAIL_HOST_PASSWORD è ancora un placeholder ($placeholder). Usa Infisical $INFISICAL_EMAIL_KEY."
+  if grep -q "$placeholder" "$ENV_FILE" 2>/dev/null; then
+    # SECRET_KEY placeholder already handled; password may be injected only at runtime
+    if grep -q "EMAIL_HOST_PASSWORD=.*${placeholder}" "$ENV_FILE" 2>/dev/null; then
+      if [[ ! -f "$IDENTITY_FILE" ]]; then
+        die "EMAIL_HOST_PASSWORD placeholder e identity assente."
+      fi
+    fi
   fi
 done
 
-if grep -q 'GENERA-CON-python' "$ENV_FILE"; then
-  die "Compila SECRET_KEY in $DEPLOY_DIR/$ENV_FILE"
-fi
-
 log "Build e avvio funnel-grandineticino…"
 docker compose -f "$COMPOSE_FILE" build --pull
-docker compose -f "$COMPOSE_FILE" up -d
+docker compose -f "$COMPOSE_FILE" up -d --force-recreate
 
 log "Attendo avvio container…"
-sleep 5
+sleep 8
 
 if ! docker ps --format '{{.Names}}' | grep -qx 'funnel-grandineticino'; then
-  docker compose -f "$COMPOSE_FILE" logs --tail=40
+  docker compose -f "$COMPOSE_FILE" logs --tail=50
   die "funnel-grandineticino non è in esecuzione."
 fi
+
+log "Verifica email runtime…"
+docker exec funnel-grandineticino python - <<'PY'
+import os, django
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+django.setup()
+from django.conf import settings
+assert settings.EMAIL_HOST_USER == "info@kesi.biz", settings.EMAIL_HOST_USER
+assert settings.DEFAULT_FROM_EMAIL == "info@kesi.biz"
+assert settings.LEAD_RECIPIENT_EMAIL == "info@kesi.biz"
+assert len(settings.EMAIL_HOST_PASSWORD or "") >= 8, "password missing"
+print("OK", settings.EMAIL_HOST_USER, settings.EMAIL_HOST, "pass_len", len(settings.EMAIL_HOST_PASSWORD))
+PY
 
 log "Container attivo:"
 docker ps --filter name=funnel-grandineticino --format 'table {{.Names}}\t{{.Status}}\t{{.Ports}}'
@@ -179,9 +313,6 @@ docker ps --filter name=funnel-grandineticino --format 'table {{.Names}}\t{{.Sta
 SERVER_IP=$(curl -fsS --max-time 5 ifconfig.me 2>/dev/null || hostname -I | awk '{print $1}')
 log ""
 log "Deploy completato."
-log "DNS Infomaniak (se non fatto):"
-log "  A    grandineticino.ch     → $SERVER_IP"
-log "  A    www.grandineticino.ch → $SERVER_IP"
-log ""
 log "Verifica: curl -sI https://grandineticino.ch/it/ | head -5"
 log "Log:      docker compose -f $COMPOSE_FILE logs -f --tail=50"
+log "IP: $SERVER_IP"

@@ -24,12 +24,25 @@ Senza submodule: `./scripts/sync-shared.sh /path/to/kesi-site`
 
 ## Produzione (Hostinger VPS + Traefik)
 
-Come `kesi-site`: `docker-compose.prod.yml` con label Traefik e `build: .`.
+Path VPS: `/docker/funnel-grandineticino`.
 
 ```bash
-docker compose -f docker-compose.prod.yml up -d --build
+# sul VPS (dopo aver installato .env.identity con machine identity Infisical)
+./scripts/deploy-grandineticino.sh
 ```
 
-Variabili obbligatorie in `.env`: `SECRET_KEY`, `ALLOWED_HOSTS`, `CSRF_TRUSTED_ORIGINS`, `EMAIL_HOST_PASSWORD`.
+File sul server (non in git i secret):
 
-**Email produzione:** mittente/SMTP user e destinatari lead sono sempre `info@kesi.biz` (Infomaniak). La password va presa da Infisical come `KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD` e mappata su `EMAIL_HOST_PASSWORD` (vedi `scripts/deploy-grandineticino.sh`).
+| File | Contenuto |
+|------|-----------|
+| `config.env` | non-secret (host, `info@kesi.biz`, path Infisical `/`) |
+| `.env` | `SECRET_KEY` (+ cache password solo se serve fallback) |
+| `.env.identity` | `INFISICAL_PROJECT_ID`, `INFISICAL_MACHINE_CLIENT_ID`, `INFISICAL_MACHINE_CLIENT_SECRET` |
+
+**Email (regola fissa, non cambiare a meno di richiesta esplicita):**
+
+- mittente / SMTP user / destinatari lead = sempre `info@kesi.biz`
+- password = **sempre** da Infisical `KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD`
+- a ogni **deploy** lo script riallinea la password
+- a ogni **avvio container** `infisical-entrypoint.sh` re-inieetta i secret da Infisical (path `/`)
+

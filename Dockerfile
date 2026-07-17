@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED=1 \
 WORKDIR /app
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends gettext git \
+    && apt-get install -y --no-install-recommends gettext git curl ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -35,7 +35,15 @@ RUN set -e; \
     fi
 
 RUN python manage.py compilemessages
-RUN chmod +x /app/entrypoint.sh
+
+# Infisical CLI: secret injection at container start
+ARG INFISICAL_CLI_VERSION=0.43.101
+RUN curl -fsSL "https://github.com/Infisical/cli/releases/download/v${INFISICAL_CLI_VERSION}/cli_${INFISICAL_CLI_VERSION}_linux_amd64.tar.gz" \
+    | tar -xz -C /usr/local/bin \
+    && chmod +x /usr/local/bin/infisical \
+    && infisical --version
+
+RUN chmod +x /app/entrypoint.sh /app/infisical-entrypoint.sh
 
 EXPOSE 8000
-ENTRYPOINT ["/app/entrypoint.sh"]
+ENTRYPOINT ["/app/infisical-entrypoint.sh"]

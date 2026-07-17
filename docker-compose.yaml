@@ -1,3 +1,6 @@
+# Produzione VPS Hostinger + Traefik.
+# Password email: sempre da Infisical (KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD)
+# via infisical-entrypoint.sh — non va messa a mano se non esplicitamente richiesto.
 services:
   funnel:
     build: .
@@ -5,9 +8,14 @@ services:
     container_name: funnel-grandineticino
     restart: unless-stopped
     env_file:
+      - config.env
       - .env
+      - .env.identity
     volumes:
       - funnel_data:/app/data
+    networks:
+      - default
+      - agents-infisical-net
     labels:
       - traefik.enable=true
       - "traefik.http.routers.grandineticino.rule=Host(`grandineticino.ch`) || Host(`www.grandineticino.ch`)"
@@ -17,3 +25,7 @@ services:
 
 volumes:
   funnel_data:
+
+networks:
+  agents-infisical-net:
+    external: true

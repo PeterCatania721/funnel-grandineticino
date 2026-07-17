@@ -6,9 +6,12 @@ data/
 staticfiles/
 locale/**/*.mo
 
-# Env
+# Env / secrets (mai in git)
 .env
 .env.local
+.env.identity
+.env.bak*
+.env.pre-*
 .venv/
 venv/
 
