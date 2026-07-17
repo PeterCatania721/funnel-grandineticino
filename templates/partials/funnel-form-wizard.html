@@ -83,7 +83,7 @@
         <label class="prev-label" for="{{ form.images.id_for_label }}">{{ form.images.label }} <span class="prev-required">*</span></label>
         <label class="prev-upload" for="{{ form.images.id_for_label }}">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="16,16 12,12 8,16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39,18.39A5,5,0,0,0,18,9h-1.26A8,8,0,1,0,3,16.3"/></svg>
-          <span class="prev-upload-text">JPG, PNG <em>({% trans "max 15 file" %})</em></span>
+          <span class="prev-upload-text">JPG, PNG, HEIC, WebP, GIF… <em>({% trans "max 15 file" %})</em></span>
           {{ form.images }}
         </label>
         <div class="prev-preview-grid funnel-preview-grid" aria-live="polite" hidden></div>
@@ -120,7 +120,7 @@
 
   <div class="funnel-form-nav">
     <button type="button"
-            class="funnel-form-nav-back"
+            class="btn btn-outline-dark funnel-form-nav-back"
             x-show="step > 1"
             x-cloak
             @click.prevent="goBack()">
@@ -135,7 +135,7 @@
     </button>
 
     <button type="submit"
-            class="btn btn-primary btn-block funnel-form-nav-submit"
+            class="btn btn-primary funnel-form-nav-submit"
             x-show="step === totalSteps"
             x-cloak>
       {% trans "INVIA RICHIESTA GRATUITA" %}

@@ -1920,6 +1920,9 @@ msgstr "Sie können maximal %(max)s Dateien hochladen."
 msgid "Formato file non supportato. Usa JPG o PNG."
 msgstr "Dateiformat nicht unterstützt. Verwenden Sie JPG oder PNG."
 
+msgid "Formato file non supportato. Carica solo immagini (JPG, PNG, HEIC, WebP, GIF, …)."
+msgstr "Dateiformat nicht unterstützt. Laden Sie nur Bilder hoch (JPG, PNG, HEIC, WebP, GIF, …)."
+
 msgid "Numero bolli non valido."
 msgstr "Ungültige Anzahl Dellen."
 

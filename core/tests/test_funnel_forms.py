@@ -76,6 +76,46 @@ class FunnelLeadFormTest(SimpleTestCase):
             self.assertFalse(form.is_valid())
             self.assertIn("images", form.errors)
             self.assertIn("Unsupported file format", form.errors["images"][0])
+            self.assertIn("images only", form.errors["images"][0].lower())
+
+    def test_rejects_pdf_and_documents(self):
+        for name, ctype in (
+            ("report.pdf", "application/pdf"),
+            ("notes.docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document"),
+            ("sheet.csv", "text/csv"),
+        ):
+            bad = SimpleUploadedFile(name, b"%PDF-1.4 fake", content_type=ctype)
+            form = FunnelLeadForm(data=self._valid_data(), files={"images": bad})
+            self.assertFalse(form.is_valid(), name)
+            self.assertIn("images", form.errors)
+
+    def test_accepts_common_phone_camera_image_types(self):
+        cases = (
+            ("photo.jpg", "image/jpeg"),
+            ("photo.JPEG", "image/jpeg"),
+            ("photo.png", "image/png"),
+            ("photo.webp", "image/webp"),
+            ("photo.heic", "image/heic"),
+            ("photo.heif", "image/heif"),
+            ("photo.gif", "image/gif"),
+            ("photo.bmp", "image/bmp"),
+            ("photo.tif", "image/tiff"),
+            ("photo.avif", "image/avif"),
+            # iOS often leaves content_type empty; extension must still pass
+            ("IMG_0001.HEIC", ""),
+        )
+        for name, ctype in cases:
+            uploaded = SimpleUploadedFile(name, _TINY_PNG, content_type=ctype or "application/octet-stream")
+            form = FunnelLeadForm(data=self._valid_data(), files={"images": uploaded})
+            self.assertTrue(form.is_valid(), f"{name}: {form.errors}")
+
+    def test_images_widget_accept_is_images_only(self):
+        form = FunnelLeadForm()
+        accept = form.fields["images"].widget.attrs.get("accept", "")
+        self.assertIn("image/*", accept)
+        self.assertIn(".heic", accept)
+        self.assertNotIn(".pdf", accept)
+        self.assertNotIn(".doc", accept)
 
     def test_error_state_maps_fields_to_step(self):
         image = SimpleUploadedFile("damage.png", _TINY_PNG, content_type="image/png")

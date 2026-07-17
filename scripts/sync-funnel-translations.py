@@ -194,6 +194,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "Correggi i campi evidenziati e riprova.": "Bitte korrigieren Sie die markierten Felder und versuchen Sie es erneut.",
         "Puoi caricare al massimo %(max)s file.": "Sie können maximal %(max)s Dateien hochladen.",
         "Formato file non supportato. Usa JPG o PNG.": "Dateiformat nicht unterstützt. Verwenden Sie JPG oder PNG.",
+        "Formato file non supportato. Carica solo immagini (JPG, PNG, HEIC, WebP, GIF, …).": (
+            "Dateiformat nicht unterstützt. Laden Sie nur Bilder hoch (JPG, PNG, HEIC, WebP, GIF, …)."
+        ),
         "Numero bolli non valido.": "Ungültige Anzahl Dellen.",
         "Grazie — richiesta ricevuta": "Danke — Anfrage erhalten",
         "KESI SA — Abbiamo ricevuto la tua richiesta": "KESI SA — Wir haben Ihre Anfrage erhalten",
@@ -392,6 +395,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "Correggi i campi evidenziati e riprova.": "Corrigez les champs indiqués et réessayez.",
         "Puoi caricare al massimo %(max)s file.": "Vous pouvez télécharger au maximum %(max)s fichiers.",
         "Formato file non supportato. Usa JPG o PNG.": "Format de fichier non pris en charge. Utilisez JPG ou PNG.",
+        "Formato file non supportato. Carica solo immagini (JPG, PNG, HEIC, WebP, GIF, …).": (
+            "Format de fichier non pris en charge. Téléchargez uniquement des images (JPG, PNG, HEIC, WebP, GIF, …)."
+        ),
         "Numero bolli non valido.": "Nombre de bosses invalide.",
         "Grazie — richiesta ricevuta": "Merci — demande reçue",
         "KESI SA — Abbiamo ricevuto la tua richiesta": "KESI SA — Nous avons reçu votre demande",
@@ -590,6 +596,9 @@ TRANSLATIONS: dict[str, dict[str, str]] = {
         "Correggi i campi evidenziati e riprova.": "Please correct the highlighted fields and try again.",
         "Puoi caricare al massimo %(max)s file.": "You can upload at most %(max)s files.",
         "Formato file non supportato. Usa JPG o PNG.": "Unsupported file format. Use JPG or PNG.",
+        "Formato file non supportato. Carica solo immagini (JPG, PNG, HEIC, WebP, GIF, …).": (
+            "Unsupported file format. Upload images only (JPG, PNG, HEIC, WebP, GIF, …)."
+        ),
         "Numero bolli non valido.": "Invalid dent count.",
         "Grazie — richiesta ricevuta": "Thank you — request received",
         "KESI SA — Abbiamo ricevuto la tua richiesta": "KESI SA — We received your request",

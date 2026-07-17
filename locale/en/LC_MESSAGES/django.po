@@ -1886,6 +1886,9 @@ msgstr "You can upload at most %(max)s files."
 msgid "Formato file non supportato. Usa JPG o PNG."
 msgstr "Unsupported file format. Use JPG or PNG."
 
+msgid "Formato file non supportato. Carica solo immagini (JPG, PNG, HEIC, WebP, GIF, …)."
+msgstr "Unsupported file format. Upload images only (JPG, PNG, HEIC, WebP, GIF, …)."
+
 msgid "Numero bolli non valido."
 msgstr "Invalid dent count."
 

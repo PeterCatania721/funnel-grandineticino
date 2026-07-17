@@ -7,12 +7,43 @@ from core.models import FunnelLead, FunnelLeadAttachment
 from core.phone import is_valid_phone
 
 MAX_IMAGES = 15
+# Formati immagine comuni da smartphone e fotocamere (no documenti/PDF).
 ALLOWED_IMAGE_CONTENT_TYPES = {
     "image/jpeg",
+    "image/pjpeg",
     "image/png",
     "image/gif",
+    "image/webp",
+    "image/heic",
+    "image/heif",
+    "image/heic-sequence",
+    "image/heif-sequence",
+    "image/bmp",
+    "image/x-ms-bmp",
+    "image/tiff",
+    "image/avif",
 }
-ALLOWED_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".gif"}
+ALLOWED_IMAGE_EXTENSIONS = {
+    ".jpg",
+    ".jpeg",
+    ".jfif",
+    ".pjpeg",
+    ".pjp",
+    ".png",
+    ".gif",
+    ".webp",
+    ".heic",
+    ".heif",
+    ".bmp",
+    ".tif",
+    ".tiff",
+    ".avif",
+}
+# accept: image/* filtra il picker; estensioni esplicite per HEIC/iOS e browser vecchi.
+IMAGE_ACCEPT_ATTR = (
+    "image/*,"
+    ".jpg,.jpeg,.jfif,.png,.gif,.webp,.heic,.heif,.bmp,.tif,.tiff,.avif"
+)
 
 FUNNEL_FORM_STEPS = {
     1: ("full_name", "email", "telephone", "city"),
@@ -51,7 +82,7 @@ class FunnelLeadForm(forms.ModelForm):
         required=False,
         widget=FunnelImageInput(
             attrs={
-                "accept": ".jpg,.jpeg,.png,.gif",
+                "accept": IMAGE_ACCEPT_ATTR,
                 "class": "prev-upload-input funnel-upload-input",
                 "data-funnel-required": "true",
                 "multiple": "multiple",
@@ -183,19 +214,33 @@ class FunnelLeadForm(forms.ModelForm):
             )
         else:
             for uploaded in files:
-                ext = uploaded.name.rsplit(".", 1)[-1].lower() if "." in uploaded.name else ""
-                if (
-                    f".{ext}" not in ALLOWED_IMAGE_EXTENSIONS
-                    and uploaded.content_type not in ALLOWED_IMAGE_CONTENT_TYPES
-                ):
+                if not self._is_allowed_image(uploaded):
                     self.add_error(
                         "images",
-                        _("Formato file non supportato. Usa JPG o PNG."),
+                        _(
+                            "Formato file non supportato. Carica solo immagini "
+                            "(JPG, PNG, HEIC, WebP, GIF, …)."
+                        ),
                     )
                     break
             if not self.errors.get("images"):
                 cleaned_data["images"] = files
         return cleaned_data
+
+    @staticmethod
+    def _is_allowed_image(uploaded) -> bool:
+        """True se estensione o content-type è un formato immagine ammessi."""
+        name = getattr(uploaded, "name", "") or ""
+        ext = f".{name.rsplit('.', 1)[-1].lower()}" if "." in name else ""
+        content_type = (getattr(uploaded, "content_type", None) or "").lower().strip()
+        if ext in ALLOWED_IMAGE_EXTENSIONS:
+            return True
+        if content_type in ALLOWED_IMAGE_CONTENT_TYPES:
+            return True
+        # Alcuni browser inviano solo image/* generico o image/jpg non standard.
+        if content_type in {"image/jpg", "image/x-png"}:
+            return True
+        return False
 
     def clean_telephone(self):
         telephone = self.cleaned_data.get("telephone", "").strip()

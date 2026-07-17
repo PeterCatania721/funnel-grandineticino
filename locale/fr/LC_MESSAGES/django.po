@@ -1928,6 +1928,9 @@ msgstr "Vous pouvez télécharger au maximum %(max)s fichiers."
 msgid "Formato file non supportato. Usa JPG o PNG."
 msgstr "Format de fichier non pris en charge. Utilisez JPG ou PNG."
 
+msgid "Formato file non supportato. Carica solo immagini (JPG, PNG, HEIC, WebP, GIF, …)."
+msgstr "Format de fichier non pris en charge. Téléchargez uniquement des images (JPG, PNG, HEIC, WebP, GIF, …)."
+
 msgid "Numero bolli non valido."
 msgstr "Nombre de bosses invalide."
 

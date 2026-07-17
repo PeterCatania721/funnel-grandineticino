@@ -621,10 +621,15 @@
   margin-bottom: 1.35rem;
 }
 
-.funnel-form .btn-primary.btn-block {
-  margin-top: 0.25rem;
-  padding: 1rem;
+/* Form CTA: stesso sistema .btn, stessa tipografia (Cooper Hewitt via inherit) */
+.funnel-form-nav .btn {
+  margin-top: 0;
+  padding: 1rem 1.25rem;
+  font-family: inherit;
   font-size: var(--text-md);
+  font-weight: var(--font-heavy);
+  line-height: 1;
+  letter-spacing: 0.02em;
 }
 
 .funnel-form-error {

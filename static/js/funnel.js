@@ -5,9 +5,25 @@
   'use strict';
 
   var MAX_BYTES = 20 * 1024 * 1024;
+  var ALLOWED_IMAGE_EXTS = {
+    jpg: 1, jpeg: 1, jfif: 1, pjpeg: 1, pjp: 1,
+    png: 1, gif: 1, webp: 1, heic: 1, heif: 1,
+    bmp: 1, tif: 1, tiff: 1, avif: 1
+  };
 
   var STEP_LABELS = (window.FUNNEL_I18N && window.FUNNEL_I18N.stepLabels) || ['Contatto', 'Foto', 'Invio'];
   var I18N = window.FUNNEL_I18N || {};
+
+  function isAllowedImageFile(file) {
+    if (!file) return false;
+    var type = (file.type || '').toLowerCase();
+    if (type.indexOf('image/') === 0) return true;
+    var name = file.name || '';
+    var dot = name.lastIndexOf('.');
+    if (dot < 0) return false;
+    var ext = name.slice(dot + 1).toLowerCase();
+    return !!ALLOWED_IMAGE_EXTS[ext];
+  }
 
   function trimFieldValue(field) {
     if (!field || field.type === 'checkbox' || field.type === 'file') return;
@@ -414,9 +430,19 @@
       var files = [];
 
       input.addEventListener('change', function () {
+        var rejected = 0;
         Array.from(this.files).forEach(function (f) {
+          if (!isAllowedImageFile(f)) {
+            rejected += 1;
+            return;
+          }
           if (files.length < 15) files.push(f);
         });
+        if (rejected > 0) {
+          var msg = I18N.uploadInvalidType ||
+            'Formato file non supportato. Carica solo immagini (JPG, PNG, HEIC, WebP, GIF, …).';
+          window.alert(msg);
+        }
         syncInput();
         render();
       });
