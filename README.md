@@ -31,3 +31,5 @@ docker compose -f docker-compose.prod.yml up -d --build
 ```
 
 Variabili obbligatorie in `.env`: `SECRET_KEY`, `ALLOWED_HOSTS`, `CSRF_TRUSTED_ORIGINS`, `EMAIL_HOST_PASSWORD`.
+
+**Email produzione:** mittente/SMTP user e destinatari lead sono sempre `info@kesi.biz` (Infomaniak). La password va presa da Infisical come `KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD` e mappata su `EMAIL_HOST_PASSWORD` (vedi `scripts/deploy-grandineticino.sh`).

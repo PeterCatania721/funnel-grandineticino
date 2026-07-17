@@ -121,11 +121,15 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# --- Email ---
+# --- Email (sempre casella Infomaniak info@kesi.biz in produzione) ---
+# Password: EMAIL_HOST_PASSWORD oppure KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD (Infisical).
 EMAIL_HOST = env("EMAIL_HOST", default="mail.infomaniak.com")
 EMAIL_PORT = env.int("EMAIL_PORT", default=587)
-EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER", default=COMPANY.email)
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="") or env(
+    "KESI_FUNNEL_GRANDINETICINO_EMAIL_PASSWORD",
+    default="",
+)
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
 DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default=COMPANY.email)
 
