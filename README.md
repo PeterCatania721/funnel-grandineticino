@@ -46,3 +46,13 @@ File sul server (non in git i secret):
 - a ogni **deploy** lo script riallinea la password
 - a ogni **avvio container** `infisical-entrypoint.sh` re-inieetta i secret da Infisical (path `/`)
 
+
+## Componenti UI
+
+I partial del funnel (form, header, sezioni, …) sono anche esposti come:
+
+```django
+{% include "components/funnel-form-card.html" %}
+```
+
+Catalogo: [`docs/COMPONENTS.md`](docs/COMPONENTS.md). Elenco: `./scripts/list-components.sh`.
